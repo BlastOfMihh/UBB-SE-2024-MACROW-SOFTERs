@@ -11,5 +11,5 @@ namespace domain
         public DateTime SentTime { get; } = sentTime;
         public string Content { get; } = content;
         public int SenderId { get; } = senderId;
-    }
+    }//
 }
