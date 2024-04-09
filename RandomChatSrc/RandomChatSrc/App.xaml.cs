@@ -1,4 +1,6 @@
-﻿namespace RandomChatSrc
+﻿using RandomChatSrc.Pages;
+
+namespace RandomChatSrc
 {
     public partial class App : Application
     {
@@ -6,7 +8,10 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            // In order to see the chatroom page uncomment the below line and comment the other main page
+             MainPage = new NavigationPage(new ChatRoomPage());
+
+            //MainPage = new AppShell();
         }
     }
 }
