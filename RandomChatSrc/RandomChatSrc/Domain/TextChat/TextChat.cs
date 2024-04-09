@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.IO;  // idk if this is fine for Mobile
 using System.Runtime.Serialization;
+using RandomChatSrc.Domain.ChatDomain;
 using System.Xml.Linq;
 
 
-namespace RandomChatSrc.Domain
+namespace RandomChatSrc.Domain.TextChat
 {
     public class TextChat : Chat
     {

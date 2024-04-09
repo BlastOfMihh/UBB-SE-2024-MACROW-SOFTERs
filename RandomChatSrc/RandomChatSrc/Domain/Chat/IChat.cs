@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RandomChatSrc.Domain.User;
 
-namespace RandomChatSrc.Domain.Chat
+namespace RandomChatSrc.Domain.ChatDomain
 {
     internal interface IChat
     {

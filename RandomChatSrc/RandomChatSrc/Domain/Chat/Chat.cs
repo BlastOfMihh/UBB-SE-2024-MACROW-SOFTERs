@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using RandomChatSrc.Domain.User;
 
-namespace RandomChatSrc.Domain.Chat
+namespace RandomChatSrc.Domain.ChatDomain
 {
-    internal class Chat : IChat
+    public class Chat : IChat
     {
         public string id { get; }
         public List<IUser> participants { get; }

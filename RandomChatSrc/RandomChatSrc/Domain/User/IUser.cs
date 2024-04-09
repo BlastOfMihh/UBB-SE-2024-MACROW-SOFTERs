@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RandomChatSrc.Domain.User
 {
-    internal interface IUser
+    public interface IUser
     {
         string id { get;  }
         string Name { get; }

@@ -12,6 +12,5 @@ namespace RandomChatSrc.Services.ChatroomsManagementService
         MockChat GetChat();
         MockChat CreateChat(int size);
         void DeleteChat(Guid id);
-
     }
 }

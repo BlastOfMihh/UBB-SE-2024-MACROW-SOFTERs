@@ -34,7 +34,6 @@ namespace RandomChatSrc.Services.ChatroomsManagementService
 
         public MockChat GetChat()
         {
-            // Get a random chat
             Random random = new Random();
             int index = random.Next(activeChats.Count);
             return activeChats[index];

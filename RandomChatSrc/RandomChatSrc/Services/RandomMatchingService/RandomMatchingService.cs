@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RandomChatSrc.Domain.Chat;
+using RandomChatSrc.Domain.ChatDomain;
 using RandomChatSrc.Domain.UserConfig;
-
-
-using IChatroomsManagementService = RandomChatSrc.Services.Mocks.IChatroomsManagementServicMock;
-
+using RandomChatSrc.Services.ChatroomsManagementService;
 
 namespace RandomChatSrc.Services.RandomMatchingService
 {
