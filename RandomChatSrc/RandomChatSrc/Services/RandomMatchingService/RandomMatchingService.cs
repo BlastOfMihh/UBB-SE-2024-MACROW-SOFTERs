@@ -12,7 +12,6 @@ namespace RandomChatSrc.Services.RandomMatchingService
     public class RandomMatchingService
     {
         ChatroomsManagementService chatroomsManagementService;
-        //Queue<User> randomMatchingQueue;
         public RandomMatchingService(ChatroomsManagementService chatroomsManagementService) {
             this.chatroomsManagementService = chatroomsManagementService;
         }

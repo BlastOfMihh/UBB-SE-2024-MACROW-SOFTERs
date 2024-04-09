@@ -22,7 +22,7 @@ namespace RandomChatSrc.Domain.TextChat
             // it's fine for mobile actually?
             if (!Directory.Exists(MessagesFolderPath))
             {
-                Directory.CreateDirectory(MessagesFolderPath);
+                Directory.CreateDirectory(MessagesFolderPath + "_" + this.id);
             }
 
             LoadStoredMessages();
