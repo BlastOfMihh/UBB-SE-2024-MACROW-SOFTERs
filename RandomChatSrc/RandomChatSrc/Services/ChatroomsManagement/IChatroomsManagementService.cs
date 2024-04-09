@@ -1,16 +1,16 @@
-﻿using RandomChatSrc.Domain.Mocks;
+﻿using RandomChatSrc.Domain.ChatDomain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomChatSrc.Services.ChatroomsManagementService
+namespace RandomChatSrc.Services.ChatroomsManagement
 {
     public interface IChatroomsManagementService
     {
-        MockChat GetChat();
-        MockChat CreateChat(int size);
+        Chat GetChat();
+        Chat CreateChat(int size);
         void DeleteChat(Guid id);
     }
 }

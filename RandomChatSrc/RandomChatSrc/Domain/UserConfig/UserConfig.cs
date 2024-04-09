@@ -7,7 +7,7 @@ using RandomChatSrc.Domain.User;
 
 namespace RandomChatSrc.Domain.UserConfig
 {
-    internal class UserConfig
+    public class UserConfig
     {
         IUser user { get;  }
         public UserConfig(IUser user) { 

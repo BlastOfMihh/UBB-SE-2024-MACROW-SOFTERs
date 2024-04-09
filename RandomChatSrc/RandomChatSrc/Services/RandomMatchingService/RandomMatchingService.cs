@@ -5,19 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using RandomChatSrc.Domain.ChatDomain;
 using RandomChatSrc.Domain.UserConfig;
-using RandomChatSrc.Services.ChatroomsManagementService;
+using RandomChatSrc.Services.ChatroomsManagement;
 
 namespace RandomChatSrc.Services.RandomMatchingService
 {
-    internal class RandomMatchingService
+    public class RandomMatchingService
     {
-        IChatroomsManagementService chatroomsManagementService;
+        ChatroomsManagementService chatroomsManagementService;
         //Queue<User> randomMatchingQueue;
-        public RandomMatchingService(IChatroomsManagementService chatroomsManagementService) {
+        public RandomMatchingService(ChatroomsManagementService chatroomsManagementService) {
             this.chatroomsManagementService = chatroomsManagementService;
         }
         public Chat RequestMatchingChatRoom(IUserConfig chatConfig) {
-            var allChats = chatroomsManagementService.GetChats();
+            var allChats = this.chatroomsManagementService.activeChats;
             foreach (var chat in allChats)
             {
                 if (chat.availableParticipantsCount() > 0)

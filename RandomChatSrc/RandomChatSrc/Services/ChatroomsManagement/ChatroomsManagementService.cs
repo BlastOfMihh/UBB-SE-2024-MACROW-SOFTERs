@@ -1,30 +1,31 @@
-﻿using RandomChatSrc.Domain.Mocks;
+﻿using RandomChatSrc.Domain.ChatDomain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomChatSrc.Services.ChatroomsManagementService
+
+namespace RandomChatSrc.Services.ChatroomsManagement
 {
     public class ChatroomsManagementService : IChatroomsManagementService
     {
-        public List<MockChat> activeChats { get; set; }
+        public List<Chat> activeChats { get; set; }
         public ChatroomsManagementService() {
-            activeChats = new List<MockChat>();
+            activeChats = new List<Chat>();
         }
-        public MockChat CreateChat(int size)
+        public Chat CreateChat(int size)
         {
-            var newChat = new MockChat();
+            var newChat = new Chat();
             activeChats.Add(newChat);
             return newChat;
         }
 
         public void DeleteChat(Guid id)
         {
-            foreach( MockChat chat in activeChats)
+            foreach (Chat chat in activeChats)
             {
-                if (chat.Id == id)
+                if (Guid.Parse(chat.id) == id)
                 {
                     activeChats.Remove(chat);
                     return;
@@ -32,7 +33,7 @@ namespace RandomChatSrc.Services.ChatroomsManagementService
             }
         }
 
-        public MockChat GetChat()
+        public Chat GetChat()
         {
             Random random = new Random();
             int index = random.Next(activeChats.Count);

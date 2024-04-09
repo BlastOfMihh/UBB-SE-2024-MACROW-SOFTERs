@@ -7,7 +7,7 @@ using RandomChatSrc.Domain.ChatDomain;
 
 namespace RandomChatSrc.Services.RandomMatchingService
 {
-    internal interface IRandomMatchingService
+    public interface IRandomMatchingService
     {
         public Chat RequestMatchingChatRoom();
     }
