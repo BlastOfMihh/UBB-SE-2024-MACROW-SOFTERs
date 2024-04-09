@@ -8,6 +8,7 @@ namespace RandomChatSrc
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+            //test git push
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
