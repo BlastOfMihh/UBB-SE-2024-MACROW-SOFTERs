@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using RandomChatSrc.Pages;
 
 namespace RandomChatSrc
 {
