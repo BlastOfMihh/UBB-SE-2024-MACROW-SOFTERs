@@ -3,6 +3,7 @@
 namespace RandomChatSrc
 {
     public static class MauiProgram
+        // va bat
     {
         public static MauiApp CreateMauiApp()
         {
