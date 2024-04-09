@@ -1,4 +1,6 @@
-﻿namespace RandomChatSrc
+﻿using RandomChatSrc.Pages;
+
+namespace RandomChatSrc
 {
     public partial class App : Application
     {
@@ -6,7 +8,8 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new OpenChatsWindow());
+
         }
     }
 }
