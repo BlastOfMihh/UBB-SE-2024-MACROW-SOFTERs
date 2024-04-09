@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Xml.Linq;
 
 
-namespace domain
+namespace RandomChatSrc.Domain
 {
     public class TextChat : Chat
     {
@@ -15,25 +15,25 @@ namespace domain
 
         public TextChat(List<Message> messages, string messagesFolderPath) : base()
         {
-            this.Messages = messages;
-            this.MessagesFolderPath = messagesFolderPath;
+            Messages = messages;
+            MessagesFolderPath = messagesFolderPath;
 
             // it's fine for mobile actually?
-            if (!Directory.Exists(this.MessagesFolderPath))
+            if (!Directory.Exists(MessagesFolderPath))
             {
-                Directory.CreateDirectory(this.MessagesFolderPath);
+                Directory.CreateDirectory(MessagesFolderPath);
             }
 
-            this.LoadStoredMessages();
+            LoadStoredMessages();
         }
 
         public void AddMessage(int senderId, string messageContent)
         {
             Guid messageId = Guid.NewGuid();
-            string messagePath = this.MessagesFolderPath + "/message_" + messageId.ToString() + ".xml";
+            string messagePath = MessagesFolderPath + "/message_" + messageId.ToString() + ".xml";
             DateTime messageTimestamp = DateTime.Now;
-            Message curMessage = new(messageId, senderId, this.MessagesFolderPath, messagePath, messageTimestamp, messageContent);
-            this.Messages.Add(curMessage);
+            Message curMessage = new(messageId, senderId, MessagesFolderPath, messagePath, messageTimestamp, messageContent);
+            Messages.Add(curMessage);
 
             XDocument messageDoc = new(
                 new XElement("messages",
@@ -46,12 +46,12 @@ namespace domain
             );
             messageDoc.Save(messagePath);
 
-            this.LastAvailableMessageId = messageId;
+            LastAvailableMessageId = messageId;
         }
 
         private void LoadStoredMessages()
         {
-            foreach (string messageFilePath in Directory.GetFiles(this.MessagesFolderPath))
+            foreach (string messageFilePath in Directory.GetFiles(MessagesFolderPath))
             {
                 XDocument? messageDoc = XDocument.Load(messageFilePath);
                 if (messageDoc == null)
@@ -103,12 +103,12 @@ namespace domain
                 }
                 string messageIdStr = messageFilePath.Substring(underscoreIdx + 1, dotIdx - underscoreIdx - 1);
 
-                Message curMessage = new(Guid.Parse(messageIdStr), senderId, this.MessagesFolderPath, messageFilePath, timestampDateTime, textContent);
-                this.Messages.Add(curMessage);
+                Message curMessage = new(Guid.Parse(messageIdStr), senderId, MessagesFolderPath, messageFilePath, timestampDateTime, textContent);
+                Messages.Add(curMessage);
             }
 
             // Make sure the messages in the List are in chronological order.
-            this.Messages.Sort((m1, m2) => m1.SentTime.CompareTo(m2.SentTime));
+            Messages.Sort((m1, m2) => m1.SentTime.CompareTo(m2.SentTime));
         }
     }
 }

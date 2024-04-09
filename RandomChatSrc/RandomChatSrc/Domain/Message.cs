@@ -1,9 +1,9 @@
 using System;
 
 
-namespace domain
+namespace RandomChatSrc.Domain
 {
-    public class Message(Guid id, int senderId, String textChatFolderPath, String messagePath, DateTime sentTime, String content)
+    public class Message(Guid id, int senderId, string textChatFolderPath, string messagePath, DateTime sentTime, string content)
     {
         private Guid Id { get; } = id;
         public string TextChatFolderPath { get; } = textChatFolderPath;
