@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using RandomChatSrc.Services.ChatroomsManagementService;
+using RandomChatSrc.Services.ChatroomsManagement;
 using RandomChatSrc.Pages;
 
 namespace RandomChatSrc

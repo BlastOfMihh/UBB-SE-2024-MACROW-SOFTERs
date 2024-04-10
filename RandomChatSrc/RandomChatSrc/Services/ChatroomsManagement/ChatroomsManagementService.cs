@@ -41,11 +41,11 @@ namespace RandomChatSrc.Services.ChatroomsManagement
             return activeChats[index];
         }
 
-        public MockChat getChatById(Guid id)
+        public Chat getChatById(Guid id)
         {
-            foreach (MockChat chat in activeChats)
+            foreach (Chat chat in activeChats)
             {
-                if (chat.Id == id)
+                if (chat.id == id)
                 {
                     return chat;
                 }
@@ -53,7 +53,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
             throw new Exception("Chat not found");
         }
 
-        public List<MockChat> getAllChats()
+        public List<Chat> getAllChats()
         {
             return activeChats;
         }
