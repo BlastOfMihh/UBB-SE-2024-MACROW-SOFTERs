@@ -8,7 +8,7 @@ namespace RandomChatSrc.Domain.User
 {
     public interface IUser
     {
-        string id { get;  }
+        Guid id { get;  }
         string Name { get; }
     }
 }
