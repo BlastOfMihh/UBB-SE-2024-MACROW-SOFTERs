@@ -28,7 +28,7 @@ namespace RandomChatSrc.Domain.TextChat
             LoadStoredMessages();
         }
 
-        public void AddMessage(int senderId, string messageContent)
+        public void AddMessage(string senderId, string messageContent)
         {
             Guid messageId = Guid.NewGuid();
             string messagePath = MessagesFolderPath + "/message_" + messageId.ToString() + ".xml";
@@ -78,7 +78,7 @@ namespace RandomChatSrc.Domain.TextChat
                 {
                     Console.WriteLine("There is no sender content for the document with file path '" + messageFilePath + "'");
                 }
-                int senderId = int.Parse(senderElement!.Value);
+                string senderId = senderElement!.Value;
 
                 XElement? timestampElement = messageElement?.Element("timestamp");
                 if (timestampElement == null)
