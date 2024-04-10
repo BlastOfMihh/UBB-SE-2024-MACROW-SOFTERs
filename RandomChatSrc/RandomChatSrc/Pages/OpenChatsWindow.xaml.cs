@@ -3,7 +3,7 @@ namespace RandomChatSrc.Pages;
 public partial class OpenChatsWindow : ContentPage
 {
    
-
+/*
     public OpenChatsWindow()
 	  {
 		    InitializeComponent();
@@ -23,5 +23,5 @@ public partial class OpenChatsWindow : ContentPage
     {
         await Navigation.PushAsync(new ChatRoomPage());
     }
-
+*/
 }
