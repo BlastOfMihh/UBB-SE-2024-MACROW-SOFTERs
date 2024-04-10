@@ -9,7 +9,7 @@ using RandomChatSrc.Services.ChatroomsManagement;
 
 namespace RandomChatSrc.Services.RandomMatchingService
 {
-    public class RandomMatchingService
+    public class RandomMatchingService : IRandomMatchingService
     {
         ChatroomsManagementService chatroomsManagementService;
         public RandomMatchingService(ChatroomsManagementService chatroomsManagementService) {
