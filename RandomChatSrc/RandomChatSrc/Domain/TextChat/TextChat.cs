@@ -20,7 +20,7 @@ namespace RandomChatSrc.Domain.TextChat
                 this.id = new Guid(oldId);
             }
             this.Messages = messages;
-            this.MessagesFolderPath = chatFolderPath+"/"+oldId;
+            this.MessagesFolderPath = chatFolderPath+this.id.ToString();
             
 
             // it's fine for mobile actually?

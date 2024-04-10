@@ -14,7 +14,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
 {
     public class ChatroomsManagementService : IChatroomsManagementService
     {
-        string textChatsPath = "./ChatRepo";
+        string textChatsPath = "C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";
         public List<TextChat> activeChats { get; set; }
         public ChatroomsManagementService() {
             activeChats = new List<TextChat>();
@@ -31,13 +31,13 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         private string getIdFromPath(string folderPath)
         {
             string ans="";
-            for (int i = folderPath.Length - 1; folderPath[i]!='\\' && i>=0; ++i)
+            for (int i = folderPath.Length - 1; folderPath[i]!='\\' && i>=0; --i)
             {
-                ans.Append(folderPath[i]);
+                ans += folderPath[i];
             }
             // for (int i=0, j= folderPath.Length - 1; i<j; ++i, --j)
             //     (ans[i], ans[j]) = (ans[j], ans[i]);
-            return ans.Reverse().ToString();
+            return new string(ans.Reverse().ToArray());
         }
         private void loadActiveChats()
         {

@@ -79,4 +79,8 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="ChatRepo\" />
+	</ItemGroup>
+
 </Project>
