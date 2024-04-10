@@ -34,9 +34,9 @@ namespace RandomChatSrc.Services.UserChatListService
             }
 
         }
-        public List<Chat> getOpenChats()
+        public List<TextChat> getOpenChats()
         {
-            List<Chat> openChats = chatroomsManagementService.getAllChats();
+            List<TextChat> openChats = chatroomsManagementService.getAllChats();
             openChats = openChats.Where(chat => chat.participants.Any(user => user.id == currentUserId)).ToList();
             return openChats;
         }
