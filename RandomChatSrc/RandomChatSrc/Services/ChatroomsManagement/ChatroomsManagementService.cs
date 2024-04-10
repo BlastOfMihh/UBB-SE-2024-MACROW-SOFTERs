@@ -1,4 +1,6 @@
-﻿using RandomChatSrc.Domain.ChatDomain;
+﻿using RandomChatSrc.Domain;
+using RandomChatSrc.Domain.ChatDomain;
+using RandomChatSrc.Domain.TextChat;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +12,19 @@ namespace RandomChatSrc.Services.ChatroomsManagement
 {
     public class ChatroomsManagementService : IChatroomsManagementService
     {
-        public List<Chat> activeChats { get; set; }
+        string messagePath = "./ChatRepo/";
+        public List<TextChat> activeChats { get; set; }
         public ChatroomsManagementService() {
-            activeChats = new List<Chat>();
+            activeChats = new List<TextChat>();
         }
-        public Chat CreateChat(int size)
+        public TextChat CreateChat(int size)
         {
-            var newChat = new Chat();
+            List<Message> messages = new List<Message>();
+            if(!Directory.Exists(messagePath))
+            {
+                Directory.CreateDirectory(messagePath);
+            }
+            var newChat = new TextChat(messages, messagePath);
             activeChats.Add(newChat);
             return newChat;
         }

@@ -2,6 +2,7 @@
 using RandomChatSrc.Services.ChatroomsManagement;
 using RandomChatSrc.Pages;
 using RandomChatSrc.Services.RandomMatchingService;
+using RandomChatSrc.Services.UserChatListService;
 
 namespace RandomChatSrc
 {
@@ -13,6 +14,7 @@ namespace RandomChatSrc
             var builder = MauiApp.CreateBuilder();
             builder.Services.AddSingleton<IChatroomsManagementService, ChatroomsManagementService>();
             builder.Services.AddSingleton<IRandomMatchingService, RandomMatchingService>();
+            builder.Services.AddSingleton<IUserChatListService, UserChatListService>();
             //test git push
             builder
                 .UseMauiApp<App>()

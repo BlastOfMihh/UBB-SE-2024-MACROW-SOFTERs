@@ -1,4 +1,5 @@
 ﻿using RandomChatSrc.Domain.ChatDomain;
+using RandomChatSrc.Domain.TextChat;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace RandomChatSrc.Services.ChatroomsManagement
 {
     public interface IChatroomsManagementService
     {
-        Chat GetChat();
-        Chat CreateChat(int size);
+        TextChat GetChat();
+        TextChat CreateChat(int size);
         void DeleteChat(Guid id);
-        Chat getChatById(Guid id);
-        List<Chat> getAllChats();
+        TextChat getChatById(Guid id);
+        List<TextChat> getAllChats();
     }
 }
