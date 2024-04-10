@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using RandomChatSrc.Services.ChatroomsManagementService;
 
 namespace RandomChatSrc
 {
@@ -7,6 +8,7 @@ namespace RandomChatSrc
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+            builder.Services.AddSingleton<IChatroomsManagementService, ChatroomsManagementService>();
             //test git push
             builder
                 .UseMauiApp<App>()
