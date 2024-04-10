@@ -39,5 +39,22 @@ namespace RandomChatSrc.Services.ChatroomsManagementService
             int index = random.Next(activeChats.Count);
             return activeChats[index];
         }
+
+        public MockChat getChatById(Guid id)
+        {
+            foreach (MockChat chat in activeChats)
+            {
+                if (chat.Id == id)
+                {
+                    return chat;
+                }
+            }
+            throw new Exception("Chat not found");
+        }
+
+        public List<MockChat> getAllChats()
+        {
+            return activeChats;
+        }
     }
 }
