@@ -14,21 +14,25 @@ namespace RandomChatSrc.Domain.TextChat
         public string MessagesFolderPath { get; }
         public Guid LastAvailableMessageId { get; set; }
 
-        public TextChat(List<Message> messages, string messagesFolderPath) : base()
+        public TextChat(List<Message> messages, string chatFolderPath, string oldId="") : base()
         {
-            Messages = messages;
-            MessagesFolderPath = messagesFolderPath;
+            if (oldId != "") { 
+                this.id = new Guid(oldId);
+            }
+            this.Messages = messages;
+            this.MessagesFolderPath = chatFolderPath+"/"+oldId;
+            
 
             // it's fine for mobile actually?
             if (!Directory.Exists(MessagesFolderPath))
             {
-                Directory.CreateDirectory(MessagesFolderPath + "_" + this.id);
+                Directory.CreateDirectory(MessagesFolderPath);
             }
 
             LoadStoredMessages();
         }
 
-        public void AddMessage(int senderId, string messageContent)
+        public void AddMessage(string senderId, string messageContent)
         {
             Guid messageId = Guid.NewGuid();
             string messagePath = MessagesFolderPath + "/message_" + messageId.ToString() + ".xml";
@@ -78,7 +82,7 @@ namespace RandomChatSrc.Domain.TextChat
                 {
                     Console.WriteLine("There is no sender content for the document with file path '" + messageFilePath + "'");
                 }
-                int senderId = int.Parse(senderElement!.Value);
+                string senderId = senderElement!.Value;
 
                 XElement? timestampElement = messageElement?.Element("timestamp");
                 if (timestampElement == null)

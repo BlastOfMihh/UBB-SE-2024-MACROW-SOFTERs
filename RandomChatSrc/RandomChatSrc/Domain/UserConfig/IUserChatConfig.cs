@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RandomChatSrc.Domain.UserConfig
 {
-    public interface IUserConfig
+    public interface IUserChatConfig
     {
         IUser user { get; }
 

@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomChatSrc.Domain.User
+namespace RandomChatSrcTests.Services.UserChatListService
 {
-    public interface IUser
+    internal class UserChatListServiceTests
     {
-        Guid id { get;  }
-        string Name { get; }
     }
 }

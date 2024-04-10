@@ -9,12 +9,12 @@ namespace RandomChatSrc.Domain.ChatDomain
 {
     public class Chat : IChat
     {
-        public string id { get; }
+        public Guid id { get; set; }
         public List<IUser> participants { get; }
         public int maxParticipants { get; }
         public Chat(int maxParticipants=5)
         {
-            id = Guid.NewGuid().ToString();
+            id = Guid.NewGuid();
             this.maxParticipants = maxParticipants;
             participants = new List<IUser>();
         }
