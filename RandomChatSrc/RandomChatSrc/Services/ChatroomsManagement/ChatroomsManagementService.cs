@@ -11,8 +11,9 @@ namespace RandomChatSrc.Services.ChatroomsManagement
     public class ChatroomsManagementService : IChatroomsManagementService
     {
         public List<Chat> activeChats { get; set; }
-        public ChatroomsManagementService() {
-            activeChats = new List<Chat>();
+        // sorry Richi but I modified the constructor so I can pass the list created in App.xaml
+        public ChatroomsManagementService(List<Chat> chats) {
+            activeChats = chats;
         }
         public Chat CreateChat(int size)
         {

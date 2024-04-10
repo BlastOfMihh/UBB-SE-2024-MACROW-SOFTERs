@@ -79,4 +79,9 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="MockEverything\Textchat1\" />
+	  <Folder Include="MockEverything\Textchat2\" />
+	</ItemGroup>
+
 </Project>
