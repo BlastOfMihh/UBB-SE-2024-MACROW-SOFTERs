@@ -25,7 +25,8 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         {
             foreach (Chat chat in activeChats)
             {
-                if (Guid.Parse(chat.id) == id)
+                //if (Guid.Parse(chat.id) == id)
+                if (chat.id == id)
                 {
                     activeChats.Remove(chat);
                     return;

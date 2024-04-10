@@ -12,5 +12,6 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         Chat GetChat();
         Chat CreateChat(int size);
         void DeleteChat(Guid id);
+        public List<Chat> activeChats { get; }
     }
 }
