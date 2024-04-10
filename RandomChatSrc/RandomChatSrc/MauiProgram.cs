@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
 using RandomChatSrc.Services.ChatroomsManagementService;
+using RandomChatSrc.Pages;
 
 namespace RandomChatSrc
 {
     public static class MauiProgram
+        // va bat
     {
         public static MauiApp CreateMauiApp()
         {

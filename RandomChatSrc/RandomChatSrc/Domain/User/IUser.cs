@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomChatSrc.Domain.Mocks
+namespace RandomChatSrc.Domain.User
 {
-    public interface IMockChat
+    public interface IUser
     {
-        
+        string id { get;  }
+        string Name { get; }
     }
 }
