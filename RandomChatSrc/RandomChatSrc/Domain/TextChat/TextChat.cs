@@ -14,15 +14,19 @@ namespace RandomChatSrc.Domain.TextChat
         public string MessagesFolderPath { get; }
         public Guid LastAvailableMessageId { get; set; }
 
-        public TextChat(List<Message> messages, string messagesFolderPath) : base()
+        public TextChat(List<Message> messages, string chatFolderPath, string oldId="") : base()
         {
-            Messages = messages;
-            MessagesFolderPath = messagesFolderPath+this.id.ToString();
+            if (oldId != "") { 
+                this.id = new Guid(oldId);
+            }
+            this.Messages = messages;
+            this.MessagesFolderPath = chatFolderPath+"/"+oldId;
+            
 
             // it's fine for mobile actually?
             if (!Directory.Exists(MessagesFolderPath))
             {
-                Directory.CreateDirectory(MessagesFolderPath + "_" + this.id);
+                Directory.CreateDirectory(MessagesFolderPath);
             }
 
             LoadStoredMessages();

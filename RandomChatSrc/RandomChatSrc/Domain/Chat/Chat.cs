@@ -9,7 +9,7 @@ namespace RandomChatSrc.Domain.ChatDomain
 {
     public class Chat : IChat
     {
-        public Guid id { get; }
+        public Guid id { get; set; }
         public List<IUser> participants { get; }
         public int maxParticipants { get; }
         public Chat(int maxParticipants=5)
