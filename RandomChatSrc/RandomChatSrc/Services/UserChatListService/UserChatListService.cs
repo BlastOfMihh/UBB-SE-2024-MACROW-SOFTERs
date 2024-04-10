@@ -13,24 +13,24 @@ namespace RandomChatSrc.Services.UserChatListService
     public class UserChatListService : IUserChatListService
     {
         ChatroomsManagementService chatroomsManagementService;
-        string currentUserId;
+        Guid currentUserId;
         public UserChatListService(ChatroomsManagementService chatroomsManagementService)
         {
             this.chatroomsManagementService = chatroomsManagementService;
             string filePath = "./RepoMock/CurrentUser.xml";
             try {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(filePath);
-            var userId = doc.SelectSingleNode("/Users/CurrentUser/id").InnerText;
-            if(userId == null)
-            {
-                throw new Exception("User not found");
-            }
-            this.currentUserId = userId;
+                XmlDocument doc = new XmlDocument();
+                doc.Load(filePath);
+                var userId = doc.SelectSingleNode("/Users/CurrentUser/id").InnerText;
+                if(userId == null)
+                {
+                    throw new Exception("User not found");
                 }
+                this.currentUserId = new Guid(userId);
+            }
             catch (Exception e)
             {
-                throw new Exception("User not found");
+                Console.WriteLine(e.Message);
             }
 
         }

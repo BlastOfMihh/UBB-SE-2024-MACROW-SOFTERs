@@ -8,12 +8,12 @@ namespace RandomChatSrc.Domain.User
 {
     internal class User
     {
-        string id { get ;}
+        Guid id { get ;}
         string name { get; }
         public User(string name)
         {
             this.name= name;
-            this.id=Guid.NewGuid().ToString();
+            this.id=Guid.NewGuid();
         }
     }
 }
