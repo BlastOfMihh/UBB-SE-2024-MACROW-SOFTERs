@@ -17,7 +17,7 @@ namespace RandomChatSrc.Domain.TextChat
         public TextChat(List<Message> messages, string messagesFolderPath) : base()
         {
             Messages = messages;
-            MessagesFolderPath = messagesFolderPath;
+            MessagesFolderPath = messagesFolderPath+this.id.ToString();
 
             // it's fine for mobile actually?
             if (!Directory.Exists(MessagesFolderPath))

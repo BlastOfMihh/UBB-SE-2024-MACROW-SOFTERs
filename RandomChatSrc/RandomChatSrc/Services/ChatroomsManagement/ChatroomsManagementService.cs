@@ -31,7 +31,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
 
         public void DeleteChat(Guid id)
         {
-            foreach (Chat chat in activeChats)
+            foreach (TextChat chat in activeChats)
             {
                 //if (Guid.Parse(chat.id) == id)
                 if (chat.id == id)
@@ -42,16 +42,16 @@ namespace RandomChatSrc.Services.ChatroomsManagement
             }
         }
 
-        public Chat GetChat()
+        public TextChat GetChat()
         {
             Random random = new Random();
             int index = random.Next(activeChats.Count);
             return activeChats[index];
         }
 
-        public Chat getChatById(Guid id)
+        public TextChat getChatById(Guid id)
         {
-            foreach (Chat chat in activeChats)
+            foreach (TextChat chat in activeChats)
             {
                 if (chat.id == id)
                 {
@@ -61,7 +61,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
             throw new Exception("Chat not found");
         }
 
-        public List<Chat> getAllChats()
+        public List<TextChat> getAllChats()
         {
             return activeChats;
         }
