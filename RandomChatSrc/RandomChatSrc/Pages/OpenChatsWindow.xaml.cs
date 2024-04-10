@@ -1,4 +1,3 @@
-//using Xamarin.Forms;
 namespace RandomChatSrc.Pages;
 
 public partial class OpenChatsWindow : ContentPage
@@ -6,16 +5,13 @@ public partial class OpenChatsWindow : ContentPage
    
 
     public OpenChatsWindow()
-	{
-		InitializeComponent();
-
+	  {
+		    InitializeComponent();
     }
 
     private async void OpenChatButton_Clicked(object sender, EventArgs e)
     {
-
         await Navigation.PushAsync(new ChatRoomPage());
-
     }
 
     private async void RequestsButton_Clicked(object sender, EventArgs e)
@@ -27,6 +23,5 @@ public partial class OpenChatsWindow : ContentPage
     {
         await Navigation.PushAsync(new ChatRoomPage());
     }
-
 
 }

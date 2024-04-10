@@ -71,6 +71,7 @@
                     </HorizontalStackLayout>
                 </Border>
                 <Border StrokeShape="RoundRectangle 10" BackgroundColor="#E2E2E2" Margin="8,8,8,0">
+
                     <Grid Margin="8">
                         <Grid.GestureRecognizers>
                             <!-- Handle tap gesture to open chat -->
@@ -87,6 +88,7 @@
                             </HorizontalStackLayout>
                         </Border>
                     </Grid>
+
                 </Border>
                 <Border StrokeShape="RoundRectangle 10" BackgroundColor="#E2E2E2" Margin="8,8,8,0">
                     <HorizontalStackLayout  Margin="10">

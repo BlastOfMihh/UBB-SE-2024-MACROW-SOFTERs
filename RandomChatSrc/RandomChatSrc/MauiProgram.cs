@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using RandomChatSrc.Pages;
 
 namespace RandomChatSrc
 {
@@ -8,6 +9,7 @@ namespace RandomChatSrc
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+            //test git push
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
