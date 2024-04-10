@@ -1,4 +1,5 @@
 ﻿using RandomChatSrc.Domain.ChatDomain;
+using RandomChatSrc.Domain.TextChat;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace RandomChatSrc.Services.UserChatListService
 {
     public interface IUserChatListService
     {
-        List<Chat> getOpenChats();
+        List<TextChat> getOpenChats();
     }
 }
