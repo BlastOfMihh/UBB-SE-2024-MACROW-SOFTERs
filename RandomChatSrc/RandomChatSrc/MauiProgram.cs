@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using RandomChatSrc.Services.ChatroomsManagement;
 using RandomChatSrc.Pages;
 using RandomChatSrc.Services.RandomMatchingService;
@@ -23,6 +23,7 @@ namespace RandomChatSrc
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+            Console.WriteLine("salut");
 
 #if DEBUG
     		builder.Logging.AddDebug();
