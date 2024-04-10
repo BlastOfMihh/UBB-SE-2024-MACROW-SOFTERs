@@ -71,13 +71,24 @@
                     </HorizontalStackLayout>
                 </Border>
                 <Border StrokeShape="RoundRectangle 10" BackgroundColor="#E2E2E2" Margin="8,8,8,0">
-                    <HorizontalStackLayout  Margin="10">
-                        <ImageButton Source="profile_icon.svg" WidthRequest="60" HeightRequest="60" Margin="0, 0, 10, 0"/>
-                        <VerticalStackLayout >
-                            <Label Text="User #1337" FontSize="18" FontAttributes="Bold" Padding="0,5,0,0"></Label>
-                            <Label Text="helloooo" FontSize="15" Padding="1,0,0,0"></Label>
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
+
+                    <Grid Margin="8">
+                        <Grid.GestureRecognizers>
+                            <!-- Handle tap gesture to open chat -->
+                            <TapGestureRecognizer Tapped="ChatItem_Clicked" />
+                        </Grid.GestureRecognizers>
+                        <Border StrokeShape="RoundRectangle 10" BackgroundColor="#E2E2E2">
+                            <!-- Your chat content here, including ImageButton -->
+                            <HorizontalStackLayout Margin="10">
+                                <ImageButton Source="profile_icon.svg" WidthRequest="60" HeightRequest="60" Margin="0, 0, 10, 0"/>
+                                <VerticalStackLayout >
+                                    <Label Text="User #1337" FontSize="18" FontAttributes="Bold" Padding="0,5,0,0"></Label>
+                                    <Label Text="TAP ME BOY" FontSize="15" Padding="1,0,0,0"></Label>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </Border>
+                    </Grid>
+
                 </Border>
                 <Border StrokeShape="RoundRectangle 10" BackgroundColor="#E2E2E2" Margin="8,8,8,0">
                     <HorizontalStackLayout  Margin="10">

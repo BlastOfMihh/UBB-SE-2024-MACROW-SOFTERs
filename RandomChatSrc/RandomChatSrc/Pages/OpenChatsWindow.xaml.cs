@@ -5,22 +5,23 @@ public partial class OpenChatsWindow : ContentPage
    
 
     public OpenChatsWindow()
-	{
-		InitializeComponent();
-
+	  {
+		    InitializeComponent();
     }
 
-    [Obsolete]
-    private void OpenChatButton_Clicked(object sender, EventArgs e)
+    private async void OpenChatButton_Clicked(object sender, EventArgs e)
     {
-
-    
-
+        await Navigation.PushAsync(new ChatRoomPage());
     }
 
-    [Obsolete]
-    private void RequestsButton_Clicked(object sender, EventArgs e)
+    private async void RequestsButton_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new ChatRoomPage());
     }
+
+    private async void ChatItem_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ChatRoomPage());
+    }
+
 }
