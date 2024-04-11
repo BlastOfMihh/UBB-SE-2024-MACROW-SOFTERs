@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomChatSrc.Domain.User
+namespace RandomChatSrc.Domain.UserDomain
 {
-    internal class User
+    public class User : IUser
     {
-        Guid id { get ;}
-        string name { get; }
+        public Guid id { get; set; }
+        public string name { get; set; }
+
         public User(string name)
         {
             this.name= name;

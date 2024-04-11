@@ -5,6 +5,7 @@ using RandomChatSrc.Services.RandomMatchingService;
 using System.Diagnostics;
 using RandomChatSrc.Domain.TextChat;
 using RandomChatSrc.Services.UserChatListService;
+using RandomChatSrc.Domain.UserDomain;
 
 namespace RandomChatSrc
 {
@@ -15,12 +16,21 @@ namespace RandomChatSrc
         {
             //test the ChatroomsManagementService
             ChatroomsManagementService chatroomsManagementService = new ChatroomsManagementService();
+            chatroomsManagementService.CreateChat(2);
+            var chats = chatroomsManagementService.getAllChats();
+            foreach (TextChat chat in chats)
+            {
+                Trace.WriteLine(chat.availableParticipantsCount());
+            }
+            User user = new User("richard");
+            user.id = new Guid("10030000-0300-0200-0000-000000000000");
+            chats[0].addParticipant(user);
             UserChatListService userChatListService = new UserChatListService(chatroomsManagementService);
             Trace.WriteLine(userChatListService.currentUserId.ToString());
             var openChats = userChatListService.getOpenChats();
             foreach (TextChat chat in openChats)
             {
-                Trace.WriteLine(chat.availableParticipantsCount());
+                Trace.WriteLine(chat.participants.ToString());
             }
 
         }

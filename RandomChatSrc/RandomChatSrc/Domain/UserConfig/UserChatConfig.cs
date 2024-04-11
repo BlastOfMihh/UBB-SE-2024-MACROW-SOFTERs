@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RandomChatSrc.Domain.User;
+using RandomChatSrc.Domain.UserDomain;
 
 namespace RandomChatSrc.Domain.UserConfig
 {
