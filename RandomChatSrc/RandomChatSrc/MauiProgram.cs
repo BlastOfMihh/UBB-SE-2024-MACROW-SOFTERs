@@ -4,8 +4,9 @@ using RandomChatSrc.Pages;
 using RandomChatSrc.Services.RandomMatchingService;
 using System.Diagnostics;
 using RandomChatSrc.Domain.TextChat;
-using RandomChatSrc.Services.UserChatListService;
+using RandomChatSrc.Services.UserChatListServiceDomain;
 using RandomChatSrc.Domain.UserDomain;
+using RandomChatSrc.Domain.UserConfig;
 
 namespace RandomChatSrc
 {
@@ -33,10 +34,11 @@ namespace RandomChatSrc
                 Trace.WriteLine(chat.participants[0].name);
             }
             //test the RandomMatchingService
-            RandomMatchingService randomMatchingService = new RandomMatchingService(chatroomsManagementService);
-            User user2 = new User("test2");
-            user2.id = new Guid("20030000-0300-0200-0000-000000000001");
-            
+            RandomMatchingService randomMatchingService = new RandomMatchingService(chatroomsManagementService, userChatListService);
+            //User user2 = new User("user2");
+            //user2.id = new Guid("20030000-0300-0200-0000-000000000001");
+            TextChat newChat=randomMatchingService.RequestMatchingChatRoom(new UserChatConfig(user));
+            Trace.WriteLine(newChat.participants[0].name);
         }
         public static MauiApp CreateMauiApp()
         {
