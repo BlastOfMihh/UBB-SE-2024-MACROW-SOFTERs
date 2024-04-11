@@ -7,6 +7,7 @@ public partial class ChatRoomPage : ContentPage
 		InitializeComponent();
 	}
 
+
     [Obsolete]
     private void SendMessage_Clicked(object sender, EventArgs e)
         {
