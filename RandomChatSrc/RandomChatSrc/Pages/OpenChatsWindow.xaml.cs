@@ -51,7 +51,7 @@ public partial class OpenChatsWindow : ContentPage
             var chatInfoLayout = new StackLayout { VerticalOptions = LayoutOptions.Center, Margin = new Thickness(8) };
             var chatIdLabel = new Label { Text = $"Chat ID: {chat.id}", FontSize = 18, FontAttributes = FontAttributes.Bold };
             chatIdLabel.TextColor = Color.FromHex("#000000");
-            var lastMessageLabel = new Label { Text = $"Last Message: {chat.LastAvailableMessageId}", FontSize = 15 };
+            var lastMessageLabel = new Label { Text = $"Last Message: {((chat.Messages.Count != 0) ? chat.Messages.Last().Content : "No messages yet")}", FontSize = 15 };
             lastMessageLabel.TextColor = Color.FromHex("#000000");
 
             chatInfoLayout.Children.Add(chatIdLabel);
