@@ -57,7 +57,7 @@
 
 
         </ScrollView>
-        <Button Grid.Row ="3" x:Name="RandomChatButton" Text="Random chat" BackgroundColor="#332769" Opacity="0.85" FontSize="20" FontAttributes="Bold" Margin="100, 0, 100, 20" HeightRequest="60"/>
+        <Button Grid.Row ="3" x:Name="RandomChatButton" Text="Random chat" Clicked="RandomChatButton_Clicked" BackgroundColor="#332769" Opacity="0.85" FontSize="20" FontAttributes="Bold" Margin="100, 0, 100, 20" HeightRequest="60"/>
         <!--HorizontalStackLayout Grid.Row="4" BackgroundColor="#332769" HeightRequest="40" VerticalOptions="End">
             <Label Text="XYZ" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" HeightRequest="10"/>
         </HorizontalStackLayout-->

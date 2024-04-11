@@ -2,6 +2,9 @@ using RandomChatSrc.Services.ChatroomsManagement;
 using RandomChatSrc.Domain.TextChat;
 using RandomChatSrc.Domain.UserDomain;
 using System.Xml;
+using RandomChatSrc.Services.RandomMatchingService;
+using RandomChatSrc.Services.UserChatListServiceDomain;
+using RandomChatSrc.Domain.UserConfig;
 
 namespace RandomChatSrc.Pages;
 
@@ -13,7 +16,7 @@ public partial class OpenChatsWindow : ContentPage
     public OpenChatsWindow()
 	{
         this.chatService = new ChatroomsManagementService();
-        string filePath = "D:\\School\\An 2\\Sem 2\\ISS\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
+        string filePath = "C:\\uni\\MSGAPP\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
         try
         {
             XmlDocument doc = new XmlDocument();
@@ -78,6 +81,15 @@ public partial class OpenChatsWindow : ContentPage
             await Navigation.PushAsync(new ChatRoomPage(selectedChat, currentUserId));
         }
     }
+
+    private async void RandomChatButton_Clicked(object sender, EventArgs e)
+    {
+        RefreshActiveChats();
+        RandomMatchingService randomMatchingService = new RandomMatchingService(chatService, new UserChatListService(chatService));
+        UserChatConfig userChatConfig = new UserChatConfig(new User("randomUser"));
+        TextChat textChat = randomMatchingService.RequestMatchingChatRoom(userChatConfig);
+        await Navigation.PushAsync(new ChatRoomPage(textChat, currentUserId));
+    }   
 
 
     private  void OpenChatButton_Clicked(object sender, EventArgs e)
