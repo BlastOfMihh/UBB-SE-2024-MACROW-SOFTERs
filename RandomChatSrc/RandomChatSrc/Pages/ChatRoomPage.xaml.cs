@@ -1,5 +1,6 @@
 using RandomChatSrc.Domain;
 using RandomChatSrc.Domain.TextChat;
+using RandomChatSrc.Services.MessageService;
 
 namespace RandomChatSrc.Pages;
 
@@ -7,12 +8,14 @@ public partial class ChatRoomPage : ContentPage
 {
     private readonly TextChat textChat;
     private readonly Guid currentUserId;
+    MessageService messageService;
 
     public ChatRoomPage(TextChat textChat, Guid currentUser)
     {
         InitializeComponent();
         this.textChat = textChat;
         this.currentUserId = currentUser;
+        messageService = new MessageService(textChat, currentUserId);
         LoadConversation();
     }
 
@@ -55,7 +58,8 @@ public partial class ChatRoomPage : ContentPage
         string messageText = MessageEntry.Text.Trim();
         if (!string.IsNullOrEmpty(messageText))
         {
-            textChat.AddMessage(currentUserId.ToString(), messageText);
+
+            messageService.SendMessage(messageText);
 
             // Display the new message in the conversation UI
             var messageLabel = new Label
