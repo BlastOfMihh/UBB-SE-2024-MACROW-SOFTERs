@@ -14,10 +14,6 @@ namespace RandomChatSrc.Services.RandomMatchingService
         ChatroomsManagementService chatroomsManagementService;
         public RandomMatchingService(ChatroomsManagementService chatroomsManagementService) {
             this.chatroomsManagementService = chatroomsManagementService;
-            // change later
-            chatroomsManagementService.CreateChat(5);
-            chatroomsManagementService.CreateChat(5);
-            chatroomsManagementService.CreateChat(5);
         }
         public Chat RequestMatchingChatRoom(IUserChatConfig chatConfig) {
             var allChats = this.chatroomsManagementService.activeChats;

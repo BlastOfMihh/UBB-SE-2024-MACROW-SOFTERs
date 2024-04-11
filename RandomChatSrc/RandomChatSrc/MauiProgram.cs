@@ -4,6 +4,7 @@ using RandomChatSrc.Pages;
 using RandomChatSrc.Services.RandomMatchingService;
 using System.Diagnostics;
 using RandomChatSrc.Domain.TextChat;
+using RandomChatSrc.Services.UserChatListService;
 
 namespace RandomChatSrc
 {
@@ -14,14 +15,14 @@ namespace RandomChatSrc
         {
             //test the ChatroomsManagementService
             ChatroomsManagementService chatroomsManagementService = new ChatroomsManagementService();
-            chatroomsManagementService.CreateChat(5);
-            var allChats = chatroomsManagementService.getAllChats();
-            foreach (TextChat chat in allChats)
+            UserChatListService userChatListService = new UserChatListService(chatroomsManagementService);
+            Trace.WriteLine(userChatListService.currentUserId.ToString());
+            var openChats = userChatListService.getOpenChats();
+            foreach (TextChat chat in openChats)
             {
-                chat.AddMessage("asd-asd-asd-asd", "Hello");
-                chat.AddMessage("asd-dfd-asd-asd", "Hello there");
                 Trace.WriteLine(chat.availableParticipantsCount());
             }
+
         }
         public static MauiApp CreateMauiApp()
         {
