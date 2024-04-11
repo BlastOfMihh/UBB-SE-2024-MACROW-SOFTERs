@@ -8,7 +8,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="600"/>
+            <RowDefinition Height="380"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -42,96 +42,24 @@
 
             <!-- Open Chat button -->
             <Button x:Name="OpenChatButton" Grid.Column="0" Text="Open Chat"
-               BackgroundColor="#332769" Clicked="OpenChatButton_Clicked" 
-                    Padding="10" Margin="20, 15, 10, 10" HeightRequest="50"/>
+               BackgroundColor="#332769"  
+                    Padding="10" Margin="20, 15, 10, 0" HeightRequest="50"/>
 
             <!-- Requests button -->
             <Button x:Name="RequestsButton" Grid.Column="1" Text="Requests"
-               BackgroundColor="#9991C4" Clicked="RequestsButton_Clicked"
-                HeightRequest="50" Padding="0 " Margin="10, 15, 20, 10"/>
+               BackgroundColor="#9991C4" 
+                HeightRequest="50" Padding="0 " Margin="10, 15, 20, 0"/>
         </Grid>
         <ScrollView Grid.Row="2" Margin="10,30,10, 10">
-            <VerticalStackLayout>
-                <Border StrokeShape="RoundRectangle 10" BackgroundColor="#E2E2E2" Margin="8,8,8,0">
-                    <HorizontalStackLayout  Margin="10">
-                        <ImageButton Source="profile_icon.svg" WidthRequest="60" HeightRequest="60" Margin="0, 0, 10, 0"/>
-                        <VerticalStackLayout >
-                            <Label Text="User #1337" FontSize="18" FontAttributes="Bold" Padding="0,5,0,0"></Label>
-                            <Label Text="helloooo" FontSize="15" Padding="1,0,0,0"></Label>
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </Border>
-                <Border StrokeShape="RoundRectangle 10" BackgroundColor="#E2E2E2" Margin="8,8,8,0">
-                    <HorizontalStackLayout  Margin="10">
-                        <ImageButton Source="profile_icon.svg" WidthRequest="60" HeightRequest="60" Margin="0, 0, 10, 0"/>
-                        <VerticalStackLayout >
-                            <Label Text="User #1337" FontSize="18" FontAttributes="Bold" Padding="0,5,0,0"></Label>
-                            <Label Text="helloooo" FontSize="15" Padding="1,0,0,0"></Label>
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </Border>
-                <Border StrokeShape="RoundRectangle 10" BackgroundColor="#E2E2E2" Margin="8,8,8,0">
+            <StackLayout x:Name="chatStackLayout" Grid.Row="2" Margin="10,10,10,10" >
+                <!-- Dynamically added chatrooms will be placed here -->
+            </StackLayout>
 
-                    <Grid Margin="8">
-                        <Grid.GestureRecognizers>
-                            <!-- Handle tap gesture to open chat -->
-                            <TapGestureRecognizer Tapped="ChatItem_Clicked" />
-                        </Grid.GestureRecognizers>
-                        <Border StrokeShape="RoundRectangle 10" BackgroundColor="#E2E2E2">
-                            <!-- Your chat content here, including ImageButton -->
-                            <HorizontalStackLayout Margin="10">
-                                <ImageButton Source="profile_icon.svg" WidthRequest="60" HeightRequest="60" Margin="0, 0, 10, 0"/>
-                                <VerticalStackLayout >
-                                    <Label Text="User #1337" FontSize="18" FontAttributes="Bold" Padding="0,5,0,0"></Label>
-                                    <Label Text="TAP ME BOY" FontSize="15" Padding="1,0,0,0"></Label>
-                                </VerticalStackLayout>
-                            </HorizontalStackLayout>
-                        </Border>
-                    </Grid>
 
-                </Border>
-                <Border StrokeShape="RoundRectangle 10" BackgroundColor="#E2E2E2" Margin="8,8,8,0">
-                    <HorizontalStackLayout  Margin="10">
-                        <ImageButton Source="profile_icon.svg" WidthRequest="60" HeightRequest="60" Margin="0, 0, 10, 0"/>
-                        <VerticalStackLayout >
-                            <Label Text="User #1337" FontSize="18" FontAttributes="Bold" Padding="0,5,0,0"></Label>
-                            <Label Text="helloooo" FontSize="15" Padding="1,0,0,0"></Label>
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </Border>
-                <Border StrokeShape="RoundRectangle 10" BackgroundColor="#E2E2E2" Margin="8,8,8,0">
-                    <HorizontalStackLayout  Margin="10">
-                        <ImageButton Source="profile_icon.svg" WidthRequest="60" HeightRequest="60" Margin="0, 0, 10, 0"/>
-                        <VerticalStackLayout >
-                            <Label Text="User #1337" FontSize="18" FontAttributes="Bold" Padding="0,5,0,0"></Label>
-                            <Label Text="helloooo" FontSize="15" Padding="1,0,0,0"></Label>
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </Border>
-                <Border StrokeShape="RoundRectangle 10" BackgroundColor="#E2E2E2" Margin="8,8,8,0">
-                    <HorizontalStackLayout  Margin="10">
-                        <ImageButton Source="profile_icon.svg" WidthRequest="60" HeightRequest="60" Margin="0, 0, 10, 0"/>
-                        <VerticalStackLayout >
-                            <Label Text="User #1337" FontSize="18" FontAttributes="Bold" Padding="0,5,0,0"></Label>
-                            <Label Text="helloooo" FontSize="15" Padding="1,0,0,0"></Label>
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </Border>
-                <Border StrokeShape="RoundRectangle 10" BackgroundColor="#E2E2E2" Margin="8,8,8,0">
-                    <HorizontalStackLayout  Margin="10">
-                        <ImageButton Source="profile_icon.svg" WidthRequest="60" HeightRequest="60" Margin="0, 0, 10, 0"/>
-                        <VerticalStackLayout >
-                            <Label Text="User #1337" FontSize="18" FontAttributes="Bold" Padding="0,5,0,0"></Label>
-                            <Label Text="helloooo" FontSize="15" Padding="1,0,0,0"></Label>
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </Border>
-            </VerticalStackLayout>
-            
         </ScrollView>
-        <Button Grid.Row ="3" x:Name="RandomChatButton" Text="Random chat" BackgroundColor="#332769" Opacity="0.85" FontSize="20" FontAttributes="Bold" Margin="40, 0, 40, 160" HeightRequest="80"/>
-        <HorizontalStackLayout Grid.Row="4" BackgroundColor="#332769" HeightRequest="40" VerticalOptions="End">
-            <Label Text="XYZ" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
-        </HorizontalStackLayout>
+        <Button Grid.Row ="3" x:Name="RandomChatButton" Text="Random chat" BackgroundColor="#332769" Opacity="0.85" FontSize="20" FontAttributes="Bold" Margin="100, 0, 100, 20" HeightRequest="60"/>
+        <!--HorizontalStackLayout Grid.Row="4" BackgroundColor="#332769" HeightRequest="40" VerticalOptions="End">
+            <Label Text="XYZ" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" HeightRequest="10"/>
+        </HorizontalStackLayout-->
     </Grid>
 </ContentPage>
