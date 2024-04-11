@@ -1,4 +1,4 @@
-﻿using RandomChatSrc.Domain.User;
+﻿using RandomChatSrc.Domain.UserDomain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace RandomChatSrc.Domain.UserConfig
 {
     public interface IUserChatConfig
     {
-        IUser user { get; }
+        User user { get; }
 
     }
 }

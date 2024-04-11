@@ -65,6 +65,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
                     activeChats.Remove(chat);
                     return;
                 }
+                //throw new Exception("Chat could not be deleted!! not enough permissions");
             }
         }
 

@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace RandomChatSrc.Services.UserChatListService
+namespace RandomChatSrc.Services.UserChatListServiceDomain
 {
     public class UserChatListService : IUserChatListService
     {
-        ChatroomsManagementService chatroomsManagementService;
-        Guid currentUserId;
+        public ChatroomsManagementService chatroomsManagementService;
+        public Guid currentUserId;
         public UserChatListService(ChatroomsManagementService chatroomsManagementService)
         {
             this.chatroomsManagementService = chatroomsManagementService;
-            string filePath = "./RepoMock/CurrentUser.xml";
+            string filePath = "C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
             try {
                 XmlDocument doc = new XmlDocument();
                 doc.Load(filePath);
