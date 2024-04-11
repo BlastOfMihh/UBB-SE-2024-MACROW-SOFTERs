@@ -1,4 +1,7 @@
-﻿using RandomChatSrc.Pages;
+﻿using RandomChatSrc.Domain.ChatDomain;
+using RandomChatSrc.Domain.TextChat;
+using RandomChatSrc.Pages;
+using RandomChatSrc.Services.ChatroomsManagement;
 
 namespace RandomChatSrc
 {
@@ -7,10 +10,7 @@ namespace RandomChatSrc
         public App()
         {
             InitializeComponent();
-<<<<<<< Updated upstream
 
-            MainPage = new NavigationPage(new OpenChatsWindow());
-=======
             string folderPath1 = "C:\\uni\\MSGAPP\\RandomChatSrc\\RandomChatSrc\\MockEverything\\Textchat1\\";
 
             // Get the base directory for storing files
@@ -51,12 +51,7 @@ namespace RandomChatSrc
             ChatroomsManagementService service = new ChatroomsManagementService(chats);
 
             MainPage = new NavigationPage(new OpenChatsWindow(service));
->>>>>>> Stashed changes
 
-            // In order to see the chatroom page uncomment the below line and comment the other main page
-            // MainPage = new NavigationPage(new ChatRoomPage());
-
-            //MainPage = new AppShell();
         }
     }
 }

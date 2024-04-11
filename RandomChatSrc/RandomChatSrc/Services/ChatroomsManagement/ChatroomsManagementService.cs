@@ -16,7 +16,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
     {
         string textChatsPath = "./ChatRepo";
         public List<TextChat> activeChats { get; set; }
-        public ChatroomsManagementService() {
+        public ChatroomsManagementService(List<Chat> chats) {
             activeChats = new List<TextChat>();
             loadActiveChats();
            // if (!Directory.Exists(textChatsPath)) { 
@@ -44,7 +44,8 @@ namespace RandomChatSrc.Services.ChatroomsManagement
             foreach(string chatFolderPath in Directory.GetDirectories(textChatsPath))
             {
                 string foundId = this.getIdFromPath(chatFolderPath) ;
-                TextChat newTextChat = new TextChat(new List<Message>(),  this.textChatsPath, foundId);
+                // TextChat newTextChat = new TextChat(new List<Message>(),  this.textChatsPath, foundId);
+                TextChat newTextChat = new TextChat(new List<Message>(),  this.textChatsPath); // foundId missing, dunno why
                 activeChats.Add(newTextChat);
             }
         }

@@ -1,15 +1,16 @@
+using RandomChatSrc.Domain.ChatDomain;
+using RandomChatSrc.Domain.TextChat;
+using RandomChatSrc.Services.ChatroomsManagement;
+
 namespace RandomChatSrc.Pages;
 
 public partial class OpenChatsWindow : ContentPage
 {
-   
+    private ChatroomsManagementService chatService;
 
-<<<<<<< Updated upstream
-    public OpenChatsWindow()
-	  {
-		    InitializeComponent();
-=======
-        public OpenChatsWindow(ChatroomsManagementService chatService)
+
+
+    public OpenChatsWindow(ChatroomsManagementService chatService)
         {
             InitializeComponent();
             this.chatService = chatService;
@@ -51,8 +52,8 @@ public partial class OpenChatsWindow : ContentPage
                     Command = new Command(this.OpenDummyPage)
                 });
 
-                // Add the custom UI element to the stack layout
-                chatStackLayout.Children.Add(chatLayout);
+            // Add the custom UI element to the stack layout
+            chatStackLayout.Children.Add(chatLayout);
             }
         }
 
@@ -74,27 +75,27 @@ public partial class OpenChatsWindow : ContentPage
 
         // You can add similar methods for handling other actions related to chats
 
-        [Obsolete]
         private void RequestsButton_Clicked(object sender, EventArgs e)
         {
             // Handle requests button click
         }
->>>>>>> Stashed changes
-    }
-
-    private async void OpenChatButton_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new ChatRoomPage());
-    }
-
-    private async void RequestsButton_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new ChatRoomPage());
-    }
-
-    private async void ChatItem_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new ChatRoomPage());
-    }
-
 }
+//>>>>>>> Stashed changes
+//    }
+
+//    private async void OpenChatButton_Clicked(object sender, EventArgs e)
+//    {
+//        await Navigation.PushAsync(new ChatRoomPage());
+//    }
+
+//    private async void RequestsButton_Clicked(object sender, EventArgs e)
+//    {
+//        await Navigation.PushAsync(new ChatRoomPage());
+//    }
+
+//    private async void ChatItem_Clicked(object sender, EventArgs e)
+//    {
+//        await Navigation.PushAsync(new ChatRoomPage());
+//    }
+
+//}
