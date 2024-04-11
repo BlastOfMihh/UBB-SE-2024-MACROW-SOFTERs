@@ -4,13 +4,13 @@ using RandomChatSrc.Services.ChatroomsManagement;
 
 namespace RandomChatSrc.Pages;
 
-public partial class OpenChatsWindow : ContentPage
-{
-    private ChatroomsManagementService chatService;
+    public partial class OpenChatsWindow : ContentPage
+    {
+        private ChatroomsManagementService chatService;
 
 
 
-    public OpenChatsWindow(ChatroomsManagementService chatService)
+        public OpenChatsWindow(ChatroomsManagementService chatService)
         {
             InitializeComponent();
             this.chatService = chatService;
@@ -32,9 +32,9 @@ public partial class OpenChatsWindow : ContentPage
                 chatLayout.BackgroundColor = Color.FromHex("#E2E2E2");
 
                 var chatHeaderLayout = new StackLayout { Orientation = StackOrientation.Horizontal, Margin = new Thickness(10) };
-                var chatInfoLayout = new StackLayout { VerticalOptions = LayoutOptions.Center, Margin = new Thickness(8)};
+                var chatInfoLayout = new StackLayout { VerticalOptions = LayoutOptions.Center, Margin = new Thickness(8) };
                 //instead of chat.id we should have a proper getter
-                var chatIdLabel = new Label { Text = $"Chat ID: {chat.id}", FontSize = 18, FontAttributes = FontAttributes.Bold};
+                var chatIdLabel = new Label { Text = $"Chat ID: {chat.id}", FontSize = 18, FontAttributes = FontAttributes.Bold };
                 chatIdLabel.TextColor = Color.FromHex("#000000");
                 //instead of chat.LastAvailableMessageId we should have a proper getter
                 var lastMessageLabel = new Label { Text = $"Last Message: {chat.LastAvailableMessageId}", FontSize = 15 };
@@ -52,8 +52,8 @@ public partial class OpenChatsWindow : ContentPage
                     Command = new Command(this.OpenDummyPage)
                 });
 
-            // Add the custom UI element to the stack layout
-            chatStackLayout.Children.Add(chatLayout);
+                // Add the custom UI element to the stack layout
+                chatStackLayout.Children.Add(chatLayout);
             }
         }
 
@@ -79,23 +79,25 @@ public partial class OpenChatsWindow : ContentPage
         {
             // Handle requests button click
         }
-}
-//>>>>>>> Stashed changes
-//    }
+    }
+    //>>>>>>> Stashed changes
+    //    }
 
-//    private async void OpenChatButton_Clicked(object sender, EventArgs e)
-//    {
-//        await Navigation.PushAsync(new ChatRoomPage());
-//    }
+    //    private async void OpenChatButton_Clicked(object sender, EventArgs e)
+    //    {
+    //        await Navigation.PushAsync(new ChatRoomPage());
+    //    }
 
-//    private async void RequestsButton_Clicked(object sender, EventArgs e)
-//    {
-//        await Navigation.PushAsync(new ChatRoomPage());
-//    }
+    //    private async void RequestsButton_Clicked(object sender, EventArgs e)
+    //    {
+    //        await Navigation.PushAsync(new ChatRoomPage());
+    //    }
 
-//    private async void ChatItem_Clicked(object sender, EventArgs e)
-//    {
-//        await Navigation.PushAsync(new ChatRoomPage());
-//    }
+    //    private async void ChatItem_Clicked(object sender, EventArgs e)
+    //    {
+    //        await Navigation.PushAsync(new ChatRoomPage());
+    //    }
 
-//}
+    //}
+
+
