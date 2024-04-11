@@ -38,7 +38,7 @@ namespace RandomChatSrc
             //User user2 = new User("user2");
             //user2.id = new Guid("20030000-0300-0200-0000-000000000001");
             TextChat newChat=randomMatchingService.RequestMatchingChatRoom(new UserChatConfig(user));
-            Trace.WriteLine(newChat.participants[0].ToString());
+            Trace.WriteLine(newChat.participants[0].name);
         }
         public static MauiApp CreateMauiApp()
         {
