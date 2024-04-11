@@ -53,7 +53,7 @@ namespace RandomChatSrc.Domain.TextChat
             messageDoc.Save(messagePath);
 
             LastAvailableMessageId = messageId;
-        }
+        }   
 
         private void LoadStoredMessages()
         {

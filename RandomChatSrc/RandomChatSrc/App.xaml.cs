@@ -14,13 +14,13 @@ namespace RandomChatSrc
             string folderPath1 = "C:\\uni\\MSGAPP\\RandomChatSrc\\RandomChatSrc\\MockEverything\\Textchat1\\";
 
             // Get the base directory for storing files
-            string baseDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string baseDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
             // Append the relative path to your project directory
             string folderPath1Android = Path.Combine(baseDirectory, "\\RandomChatSrc\\RandomChatSrc\\MockEverything\\", "Textchat1");
 
 
-            TextChat textChat = new TextChat([], folderPath1Android);
+            TextChat textChat = new TextChat([], folderPath1);
 
             // Add some test messages
             /*textChat.AddMessage(senderId: 1, messageContent: "Hello");
@@ -30,7 +30,7 @@ namespace RandomChatSrc
             string folderPath2 = "C:\\uni\\MSGAPP\\RandomChatSrc\\RandomChatSrc\\MockEverything\\Textchat2\\";
             string folderPath2Android = Path.Combine(baseDirectory, "\\RandomChatSrc\\RandomChatSrc\\MockEverything\\", "Textchat2");
 
-            TextChat textChat2 = new TextChat([], folderPath2Android);
+            TextChat textChat2 = new TextChat([], folderPath2);
 
             // Add some test messages
             textChat2.AddMessage(senderId: 4, messageContent: "alooo");
@@ -39,7 +39,7 @@ namespace RandomChatSrc
             string folderPath3 = "C:\\uni\\MSGAPP\\RandomChatSrc\\RandomChatSrc\\MockEverything\\Textchat3";
             string folderPath3Android = Path.Combine(baseDirectory, "\\RandomChatSrc\\RandomChatSrc\\MockEverything\\", "Textchat3");
 
-            TextChat textChat3 = new TextChat([], folderPath3Android);
+            TextChat textChat3 = new TextChat([], folderPath3);
 
             // Add some test messages
             textChat3.AddMessage(senderId: 1, messageContent: "nudes in bio");

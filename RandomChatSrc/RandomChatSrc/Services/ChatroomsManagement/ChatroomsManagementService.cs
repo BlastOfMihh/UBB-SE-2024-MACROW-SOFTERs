@@ -14,7 +14,11 @@ namespace RandomChatSrc.Services.ChatroomsManagement
 {
     public class ChatroomsManagementService : IChatroomsManagementService
     {
-        string textChatsPath = "./ChatRepo";
+
+        //string universalPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\");
+
+
+        string textChatsPath = "C:\\uni\\MSGAPP\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";
         public List<TextChat> activeChats { get; set; }
         public ChatroomsManagementService(List<Chat> chats) {
             activeChats = new List<TextChat>();
