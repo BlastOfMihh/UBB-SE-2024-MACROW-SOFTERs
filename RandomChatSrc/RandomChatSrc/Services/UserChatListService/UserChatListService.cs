@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace RandomChatSrc.Services.UserChatListService
+namespace RandomChatSrc.Services.UserChatListServiceDomain
 {
     public class UserChatListService : IUserChatListService
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RandomChatSrc.Domain.UserDomain
 {
-    public class User : IUser
+    public class User
     {
         public Guid id { get; set; }
         public string name { get; set; }

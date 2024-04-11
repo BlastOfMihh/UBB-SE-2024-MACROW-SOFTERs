@@ -9,8 +9,8 @@ namespace RandomChatSrc.Domain.UserConfig
 {
     public class UserChatConfig
     {
-        IUser user { get;  }
-        public UserChatConfig(IUser user) { 
+        User user { get;  }
+        public UserChatConfig(User user) { 
             this.user = user;
         }
     }

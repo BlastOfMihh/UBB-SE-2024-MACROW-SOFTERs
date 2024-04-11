@@ -30,9 +30,13 @@ namespace RandomChatSrc
             var openChats = userChatListService.getOpenChats();
             foreach (TextChat chat in openChats)
             {
-                Trace.WriteLine(chat.participants.ToString());
+                Trace.WriteLine(chat.participants[0].name);
             }
-
+            //test the RandomMatchingService
+            RandomMatchingService randomMatchingService = new RandomMatchingService(chatroomsManagementService);
+            User user2 = new User("test2");
+            user2.id = new Guid("20030000-0300-0200-0000-000000000001");
+            
         }
         public static MauiApp CreateMauiApp()
         {

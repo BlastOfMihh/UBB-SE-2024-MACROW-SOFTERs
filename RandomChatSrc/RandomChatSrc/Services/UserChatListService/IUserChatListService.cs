@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomChatSrc.Services.UserChatListService
+namespace RandomChatSrc.Services.UserChatListServiceDomain
 {
     public interface IUserChatListService
     {

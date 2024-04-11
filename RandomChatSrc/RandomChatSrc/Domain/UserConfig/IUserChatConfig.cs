@@ -9,7 +9,7 @@ namespace RandomChatSrc.Domain.UserConfig
 {
     public interface IUserChatConfig
     {
-        IUser user { get; }
+        User user { get; }
 
     }
 }
