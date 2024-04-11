@@ -22,6 +22,13 @@ public partial class ChatRoomPage : ContentPage
             return;
 
         MessageContainer.Children.Clear();
+        var chatHeaderLayout = new StackLayout { Orientation = StackOrientation.Horizontal, BackgroundColor = Color.FromHex("#332769"), Padding = new Thickness(8) };
+        var chatIdLabel = new Label { Text = $"Chatroom: {textChat.id}", HorizontalOptions = LayoutOptions.CenterAndExpand,
+            FontSize = 16,
+            FontAttributes = FontAttributes.Bold
+        };
+        chatHeaderLayout.Children.Add( chatIdLabel );
+        MessageContainer.Children.Add( chatHeaderLayout );
 
         foreach (Message message in textChat.Messages)
         {
