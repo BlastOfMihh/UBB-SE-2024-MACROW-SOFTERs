@@ -39,7 +39,6 @@ namespace RandomChatSrc.Domain.TextChat
             DateTime messageTimestamp = DateTime.Now;
             Message curMessage = new(messageId, senderId, MessagesFolderPath, messagePath, messageTimestamp, messageContent);
             Messages.Add(curMessage);
-            this.addParticipant(senderId);
 
             XDocument messageDoc = new(
                 new XElement("messages",

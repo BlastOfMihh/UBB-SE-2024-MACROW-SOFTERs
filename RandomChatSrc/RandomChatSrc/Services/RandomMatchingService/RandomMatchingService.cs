@@ -19,7 +19,7 @@ namespace RandomChatSrc.Services.RandomMatchingService
             this.chatroomsManagementService = chatroomsManagementService;
             this.userChatListService = userChatListService;
         }
-        public TextChat RequestMatchingChatRoom(IUserChatConfig chatConfig) {
+        public TextChat RequestMatchingChatRoom(UserChatConfig chatConfig) {
             var allChats = this.chatroomsManagementService.activeChats;
             foreach (var chat in allChats)
             {
