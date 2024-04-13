@@ -28,7 +28,7 @@ namespace RandomChatSrc.Domain.InterestDomain
                 return false;
             }
             Interest other = (Interest)obj;
-            return this.Id == other.Id;  // or should compare `this.InterestName == other.InterestName`? probably not
+            return this.InterestName.ToLower() == other.InterestName.ToLower();
         }
     }
 }
