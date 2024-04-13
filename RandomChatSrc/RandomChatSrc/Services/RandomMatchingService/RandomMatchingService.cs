@@ -23,19 +23,20 @@ namespace RandomChatSrc.Services.RandomMatchingService
             var allChats = this.chatroomsManagementService.activeChats;
             foreach (var chat in allChats)
             {
-                if (chat.availableParticipantsCount() > 0)
+                if (chat.availableParticipantsCount() == 0)
                 {
-                    foreach (var participant in chat.participants)
-                    {
-                        if (participant.id != userChatListService.currentUserId)
-                        {
-                            chat.addParticipant(chatConfig.user);
-                            return chat;
-                        }
-                    }
-                    chat.addParticipant(chatConfig.user);
-                    return chat;
+                    continue;
                 }
+                foreach (var participant in chat.participants)
+                {
+                    if (participant.id != userChatListService.currentUserId)
+                    {
+                        chat.addParticipant(chatConfig.user);
+                        return chat;
+                    }
+                }
+                chat.addParticipant(chatConfig.user);
+                return chat;
             }
             return chatroomsManagementService.GetChat();
         }

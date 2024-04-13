@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RandomChatSrc.Domain.InterestDomain;
 
 
 namespace RandomChatSrc.Domain.UserDomain
@@ -18,6 +19,7 @@ namespace RandomChatSrc.Domain.UserDomain
         {
             this.name= name;
             this.id=Guid.NewGuid();
+            this.interests = new List<Interest>();
         }
     }
 }

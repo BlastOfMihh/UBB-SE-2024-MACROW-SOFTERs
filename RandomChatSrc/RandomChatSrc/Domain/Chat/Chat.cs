@@ -24,7 +24,7 @@ namespace RandomChatSrc.Domain.ChatDomain
                 participants.Add(user);
             else throw new Exception("Exceeded max participants count");
         }
-        public int availableParticipantsCount()
+        public int availableParticipantsCount()  // remaining number of people who can join this chat
         {
             return maxParticipants - participants.Count;
         }
