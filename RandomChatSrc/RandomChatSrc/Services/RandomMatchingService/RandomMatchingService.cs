@@ -20,25 +20,26 @@ namespace RandomChatSrc.Services.RandomMatchingService
             this.userChatListService = userChatListService;
         }
         public TextChat RequestMatchingChatRoom(UserChatConfig chatConfig) {
-            var allChats = this.chatroomsManagementService.activeChats;
-            foreach (var chat in allChats)
-            {
-                if (chat.availableParticipantsCount() == 0)
-                {
-                    continue;
-                }
-                foreach (var participant in chat.participants)
-                {
-                    if (participant.id != userChatListService.currentUserId)
-                    {
-                        chat.addParticipant(chatConfig.user);
-                        return chat;
-                    }
-                }
-                chat.addParticipant(chatConfig.user);
-                return chat;
-            }
-            return chatroomsManagementService.GetChat();
+            //var allChats = this.chatroomsManagementService.activeChats;
+            //foreach (var chat in allChats)
+            //{
+            //    if (chat.availableParticipantsCount() == 0)
+            //    {
+            //        continue;
+            //    }
+            //    foreach (var participant in chat.participants)
+            //    {
+            //        if (participant.id != userChatListService.currentUserId)
+            //        {
+            //            chat.addParticipant(chatConfig.user);
+            //            return chat;
+            //        }
+            //    }
+            //    chat.addParticipant(chatConfig.user);
+            //    return chat;
+            //}
+            //return chatroomsManagementService.GetChat();
+
         }
     }
 }
