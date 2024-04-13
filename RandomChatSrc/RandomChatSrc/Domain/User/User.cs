@@ -15,11 +15,16 @@ namespace RandomChatSrc.Domain.UserDomain
 
         public List<Interest> interests { get; set; }
 
-        public User(string name)
+        public User(string name, List<Interest>? interests = null)
         {
             this.name= name;
             this.id=Guid.NewGuid();
-            this.interests = new List<Interest>();
+            this.interests = interests ?? new List<Interest>();
+        }
+
+        public void AddInterest(Interest interest)
+        {
+            interests.Add(interest);
         }
     }
 }

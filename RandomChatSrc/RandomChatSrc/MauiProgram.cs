@@ -25,6 +25,7 @@ namespace RandomChatSrc
             }
             User user = new User("richard");
             user.id = new Guid("10030000-0300-0200-0000-000000000000");
+            // todo should add user interests here idk?
             chats[0].addParticipant(user);
             UserChatListService userChatListService = new UserChatListService(chatroomsManagementService);
             Trace.WriteLine(userChatListService.currentUserId.ToString());

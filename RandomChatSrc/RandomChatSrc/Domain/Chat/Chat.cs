@@ -20,7 +20,7 @@ namespace RandomChatSrc.Domain.ChatDomain
         }
         public void addParticipant(User user)
         {
-            if (participants.Count <= maxParticipants)
+            if (participants.Count <= maxParticipants)  // todo shouldnt this be < maxParticipants?
                 participants.Add(user);
             else throw new Exception("Exceeded max participants count");
         }
