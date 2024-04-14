@@ -14,7 +14,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
 {
     public class ChatroomsManagementService : IChatroomsManagementService
     {
-        string textChatsPath = "C:\\uni\\MSGAPP\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";
+        string textChatsPath = "C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";
         public List<TextChat> activeChats { get; set; }
         public ChatroomsManagementService() {
             activeChats = new List<TextChat>();

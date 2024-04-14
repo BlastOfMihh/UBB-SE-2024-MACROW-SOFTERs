@@ -46,7 +46,7 @@ namespace RandomChatSrc
             builder.Services.AddSingleton<IChatroomsManagementService, ChatroomsManagementService>();
             builder.Services.AddSingleton<IRandomMatchingService, RandomMatchingService>();
             Trace.WriteLine("Hello World");
-            test();
+            //test();
             //test git push
             builder
                 .UseMauiApp<App>()

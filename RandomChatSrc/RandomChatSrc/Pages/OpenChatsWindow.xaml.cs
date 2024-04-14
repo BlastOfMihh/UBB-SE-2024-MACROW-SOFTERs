@@ -13,28 +13,14 @@ public partial class OpenChatsWindow : ContentPage
    
     private ChatroomsManagementService chatService;
     private Guid currentUserId;
+    private UserChatListService userChatListService;
     public OpenChatsWindow()
 	{
         this.chatService = new ChatroomsManagementService();
-        string filePath = "C:\\uni\\MSGAPP\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
-        try
-        {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(filePath);
-            var userId = doc.SelectSingleNode("/Users/CurrentUser/id").InnerText;
-            if (userId == null)
-            {
-                throw new Exception("User not found");
-            }
-            this.currentUserId = new Guid(userId);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
+        this.userChatListService = new UserChatListService(chatService);
+        currentUserId = userChatListService.currentUserId;
         InitializeComponent();
         RefreshActiveChats();
-
     }
 
     private void RefreshActiveChats()
