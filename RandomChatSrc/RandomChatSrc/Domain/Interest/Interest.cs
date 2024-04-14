@@ -16,7 +16,6 @@ namespace RandomChatSrc.Domain.InterestDomain
             this.Id = Guid.NewGuid();
             this.InterestName = interestName;
         }
-
         public override bool Equals(object? obj)
         {
             if (obj == null)

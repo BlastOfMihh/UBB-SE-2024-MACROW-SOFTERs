@@ -34,6 +34,8 @@ namespace RandomChatSrc.Services.UserChatListServiceDomain
             }
 
         }
+
+        // get a list of all chats which the user with id 'currentUserId' is a member of.
         public List<TextChat> getOpenChats()
         {
             List<TextChat> openChats = chatroomsManagementService.getAllChats();
