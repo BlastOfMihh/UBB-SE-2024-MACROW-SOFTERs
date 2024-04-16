@@ -17,7 +17,7 @@ namespace RandomChatSrc.Services.UserChatListServiceDomain
         public UserChatListService(ChatroomsManagementService chatroomsManagementService)
         {
             this.chatroomsManagementService = chatroomsManagementService;
-            string filePath = "C:\\uni\\MSGAPP\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
+            string filePath = "C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
             try {
                 XmlDocument doc = new XmlDocument();
                 doc.Load(filePath);

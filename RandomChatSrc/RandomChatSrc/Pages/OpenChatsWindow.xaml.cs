@@ -5,6 +5,7 @@ using System.Xml;
 using RandomChatSrc.Services.RandomMatchingService;
 using RandomChatSrc.Services.UserChatListServiceDomain;
 using RandomChatSrc.Domain.UserConfig;
+using RandomChatSrc.Domain.InterestDomain;
 
 namespace RandomChatSrc.Pages;
 
@@ -13,10 +14,18 @@ public partial class OpenChatsWindow : ContentPage
    
     private ChatroomsManagementService chatService;
     private Guid currentUserId;
+    private UserChatConfig currentUserConfig;
     public OpenChatsWindow()
 	{
         this.chatService = new ChatroomsManagementService();
-        string filePath = "C:\\uni\\MSGAPP\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
+        //start test code
+        //we test the matching with a dummy user
+        User user = new User("gigel");
+        user.AddInterest(new Interest("music"));
+        TextChat textChat = chatService.getAllChats()[2];
+        textChat.addParticipant(user);
+        //end test code
+        string filePath = "C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
         try
         {
             XmlDocument doc = new XmlDocument();
@@ -34,7 +43,14 @@ public partial class OpenChatsWindow : ContentPage
         }
         InitializeComponent();
         RefreshActiveChats();
-
+        //code to test current user
+        //we should have a current user in the system, which we read and save at the start of the app
+        //for now, we create a dummy user at the start of the app
+        //we create it in the constructor of the OpenChatsWindow, since it's the first page that is opened
+        User currentUser = new User("current user");
+        currentUser.id = currentUserId;
+        this.currentUserConfig = new UserChatConfig(currentUser);
+        currentUserConfig.user.AddInterest(new Interest("music"));
     }
 
     private void RefreshActiveChats()
@@ -86,8 +102,7 @@ public partial class OpenChatsWindow : ContentPage
     {
         RefreshActiveChats();
         RandomMatchingService randomMatchingService = new RandomMatchingService(chatService, new UserChatListService(chatService));
-        UserChatConfig userChatConfig = new UserChatConfig(new User("randomUser"));
-        TextChat textChat = randomMatchingService.RequestMatchingChatRoom(userChatConfig);
+        TextChat textChat = randomMatchingService.RequestMatchingChatRoom(currentUserConfig);
         await Navigation.PushAsync(new ChatRoomPage(textChat, currentUserId));
     }   
 
