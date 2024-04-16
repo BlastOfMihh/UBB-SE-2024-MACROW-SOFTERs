@@ -36,7 +36,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
                 ans += folderPath[i];
             }
             // for (int i=0, j= folderPath.Length - 1; i<j; ++i, --j)
-            //     (ans[i], ans[j]) = (ans[j], ans[i]);
+            //     (ans[i], ans[j]) = (ans[j], ans[i]); 
             return new string(ans.Reverse().ToArray());
         }
         private void loadActiveChats()

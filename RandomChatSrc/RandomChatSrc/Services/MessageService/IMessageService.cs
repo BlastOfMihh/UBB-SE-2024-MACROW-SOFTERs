@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomChatSrc.Domain.User
+namespace RandomChatSrc.Services.MessageService
 {
-    public interface IUser
+    public interface IMessageService
     {
-        Guid id { get;  }
-        string Name { get; }
+        void SendMessage(string message);
     }
 }
