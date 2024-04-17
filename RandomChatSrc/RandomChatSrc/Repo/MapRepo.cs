@@ -94,8 +94,8 @@ namespace RandomChatSrc.Repo
             foreach (XElement location in xDocument.Descendants("MapLocation"))
             {
                 Guid userId = new Guid(location.Element("userId").Value);
-                float xCoord = float.Parse(location.Element("xCoord").Value);
-                float yCoord = float.Parse(location.Element("yCoord").Value);
+                float xCoord = float.Parse(location.Element("xCoord").Value, CultureInfo.InvariantCulture);
+                float yCoord = float.Parse(location.Element("yCoord").Value, CultureInfo.InvariantCulture);
                 string description = location.Element("description").Value;
                 MapLocation newLocation = new MapLocation(userId, xCoord, yCoord, description);
                 locations.Add(newLocation);
