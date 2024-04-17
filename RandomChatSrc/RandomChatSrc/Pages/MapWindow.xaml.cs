@@ -44,6 +44,7 @@ public partial class MapWindow : ContentPage
             {
                 Location = new Location(location.xCoord, location.yCoord),
                 Label = $"{location.UserId}",
+                Address = $"{location.description}"
             };
 
             map.Pins.Add(pin);

@@ -13,9 +13,11 @@ namespace RandomChatSrc.Services.MapService
     {
         //GlobalServices.GlobalServices globalServices;
         MapRepo mapRepo;
+  
         public MapService() {
             mapRepo = new MapRepo();
             //this.globalServices = globalServices;
+    
         }
         public List<MapLocation> getAllUserLocations()
         {

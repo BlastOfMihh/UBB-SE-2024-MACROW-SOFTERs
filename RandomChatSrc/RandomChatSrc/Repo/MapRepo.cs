@@ -16,8 +16,8 @@ namespace RandomChatSrc.Repo
         public MapRepo()
         {
             locations = new List<MapLocation>();
-            loadFromMemory();
             filePath = "D:\\School\\An 2\\Sem 2\\ISS\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml";
+            loadFromMemory();
         }
 
         public void addUserLocation(Guid userID, MapLocation location)
@@ -91,9 +91,9 @@ namespace RandomChatSrc.Repo
         public void loadFromMemory()
         {
             XDocument xDocument = XDocument.Load(filePath);
-            foreach (XElement location in xDocument.Descendants("MapLocations"))
+            foreach (XElement location in xDocument.Descendants("MapLocation"))
             {
-                Guid userId = new Guid(location.Element("UserId").Value);
+                Guid userId = new Guid(location.Element("userId").Value);
                 float xCoord = float.Parse(location.Element("xCoord").Value);
                 float yCoord = float.Parse(location.Element("yCoord").Value);
                 string description = location.Element("description").Value;
