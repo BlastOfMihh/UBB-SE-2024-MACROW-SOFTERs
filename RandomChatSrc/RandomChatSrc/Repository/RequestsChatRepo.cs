@@ -107,5 +107,10 @@ namespace RandomChatSrc.Repository
             );
             requestDoc.Save(requestPath);
         }
+
+        public void removeRequest(Guid senderUserId, Guid receiverUserId)
+        {
+            this.Requests = this.Requests.Where(request => !(request.SenderUserId == senderUserId && request.ReceiverUserId == receiverUserId)).ToList();
+        }
     }
 }
