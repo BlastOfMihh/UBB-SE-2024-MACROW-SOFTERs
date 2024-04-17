@@ -52,7 +52,7 @@
             <Button x:Name="RequestsButton"
             Grid.Column="1"
             Text="Requests"
-            BackgroundColor="#9991C4"
+            BackgroundColor="#332769"
             HeightRequest="50"
             Padding="0"
             Margin="10,15,20,0"

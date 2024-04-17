@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Requests>
+	<Request>
+		<RequestId>7d4978d4-8570-4e2f-9c2f-90b6f4fd2d99</RequestId>
+		<SenderUserId>8e98c9b9-2c79-4768-ba90-f89b6d7a3b95</SenderUserId>
+		<ReceiverUserId>10030000-0300-0200-0000-000000000000</ReceiverUserId>
+		<RequestPath>/requests/1</RequestPath>
+	</Request>
+	<Request>
+		<RequestId>f32a7f8d-2272-4c6d-b2d5-1a2fcb36e6d8</RequestId>
+		<SenderUserId>4f71ae4e-3e92-4da3-bc7d-9018f42206ce</SenderUserId>
+		<ReceiverUserId>10030000-0300-0200-0000-000000000000</ReceiverUserId>
+		<RequestPath>/requests/2</RequestPath>
+	</Request>
+	<Request>
+		<RequestId>dbe537ec-9f2c-4e26-bdc5-0e3f5f9fb44d</RequestId>
+		<SenderUserId>315f4254-cc8a-4aa8-8d2a-bd0e7f423e54</SenderUserId>
+		<ReceiverUserId>10030000-0300-0200-0000-000000000000</ReceiverUserId>
+		<RequestPath>/requests/3</RequestPath>
+	</Request>
+</Requests>

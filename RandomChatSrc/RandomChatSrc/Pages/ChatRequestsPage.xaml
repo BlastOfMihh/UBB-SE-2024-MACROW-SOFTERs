@@ -4,34 +4,23 @@
              x:Class="RandomChatSrc.Pages.ChatRequestsPage"
              Title="Chat Requests">
 
-    <StackLayout Padding="20">
-        <!-- Display the requester's name and message -->
-        <Label Text="{Binding RequesterName}"
-               FontSize="20"
-               HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand"
-               Margin="0,20,0,0" />
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <!-- Display the requester's name -->
+            <Label x:Name="RequesterLabel"
+                   FontSize="20"
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand"
+                   Margin="0,20,0,0" />
 
-        <Label Text="{Binding RequestMessage}"
-               FontSize="16"
-               HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand"
-               Margin="0,10,0,0" />
-
-        <!-- Buttons for accepting or declining the request -->
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,30,0,0">
-            <Button Text="Accept"
-                    Clicked="AcceptButton_Clicked"
-                    BackgroundColor="Green"
-                    TextColor="White"
-                    Margin="10"/>
-
-            <Button Text="Decline"
-                    Clicked="DeclineButton_Clicked"
-                    BackgroundColor="Red"
-                    TextColor="White"
-                    Margin="10"/>
+            <!-- Display requests for the current user -->
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout x:Name="RequestsStackLayout"
+                             Orientation="Vertical"
+                             Spacing="10">
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
-    </StackLayout>
+    </ContentPage.Content>
 
 </ContentPage>

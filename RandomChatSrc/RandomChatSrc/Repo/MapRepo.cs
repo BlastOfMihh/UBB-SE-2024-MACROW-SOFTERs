@@ -15,8 +15,8 @@ namespace RandomChatSrc.Repo
         string locationsPath;
         public MapRepo()
         {
-            this.locationsPath = "C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml";
-            this.locationsPath = "C:\\Users\\MiHH\\Gits\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\";
+            this.locationsPath = "C:\\PC\\Info\\Facultate\\Semestru2An2\\ISS\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml";
+            this.locationsPath = "C:\\PC\\Info\\Facultate\\Semestru2An2\\ISS\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\";
             locations = new List<MapLocation>();
             loadFromMemory();
         }
