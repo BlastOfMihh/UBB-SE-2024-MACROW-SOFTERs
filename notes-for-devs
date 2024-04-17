@@ -1,0 +1,7 @@
+###
+OpenChatsWindow.xaml.cs : 15: 
+Here's what you can do: either move all of these services out of here and into App.xaml.cs* (making use of, or not, GlobalServices) or keep them here. Either way, you'll need to add a RequestChatRepo and RequestChatService(that).
+Later, you'll use methods from there in RequestsButton_Clicked, etc.
+*this would be the "proper" way of doing things
+
+There are no mock chat requests as of now - maybe you could create one with RequestsChatRepo.addRequest(args...) - check paths
