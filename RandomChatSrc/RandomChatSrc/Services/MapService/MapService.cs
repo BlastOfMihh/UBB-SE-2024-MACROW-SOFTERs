@@ -36,8 +36,9 @@ namespace RandomChatSrc.Services.MapService
 
         public void makeRequest(Guid senderId, Guid receiverId)
         {
-            //call the requestService to make a request using the currentUserId as sender and the receiverId as receiver
+            //call the requestService to make a request using the currentUserId as sender and the receiverId as receiver  // todo should be 'using the `senderId` as sender'?
             //the requestService will be called from the globalServices per Mihnea's request
+            this.globalServices.requestChatService.addRequest(senderId, receiverId);
         }
 
         public void updaUserLocation(Guid userId, MapLocation location)
