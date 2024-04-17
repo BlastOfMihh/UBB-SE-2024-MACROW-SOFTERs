@@ -8,6 +8,7 @@ using RandomChatSrc.Services.UserChatListServiceDomain;
 using RandomChatSrc.Domain.UserDomain;
 using RandomChatSrc.Domain.UserConfig;
 using RandomChatSrc.Domain.InterestDomain;
+using CommunityToolkit.Maui.Maps;
 
 namespace RandomChatSrc
 {
@@ -56,6 +57,7 @@ namespace RandomChatSrc
             //test git push
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkitMaps("AuWwu13opzaX2zDZ2q3J38mL94MNzfRNmfiJkN4fvv_LfS-vhB19UvBNV27ER4iw")
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

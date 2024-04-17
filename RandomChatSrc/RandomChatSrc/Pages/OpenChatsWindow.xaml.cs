@@ -18,6 +18,9 @@ public partial class OpenChatsWindow : ContentPage
     public OpenChatsWindow()
 	{
         this.chatService = new ChatroomsManagementService();
+        this.WidthRequest = 800;
+        this.HeightRequest = 600;
+        this.BackgroundColor = Color.FromHex("#FFFFFF");
         //start test code
         //we test the matching with a dummy user
         User user = new User("gigel");
@@ -25,7 +28,7 @@ public partial class OpenChatsWindow : ContentPage
         TextChat textChat = chatService.getAllChats()[2];
         textChat.addParticipant(user);
         //end test code
-        string filePath = "C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
+        string filePath = "D:\\School\\An 2\\Sem 2\\ISS\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
         try
         {
             XmlDocument doc = new XmlDocument();
@@ -63,7 +66,7 @@ public partial class OpenChatsWindow : ContentPage
         foreach (TextChat chat in chatService.getAllChats())
         {
             // Create a custom UI element for each chat
-            var chatLayout = new StackLayout { Margin = new Thickness(8) };
+            var chatLayout = new StackLayout { Margin = new Thickness(7) };
             chatLayout.BackgroundColor = Color.FromHex("#E2E2E2");
 
             var chatHeaderLayout = new StackLayout { Orientation = StackOrientation.Horizontal, Margin = new Thickness(10) };
@@ -120,6 +123,11 @@ public partial class OpenChatsWindow : ContentPage
     private async void ChatItem_Clicked(object sender, EventArgs e)
     {
        
+    }
+
+    private async void MapButton_Clicked(Object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new MapWindow());
     }
 
 }
