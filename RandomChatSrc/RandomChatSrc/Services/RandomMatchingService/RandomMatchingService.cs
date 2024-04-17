@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RandomChatSrc.Domain.InterestDomain;
 using RandomChatSrc.Domain.ChatDomain;
 using RandomChatSrc.Domain.TextChat;
 using RandomChatSrc.Domain.UserConfig;
@@ -23,7 +24,8 @@ namespace RandomChatSrc.Services.RandomMatchingService
         public TextChat RequestMatchingChatRoom(UserChatConfig chatConfig)
         {
             var allChats = this.chatroomsManagementService.activeChats;
-            int bestIdx = -1, curIdx = -1;
+            int curIdx = -1;
+            List<int> bestIdxs = [];
 
             // score - the number of matching interests of the user we want to assign
             // to a chat (i.e. `chatConfig` parameter) across all users that are members
@@ -61,10 +63,14 @@ namespace RandomChatSrc.Services.RandomMatchingService
                 if (curScore > bestScore)
                 {
                     bestScore = curScore;
-                    bestIdx = curIdx;
+                    bestIdxs = [curIdx];
+                }
+                if (curScore == bestScore)
+                {
+                    bestIdxs.Add(curIdx);
                 }
             }
-            if (bestIdx == -1)
+            if (bestIdxs.Count == 0)
             {
                 // all chats are full, or user is a member of all chats
 
@@ -74,8 +80,12 @@ namespace RandomChatSrc.Services.RandomMatchingService
                 newTextChat.addParticipant(chatConfig.user);
                 return newTextChat;
             }
-            allChats[bestIdx].addParticipant(chatConfig.user);
-            return allChats[bestIdx];
+
+            // choose an index randomly from the list of the best available indexes.
+            int randArrIdx = new Random().Next(bestIdxs.Count);
+            int randBestIdx = bestIdxs[randArrIdx];
+            allChats[randBestIdx].addParticipant(chatConfig.user);
+            return allChats[randBestIdx];
         }
     }
 }

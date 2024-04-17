@@ -23,13 +23,16 @@
 
             <!-- Profile icon -->
             <StackLayout Grid.Column="0" HorizontalOptions="Start" Padding="15">
-                <ImageButton Source="profile_icon.svg" WidthRequest="45" HeightRequest="45" />
+                <ImageButton Source="profile_icon.png" WidthRequest="45" HeightRequest="45" />
             </StackLayout>
 
+            <StackLayout Grid.Column="1" HorizontalOptions="CenterAndExpand" Padding="15">
+                <Button x:Name="MapButton" Text="Open Map" WidthRequest="150" HeightRequest="45" Clicked="MapButton_Clicked"/>
+            </StackLayout>
 
             <!-- Settings icon -->
-            <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="15">
-                <ImageButton Source="settings_icon.png" WidthRequest="50" HeightRequest="50"/>
+            <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="15,15,30,15">
+                <ImageButton Source="settings_icon.png" WidthRequest="45" HeightRequest="45"/>
             </StackLayout>
         </Grid>
 
