@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using RandomChatSrc.Repository;
 using RandomChatSrc.Domain.RequestDomain;
 using RandomChatSrc.Domain.TextChat;
+using RandomChatSrc.Services.GlobalServices;
 
 namespace RandomChatSrc.Services.RequestChatService
 {
     public class RequestChatService
     {
-        public GlobalServices globalServices { get; set; }  // TODO: TO LINK TO
+        public GlobalServices.GlobalServices globalServices { get; set; }
         public RequestsChatRepo requestsChatRepo {  get; set; }
 
         public RequestChatService(RequestsChatRepo requestsChatRepo)
@@ -36,9 +37,9 @@ namespace RandomChatSrc.Services.RequestChatService
 
         public void acceptRequest(Guid senderId, Guid receiverId)
         {
-            TextChat newTextChat = this.globalServices.chatRoomsManagementServices.CreateChat(5);
+            TextChat newTextChat = this.globalServices.chatroomsManagementService.CreateChat(5);
             newTextChat.addParticipant(this.globalServices.userService.getUserById(senderId));
-            newTextChat.addParticipant(this.globalServices.userService.getUserById(receiverId));
+            newTextChat.addParticipant(this.globalServices.userService.getUserById(receiverId));  //todo
             this.requestsChatRepo.removeRequest(senderId, receiverId);
         }
     }

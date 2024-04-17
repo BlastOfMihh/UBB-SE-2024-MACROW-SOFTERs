@@ -5,14 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RandomChatSrc.Services.GlobalServices;
 
 namespace RandomChatSrc.Services.MapService
 {
     public class MapService : IMapService
     {
-        GlobalServices globalServices;
+        GlobalServices.GlobalServices globalServices;
         MapRepo mapRepo;
-        public MapService(GlobalServices globalServices) {
+        public MapService(GlobalServices.GlobalServices globalServices) {
             mapRepo = new MapRepo();
             this.globalServices = globalServices;
         }
