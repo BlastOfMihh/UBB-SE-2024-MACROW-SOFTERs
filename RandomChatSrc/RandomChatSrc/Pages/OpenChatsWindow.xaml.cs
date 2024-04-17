@@ -135,7 +135,7 @@ public partial class OpenChatsWindow : ContentPage
 
     private async void MapButton_Clicked(Object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new MapWindow());
+        await Navigation.PushAsync(new MapWindow(currentUserId));
     }
 
 }

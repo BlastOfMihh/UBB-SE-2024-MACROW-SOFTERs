@@ -11,11 +11,11 @@ namespace RandomChatSrc.Services.MapService
 {
     public class MapService : IMapService
     {
-        GlobalServices.GlobalServices globalServices;
+        //GlobalServices.GlobalServices globalServices;
         MapRepo mapRepo;
-        public MapService(GlobalServices.GlobalServices globalServices) {
+        public MapService() {
             mapRepo = new MapRepo();
-            this.globalServices = globalServices;
+            //this.globalServices = globalServices;
         }
         public List<MapLocation> getAllUserLocations()
         {
@@ -39,7 +39,7 @@ namespace RandomChatSrc.Services.MapService
         {
             //call the requestService to make a request using the currentUserId as sender and the receiverId as receiver  // todo should be 'using the `senderId` as sender'?
             //the requestService will be called from the globalServices per Mihnea's request
-            this.globalServices.requestChatService.addRequest(senderId, receiverId);
+            //this.globalServices.requestChatService.addRequest(senderId, receiverId);
         }
 
         public void updaUserLocation(Guid userId, MapLocation location)

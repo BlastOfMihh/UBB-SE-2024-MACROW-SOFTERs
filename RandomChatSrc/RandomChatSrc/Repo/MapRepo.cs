@@ -11,11 +11,13 @@ namespace RandomChatSrc.Repo
 {
     public class MapRepo : IMapRepo
     {
-        public List<MapLocation> locations { get; set; }    
+        public List<MapLocation> locations { get; set; }
+        string filePath;
         public MapRepo()
         {
             locations = new List<MapLocation>();
             loadFromMemory();
+            filePath = "D:\\School\\An 2\\Sem 2\\ISS\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml";
         }
 
         public void addUserLocation(Guid userID, MapLocation location)
@@ -25,27 +27,27 @@ namespace RandomChatSrc.Repo
             {
                 updateUserLocation(userID, location);
                 //update the xml file
-                XDocument xDocument = XDocument.Load("C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml");
+                XDocument xDocument = XDocument.Load(filePath);
                 xDocument.Element("MapLocations").Add(new XElement("MapLocation",
                                        new XElement("UserId", userID),
                                                           new XElement("xCoord", location.xCoord),
                                                                              new XElement("yCoord", location.yCoord),
                                                                                                 new XElement("description", location.description)
                                                                                                                    ));
-                xDocument.Save("C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml");
+                xDocument.Save(filePath);
             }
             else
             {
                 locations.Add(location);
                 //update the xml file
-                XDocument xDocument = XDocument.Load("C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml");
+                XDocument xDocument = XDocument.Load(filePath);
                 xDocument.Element("MapLocations").Add(new XElement("MapLocation",
                                        new XElement("UserId", userID),
                                                           new XElement("xCoord", location.xCoord),
                                                                              new XElement("yCoord", location.yCoord),
                                                                                                 new XElement("description", location.description)
                                                                                                                    ));
-                xDocument.Save("C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml");
+                xDocument.Save(filePath);
             }
             
         }
@@ -57,9 +59,9 @@ namespace RandomChatSrc.Repo
                 locations.Remove(locations.Find(x => x.UserId == userID));
             }
             //update the xml file
-            XDocument xDocument = XDocument.Load("C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml");
+            XDocument xDocument = XDocument.Load(filePath);
             xDocument.Descendants("MapLocations").Where(x => x.Element("UserId").Value == userID.ToString()).Remove();
-            xDocument.Save("C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml");
+            xDocument.Save(filePath);
         }
 
         public void updateUserLocation(Guid userID, MapLocation location)
@@ -69,7 +71,7 @@ namespace RandomChatSrc.Repo
                 locations.Remove(locations.Find(x => x.UserId == userID));
                 locations.Add(location);
                 //update the xml file
-                XDocument xDocument = XDocument.Load("C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml");
+                XDocument xDocument = XDocument.Load(filePath);
                 xDocument.Descendants("MapLocations").Where(x => x.Element("UserId").Value == userID.ToString()).Remove();
                 xDocument.Element("MapLocations").Add(new XElement("MapLocation",
                                        new XElement("UserId", userID),
@@ -77,7 +79,7 @@ namespace RandomChatSrc.Repo
                                                                              new XElement("yCoord", location.yCoord),
                                                                                                 new XElement("description", location.description)
                                                                                                                    ));
-                xDocument.Save("C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml");
+                xDocument.Save(filePath);
             }
         }
 
@@ -88,7 +90,7 @@ namespace RandomChatSrc.Repo
 
         public void loadFromMemory()
         {
-            XDocument xDocument = XDocument.Load("C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml");
+            XDocument xDocument = XDocument.Load(filePath);
             foreach (XElement location in xDocument.Descendants("MapLocations"))
             {
                 Guid userId = new Guid(location.Element("UserId").Value);
