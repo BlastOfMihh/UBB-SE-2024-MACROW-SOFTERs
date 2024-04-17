@@ -10,7 +10,8 @@ namespace RandomChatSrc.Services.GlobalServices
     public class GlobalServices
     {   
         ChatroomsManagementService chatroomsManagementService;
-        public GlobalServices() { 
+        public GlobalServices(ChatroomsManagementService chatroomsManagementService) {
+            this.chatroomsManagementService = chatroomsManagementService;
         }
     }
 }
