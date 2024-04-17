@@ -7,7 +7,6 @@ using RandomChatSrc.Domain.TextChat;
 using RandomChatSrc.Services.UserChatListServiceDomain;
 using RandomChatSrc.Domain.UserDomain;
 using RandomChatSrc.Domain.UserConfig;
-using RandomChatSrc.Domain.InterestDomain;
 
 namespace RandomChatSrc
 {
@@ -25,15 +24,9 @@ namespace RandomChatSrc
                 Trace.WriteLine(chat.availableParticipantsCount());
             }
             User user = new User("richard");
-            user.AddInterest(new Interest("music"));
             user.id = new Guid("10030000-0300-0200-0000-000000000000");
-            User user2 = new User("user2");
-            user2.id = new Guid("20030000-0300-0200-0000-000000000001");
-            user2.AddInterest(new Interest("music"));
             // todo should add user interests here idk?
-            Trace.WriteLine(chats[chats.Count - 1].id);
-            chats[chats.Count - 1].addParticipant(user2);
-            Trace.WriteLine(chats[chats.Count - 1].availableParticipantsCount());
+            chats[0].addParticipant(user);
             UserChatListService userChatListService = new UserChatListService(chatroomsManagementService);
             Trace.WriteLine(userChatListService.currentUserId.ToString());
             var openChats = userChatListService.getOpenChats();
@@ -42,9 +35,11 @@ namespace RandomChatSrc
                 Trace.WriteLine(chat.participants[0].name);
             }
             //test the RandomMatchingService
-            //RandomMatchingService randomMatchingService = new RandomMatchingService(chatroomsManagementService, userChatListService);
-            //TextChat newChat = randomMatchingService.RequestMatchingChatRoom(new UserChatConfig(user));
-            //Trace.WriteLine(newChat.participants[0].name);
+            RandomMatchingService randomMatchingService = new RandomMatchingService(chatroomsManagementService, userChatListService);
+            //User user2 = new User("user2");
+            //user2.id = new Guid("20030000-0300-0200-0000-000000000001");
+            TextChat newChat=randomMatchingService.RequestMatchingChatRoom(new UserChatConfig(user));
+            Trace.WriteLine(newChat.participants[0].name);
         }
         public static MauiApp CreateMauiApp()
         {
