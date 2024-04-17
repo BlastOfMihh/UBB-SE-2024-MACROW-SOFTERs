@@ -46,9 +46,15 @@
                     Padding="10" Margin="20, 15, 10, 0" HeightRequest="50"/>
 
             <!-- Requests button -->
-            <Button x:Name="RequestsButton" Grid.Column="1" Text="Requests"
-               BackgroundColor="#9991C4" 
-                HeightRequest="50" Padding="0 " Margin="10, 15, 20, 0"/>
+            <Button x:Name="RequestsButton"
+            Grid.Column="1"
+            Text="Requests"
+            BackgroundColor="#9991C4"
+            HeightRequest="50"
+            Padding="0"
+            Margin="10,15,20,0"
+            Clicked="RequestsButton_Clicked"/>
+
         </Grid>
         <ScrollView Grid.Row="2" Margin="10,30,10, 10">
             <StackLayout x:Name="chatStackLayout" Grid.Row="2" Margin="10,10,10,10" >

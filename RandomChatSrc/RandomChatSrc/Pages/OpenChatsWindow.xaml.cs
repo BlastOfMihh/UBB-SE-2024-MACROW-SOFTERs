@@ -85,7 +85,7 @@ public partial class OpenChatsWindow : ContentPage
 
     private async void RequestsButton_Clicked(object sender, EventArgs e)
     {
-       
+        await Navigation.PushAsync(new ChatRequestsPage());
     }
 
     private async void ChatItem_Clicked(object sender, EventArgs e)
