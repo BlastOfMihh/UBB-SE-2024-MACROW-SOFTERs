@@ -14,6 +14,14 @@ public partial class OpenChatsWindow : ContentPage
    
     private ChatroomsManagementService chatService;
     private Guid currentUserId;
+    private UserChatListService userChatListService;
+  //  public OpenChatsWindow()
+//	{
+//         this.chatService = new ChatroomsManagementService();
+//         this.userChatListService = new UserChatListService(chatService);
+//         currentUserId = userChatListService.currentUserId;
+//         InitializeComponent();
+//         RefreshActiveChats();
     private UserChatConfig currentUserConfig;
     public OpenChatsWindow()
 	{
