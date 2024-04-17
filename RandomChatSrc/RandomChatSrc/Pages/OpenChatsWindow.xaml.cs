@@ -26,8 +26,6 @@ public partial class OpenChatsWindow : ContentPage
     public OpenChatsWindow()
 	{
         this.chatService = new ChatroomsManagementService();
-        this.WidthRequest = 800;
-        this.HeightRequest = 600;
         this.BackgroundColor = Color.FromHex("#FFFFFF");
         //start test code
         //we test the matching with a dummy user
