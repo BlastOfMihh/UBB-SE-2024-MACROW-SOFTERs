@@ -11,7 +11,7 @@ namespace RandomChatSrc.Pages;
 
 public partial class OpenChatsWindow : ContentPage
 {
-   
+ 	// see notes-for-devs  
     private ChatroomsManagementService chatService;
     private Guid currentUserId;
     private UserChatListService userChatListService;
