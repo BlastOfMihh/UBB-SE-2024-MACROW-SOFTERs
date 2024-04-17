@@ -10,13 +10,13 @@ namespace RandomChatSrc.Domain.RequestDomain
     {
         public Guid SenderUserId { get; set; }
         public Guid ReceiverUserId { get; set; }
-        public string requestPath;
+        public string RequestPath { get; set; }
 
         public Request(Guid senderUserId, Guid receiverUserId, string requestPath)
         {
             this.SenderUserId = senderUserId;
             this.ReceiverUserId = receiverUserId;
-            this.requestPath = requestPath;
+            this.RequestPath = requestPath;
         }
     }
 }
