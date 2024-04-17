@@ -12,7 +12,7 @@ namespace RandomChatSrc.Repo
         void addUserLocation(Guid userID, MapLocation location);
         void removeUserLocation(Guid userID);
         void updateUserLocation(Guid userID, MapLocation location);
-        List<MapLocation> getUsersLocationDictionary();
+        List<MapLocation> getAllUsersLocationList();
         void loadFromMemory();
     }
 }

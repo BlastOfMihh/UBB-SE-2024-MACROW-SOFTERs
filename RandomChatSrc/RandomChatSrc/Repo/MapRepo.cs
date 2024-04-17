@@ -81,7 +81,7 @@ namespace RandomChatSrc.Repo
             }
         }
 
-        public List<MapLocation> getUsersLocationDictionary()
+        public List<MapLocation> getAllUsersLocationList()
         {
             return locations;
         }
