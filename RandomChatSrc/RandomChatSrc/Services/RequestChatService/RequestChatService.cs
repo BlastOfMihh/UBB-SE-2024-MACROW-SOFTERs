@@ -38,8 +38,8 @@ namespace RandomChatSrc.Services.RequestChatService
         public void acceptRequest(Guid senderId, Guid receiverId)
         {
             TextChat newTextChat = this.globalServices.chatroomsManagementService.CreateChat(5);
-            newTextChat.addParticipant(this.globalServices.userService.getUserById(senderId));
-            newTextChat.addParticipant(this.globalServices.userService.getUserById(receiverId));  //todo
+            newTextChat.addParticipant(this.globalServices.userRepo.getUserById(senderId));
+            newTextChat.addParticipant(this.globalServices.userRepo.getUserById(receiverId));
             this.requestsChatRepo.removeRequest(senderId, receiverId);
         }
     }
