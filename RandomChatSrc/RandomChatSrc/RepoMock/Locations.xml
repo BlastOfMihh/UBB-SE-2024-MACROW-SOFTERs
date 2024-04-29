@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MapLocations>
+	<MapLocation>
+		<userId>10030000-0300-0200-0000-000000000000</userId>
+		<xCoord>4.7</xCoord>
+		<yCoord>5.3</yCoord>
+		<description>Location 1</description>
+	</MapLocation>
+	<MapLocation>
+		<userId>20030000-0300-0200-0000-000000000000</userId>
+		<xCoord>6.7</xCoord>
+		<yCoord>7.3</yCoord>
+		<description>Location 2</description>
+	</MapLocation>
+</MapLocations>
