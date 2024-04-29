@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using RandomChatSrc.Domain.RequestDomain;
+using RandomChatSrc.Models;
 
 namespace RandomChatSrc.Repository
 {
@@ -53,7 +53,7 @@ namespace RandomChatSrc.Repository
                 XElement? requestIdElement = requestElement.Element("RequestId");
                 if (requestIdElement == null)
                 {
-                    Console.WriteLine($"There is no request id content for the document with file path '${requestPath}'");
+                    Console.WriteLine($"There is no request Id content for the document with file path '${requestPath}'");
                     continue;
                 }
                 string requestId = requestElement.Value;

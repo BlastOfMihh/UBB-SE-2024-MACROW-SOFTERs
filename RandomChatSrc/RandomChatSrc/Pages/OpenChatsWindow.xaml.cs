@@ -1,11 +1,8 @@
 using RandomChatSrc.Services.ChatroomsManagement;
-using RandomChatSrc.Domain.TextChat;
-using RandomChatSrc.Domain.UserDomain;
 using System.Xml;
+using RandomChatSrc.Models;
 using RandomChatSrc.Services.RandomMatchingService;
 using RandomChatSrc.Services.UserChatListServiceDomain;
-using RandomChatSrc.Domain.UserConfig;
-using RandomChatSrc.Domain.InterestDomain;
 
 namespace RandomChatSrc.Pages;
 
@@ -30,18 +27,18 @@ public partial class OpenChatsWindow : ContentPage
         this.HeightRequest = 600;
         this.BackgroundColor = Color.FromHex("#FFFFFF");
         //start test code
-        //we test the matching with a dummy user
+        //we test the matching with a dummy User
         User user = new User("gigel");
         user.AddInterest(new Interest("music"));
         TextChat textChat = chatService.getAllChats()[2];
-        textChat.addParticipant(user);
+        textChat.AddParticipant(user);
         //end test code
         string filePath = "D:\\School\\An 2\\Sem 2\\ISS\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
         try
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(filePath);
-            var userId = doc.SelectSingleNode("/Users/CurrentUser/id").InnerText;
+            var userId = doc.SelectSingleNode("/Users/CurrentUser/Id").InnerText;
             if (userId == null)
             {
                 throw new Exception("User not found");
@@ -54,14 +51,14 @@ public partial class OpenChatsWindow : ContentPage
         }
         InitializeComponent();
         RefreshActiveChats();
-        //code to test current user
-        //we should have a current user in the system, which we read and save at the start of the app
-        //for now, we create a dummy user at the start of the app
+        //code to test current User
+        //we should have a current User in the system, which we read and save at the start of the app
+        //for now, we create a dummy User at the start of the app
         //we create it in the constructor of the OpenChatsWindow, since it's the first page that is opened
-        User currentUser = new User("current user");
-        currentUser.id = currentUserId;
+        User currentUser = new User("current User");
+        currentUser.Id = currentUserId;
         this.currentUserConfig = new UserChatConfig(currentUser);
-        currentUserConfig.user.AddInterest(new Interest("music"));
+        currentUserConfig.User.AddInterest(new Interest("music"));
     }
 
     private void RefreshActiveChats()
@@ -79,7 +76,7 @@ public partial class OpenChatsWindow : ContentPage
 
             var chatHeaderLayout = new StackLayout { Orientation = StackOrientation.Horizontal, Margin = new Thickness(10) };
             var chatInfoLayout = new StackLayout { VerticalOptions = LayoutOptions.Center, Margin = new Thickness(8) };
-            var chatIdLabel = new Label { Text = $"Chat ID: {chat.id}", FontSize = 18, FontAttributes = FontAttributes.Bold };
+            var chatIdLabel = new Label { Text = $"Chat ID: {chat.Id}", FontSize = 18, FontAttributes = FontAttributes.Bold };
             chatIdLabel.TextColor = Color.FromHex("#000000");
             var lastMessageLabel = new Label { Text = $"Last Message: {((chat.Messages.Count != 0) ? chat.Messages.Last().Content : "No messages yet")}", FontSize = 15 };
             lastMessageLabel.TextColor = Color.FromHex("#000000");

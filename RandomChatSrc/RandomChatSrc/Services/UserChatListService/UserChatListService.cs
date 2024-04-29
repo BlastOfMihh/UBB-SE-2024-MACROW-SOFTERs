@@ -1,12 +1,11 @@
-﻿using RandomChatSrc.Domain.ChatDomain;
-using RandomChatSrc.Domain.TextChat;
-using RandomChatSrc.Services.ChatroomsManagement;
+﻿using RandomChatSrc.Services.ChatroomsManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using RandomChatSrc.Models;
 
 namespace RandomChatSrc.Services.UserChatListServiceDomain
 {
@@ -21,7 +20,7 @@ namespace RandomChatSrc.Services.UserChatListServiceDomain
             try {
                 XmlDocument doc = new XmlDocument();
                 doc.Load(filePath);
-                var userId = doc.SelectSingleNode("/Users/CurrentUser/id").InnerText;
+                var userId = doc.SelectSingleNode("/Users/CurrentUser/Id").InnerText;
                 if(userId == null)
                 {
                     throw new Exception("User not found");
@@ -35,11 +34,11 @@ namespace RandomChatSrc.Services.UserChatListServiceDomain
 
         }
 
-        // get a list of all chats which the user with id 'currentUserId' is a member of.
+        // get a list of all chats which the User with Id 'currentUserId' is a member of.
         public List<TextChat> getOpenChats()
         {
             List<TextChat> openChats = chatroomsManagementService.getAllChats();
-            openChats = openChats.Where(chat => chat.participants.Any(user => user.id == currentUserId)).ToList();
+            openChats = openChats.Where(chat => chat.Participants.Any(user => user.Id == currentUserId)).ToList();
             return openChats;
         }
     }

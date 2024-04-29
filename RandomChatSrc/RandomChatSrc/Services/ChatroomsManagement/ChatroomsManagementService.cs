@@ -1,13 +1,11 @@
-﻿using RandomChatSrc.Domain;
-using RandomChatSrc.Domain.ChatDomain;
-using RandomChatSrc.Domain.TextChat;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using RandomChatSrc.Models;
 
 
 namespace RandomChatSrc.Services.ChatroomsManagement
@@ -15,7 +13,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
     public class ChatroomsManagementService : IChatroomsManagementService
     {
         //string textChatsPath = "C:\\Users\\MiHH\\Gits\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";
-        string textChatsPath = "C:\\GitHub_Repos\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";
+        string textChatsPath = "C:\\GitHub\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";
         public List<TextChat> activeChats { get; set; }
         public ChatroomsManagementService() {
             activeChats = new List<TextChat>();
@@ -60,8 +58,8 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         {
             foreach (TextChat chat in activeChats)
             {
-                //if (Guid.Parse(chat.id) == id)
-                if (chat.id == id)
+                //if (Guid.Parse(chat.Id) == Id)
+                if (chat.Id == id)
                 {
                     activeChats.Remove(chat);
                     return;
@@ -81,7 +79,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         {
             foreach (TextChat chat in activeChats)
             {
-                if (chat.id == id)
+                if (chat.Id == id)
                 {
                     return chat;
                 }

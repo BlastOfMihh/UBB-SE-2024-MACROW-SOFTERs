@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RandomChatSrc.Models;
 using RandomChatSrc.Repository;
-using RandomChatSrc.Domain.RequestDomain;
-using RandomChatSrc.Domain.TextChat;
 using RandomChatSrc.Services.GlobalServices;
 
 namespace RandomChatSrc.Services.RequestChatService
@@ -38,8 +37,8 @@ namespace RandomChatSrc.Services.RequestChatService
         public void acceptRequest(Guid senderId, Guid receiverId)
         {
             TextChat newTextChat = this.globalServices.chatroomsManagementService.CreateChat(5);
-            newTextChat.addParticipant(this.globalServices.userRepo.getUserById(senderId));
-            newTextChat.addParticipant(this.globalServices.userRepo.getUserById(receiverId));
+            newTextChat.AddParticipant(this.globalServices.userRepo.getUserById(senderId));
+            newTextChat.AddParticipant(this.globalServices.userRepo.getUserById(receiverId));
             this.requestsChatRepo.removeRequest(senderId, receiverId);
         }
     }

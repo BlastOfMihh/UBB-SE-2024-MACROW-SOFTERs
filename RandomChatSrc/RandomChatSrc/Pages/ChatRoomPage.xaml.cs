@@ -1,5 +1,4 @@
-using RandomChatSrc.Domain;
-using RandomChatSrc.Domain.TextChat;
+using RandomChatSrc.Models;
 using RandomChatSrc.Services.MessageService;
 
 namespace RandomChatSrc.Pages;
@@ -26,7 +25,7 @@ public partial class ChatRoomPage : ContentPage
 
         MessageContainer.Children.Clear();
         var chatHeaderLayout = new StackLayout { Orientation = StackOrientation.Horizontal, BackgroundColor = Color.FromHex("#332769"), Padding = new Thickness(8) };
-        var chatIdLabel = new Label { Text = $"Chatroom: {textChat.id}", HorizontalOptions = LayoutOptions.CenterAndExpand,
+        var chatIdLabel = new Label { Text = $"Chatroom: {textChat.Id}", HorizontalOptions = LayoutOptions.CenterAndExpand,
             FontSize = 16,
             FontAttributes = FontAttributes.Bold
         };

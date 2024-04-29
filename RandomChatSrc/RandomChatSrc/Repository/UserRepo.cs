@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RandomChatSrc.Domain.UserDomain;
+using RandomChatSrc.Models;
 
 namespace RandomChatSrc.Repository
 {
@@ -18,7 +18,7 @@ namespace RandomChatSrc.Repository
 
         public User getUserById(Guid id)
         {
-            return this.users.FirstOrDefault(user => user.id == id);
+            return this.users.FirstOrDefault(user => user.Id == id);
         }
     }
 }

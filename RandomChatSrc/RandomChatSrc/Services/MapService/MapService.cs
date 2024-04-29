@@ -1,10 +1,10 @@
-﻿using RandomChatSrc.Domain.MapLocation;
-using RandomChatSrc.Repo;
+﻿using RandomChatSrc.Repo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RandomChatSrc.Models;
 using RandomChatSrc.Services.GlobalServices;
 
 namespace RandomChatSrc.Services.MapService

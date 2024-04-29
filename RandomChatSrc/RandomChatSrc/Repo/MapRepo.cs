@@ -1,11 +1,11 @@
-﻿using RandomChatSrc.Domain.MapLocation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using RandomChatSrc.Models;
 
 namespace RandomChatSrc.Repo
 {
@@ -24,7 +24,7 @@ namespace RandomChatSrc.Repo
 
         public void addUserLocation(Guid userID, MapLocation location)
         {
-            //check if user already has a location
+            //check if User already has a location
             if(locations.Contains(locations.Find(x => x.UserId == userID)))
             {
                 updateUserLocation(userID, location);
@@ -32,9 +32,9 @@ namespace RandomChatSrc.Repo
                 XDocument xDocument = XDocument.Load(locationsPath);
                 xDocument.Element("MapLocations").Add(new XElement("MapLocation",
                                        new XElement("UserId", userID),
-                                                          new XElement("xCoord", location.xCoord),
-                                                                             new XElement("yCoord", location.yCoord),
-                                                                                                new XElement("description", location.description)
+                                                          new XElement("XCoordinates", location.XCoordinates),
+                                                                             new XElement("YCoordinates", location.YCoordinates),
+                                                                                                new XElement("Description", location.Description)
                                                                                                                    ));
                 xDocument.Save(locationsPath);
             }
@@ -45,9 +45,9 @@ namespace RandomChatSrc.Repo
                 XDocument xDocument = XDocument.Load(locationsPath);
                 xDocument.Element("MapLocations").Add(new XElement("MapLocation",
                                        new XElement("UserId", userID),
-                                                          new XElement("xCoord", location.xCoord),
-                                                                             new XElement("yCoord", location.yCoord),
-                                                                                                new XElement("description", location.description)
+                                                          new XElement("XCoordinates", location.XCoordinates),
+                                                                             new XElement("YCoordinates", location.YCoordinates),
+                                                                                                new XElement("Description", location.Description)
                                                                                                                    ));
                 xDocument.Save(locationsPath);
             }
@@ -77,9 +77,9 @@ namespace RandomChatSrc.Repo
                 xDocument.Descendants("MapLocations").Where(x => x.Element("UserId").Value == userID.ToString()).Remove();
                 xDocument.Element("MapLocations").Add(new XElement("MapLocation",
                                        new XElement("UserId", userID),
-                                                          new XElement("xCoord", location.xCoord),
-                                                                             new XElement("yCoord", location.yCoord),
-                                                                                                new XElement("description", location.description)
+                                                          new XElement("XCoordinates", location.XCoordinates),
+                                                                             new XElement("YCoordinates", location.YCoordinates),
+                                                                                                new XElement("Description", location.Description)
                                                                                                                    ));
                 xDocument.Save(locationsPath);
             }
@@ -96,9 +96,9 @@ namespace RandomChatSrc.Repo
             foreach (XElement location in xDocument.Descendants("MapLocations"))
             {
                 Guid userId = new Guid(location.Element("UserId").Value);
-                float xCoord = float.Parse(location.Element("xCoord").Value);
-                float yCoord = float.Parse(location.Element("yCoord").Value);
-                string description = location.Element("description").Value;
+                float xCoord = float.Parse(location.Element("XCoordinates").Value);
+                float yCoord = float.Parse(location.Element("YCoordinates").Value);
+                string description = location.Element("Description").Value;
                 MapLocation newLocation = new MapLocation(userId, xCoord, yCoord, description);
                 locations.Add(newLocation);
             }

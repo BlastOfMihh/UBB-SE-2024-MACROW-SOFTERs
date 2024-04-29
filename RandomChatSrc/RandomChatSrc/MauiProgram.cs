@@ -3,11 +3,8 @@ using RandomChatSrc.Services.ChatroomsManagement;
 using RandomChatSrc.Pages;
 using RandomChatSrc.Services.RandomMatchingService;
 using System.Diagnostics;
-using RandomChatSrc.Domain.TextChat;
 using RandomChatSrc.Services.UserChatListServiceDomain;
-using RandomChatSrc.Domain.UserDomain;
-using RandomChatSrc.Domain.UserConfig;
-using RandomChatSrc.Domain.InterestDomain;
+using RandomChatSrc.Models;
 using CommunityToolkit.Maui.Maps;
 
 namespace RandomChatSrc
@@ -23,29 +20,29 @@ namespace RandomChatSrc
             var chats = chatroomsManagementService.getAllChats();
             foreach (TextChat chat in chats)
             {
-                Trace.WriteLine(chat.availableParticipantsCount());
+                Trace.WriteLine(chat.AvailableParticipantsCount());
             }
             User user = new User("richard");
             user.AddInterest(new Interest("music"));
-            user.id = new Guid("10030000-0300-0200-0000-000000000000");
+            user.Id = new Guid("10030000-0300-0200-0000-000000000000");
             User user2 = new User("user2");
-            user2.id = new Guid("20030000-0300-0200-0000-000000000001");
+            user2.Id = new Guid("20030000-0300-0200-0000-000000000001");
             user2.AddInterest(new Interest("music"));
-            // todo should add user interests here idk?
-            Trace.WriteLine(chats[chats.Count - 1].id);
-            chats[chats.Count - 1].addParticipant(user2);
-            Trace.WriteLine(chats[chats.Count - 1].availableParticipantsCount());
+            // todo should add User interests here idk?
+            Trace.WriteLine(chats[chats.Count - 1].Id);
+            chats[chats.Count - 1].AddParticipant(user2);
+            Trace.WriteLine(chats[chats.Count - 1].AvailableParticipantsCount());
             UserChatListService userChatListService = new UserChatListService(chatroomsManagementService);
             Trace.WriteLine(userChatListService.currentUserId.ToString());
             var openChats = userChatListService.getOpenChats();
             foreach (TextChat chat in openChats)
             {
-                Trace.WriteLine(chat.participants[0].name);
+                Trace.WriteLine(chat.Participants[0].Name);
             }
             //test the RandomMatchingService
             //RandomMatchingService randomMatchingService = new RandomMatchingService(chatroomsManagementService, userChatListService);
-            //TextChat newChat = randomMatchingService.RequestMatchingChatRoom(new UserChatConfig(user));
-            //Trace.WriteLine(newChat.participants[0].name);
+            //TextChat newChat = randomMatchingService.RequestMatchingChatRoom(new UserChatConfig(User));
+            //Trace.WriteLine(newChat.Participants[0].name);
         }
         public static MauiApp CreateMauiApp()
         {

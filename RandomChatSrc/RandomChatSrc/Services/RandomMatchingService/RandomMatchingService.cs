@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RandomChatSrc.Domain.InterestDomain;
-using RandomChatSrc.Domain.ChatDomain;
-using RandomChatSrc.Domain.TextChat;
-using RandomChatSrc.Domain.UserConfig;
+using RandomChatSrc.Models;
 using RandomChatSrc.Services.ChatroomsManagement;
 using RandomChatSrc.Services.UserChatListServiceDomain;
 
@@ -27,12 +24,12 @@ namespace RandomChatSrc.Services.RandomMatchingService
             int curIdx = -1;
             List<int> bestIdxs = [];
 
-            // score - the number of matching interests of the user we want to assign
+            // score - the number of matching interests of the User we want to assign
             // to a chat (i.e. `chatConfig` parameter) across all users that are members
             // of that chat.
             // example to understand better:
             // say we have a chat with 3 users (user1, user2, user3), and:
-            // user1 has 2 matching interests with the user we would like to add to a chat;
+            // user1 has 2 matching interests with the User we would like to add to a chat;
             // user2 has 1 matching interest -''-;
             // user3 has 2 matching interests -''-;
             // => for this chat, the score will simply be 2 + 1 + 2 = 5.
@@ -40,24 +37,24 @@ namespace RandomChatSrc.Services.RandomMatchingService
             foreach (var chat in allChats)
             {
                 ++curIdx;
-                if (chat.availableParticipantsCount() == 0)
+                if (chat.AvailableParticipantsCount() == 0)
                 {
                     continue;
                 }
 
-                // check if our user is already part of this chat
-                // todo: couldn't we have done `participant.id == chatConfig.user.id` ?
-                if (chat.participants.Any(participant => participant.id == userChatListService.currentUserId))
+                // check if our User is already part of this chat
+                // todo: couldn't we have done `participant.Id == chatConfig.User.Id` ?
+                if (chat.Participants.Any(participant => participant.Id == userChatListService.currentUserId))
                 {
                     continue;
                 }
 
                 curScore = 0;
-                foreach (var participant in chat.participants)
+                foreach (var participant in chat.Participants)
                 {
-                    foreach (var participantInterest in participant.interests)
+                    foreach (var participantInterest in participant.Interests)
                     {
-                        curScore += Convert.ToInt32(chatConfig.user.interests.Any(curUserInterest => curUserInterest.Equals(participantInterest)));
+                        curScore += Convert.ToInt32(chatConfig.User.Interests.Any(curUserInterest => curUserInterest.Equals(participantInterest)));
                     }
                 }
                 if (curScore > bestScore)
@@ -72,19 +69,19 @@ namespace RandomChatSrc.Services.RandomMatchingService
             }
             if (bestIdxs.Count == 0)
             {
-                // all chats are full, or user is a member of all chats
+                // all chats are full, or User is a member of all chats
 
-                // Create a new textchat to put the current user in.
+                // Create a new textchat to put the current User in.
                 // todo maybe should have another way to select the size of the new chat? 
                 TextChat newTextChat = this.chatroomsManagementService.CreateChat(5);  // todo: i suppose this would be passed by reference?
-                newTextChat.addParticipant(chatConfig.user);
+                newTextChat.AddParticipant(chatConfig.User);
                 return newTextChat;
             }
 
             // choose an index randomly from the list of the best available indexes.
             int randArrIdx = new Random().Next(bestIdxs.Count);
             int randBestIdx = bestIdxs[randArrIdx];
-            allChats[randBestIdx].addParticipant(chatConfig.user);
+            allChats[randBestIdx].AddParticipant(chatConfig.User);
             return allChats[randBestIdx];
         }
     }
