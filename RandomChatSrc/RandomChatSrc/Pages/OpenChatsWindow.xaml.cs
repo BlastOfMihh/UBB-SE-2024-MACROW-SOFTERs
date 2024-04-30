@@ -27,12 +27,12 @@ public partial class OpenChatsWindow : ContentPage
         TextChat textChat = chatService.GetAllChats()[2];
         textChat.AddParticipant(user);
         // end test code
-        string filePath = "D:\\School\\An 2\\Sem 2\\ISS\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
+        string filePath = "D:\\facultate\\anu 2\\SEMESTRUL 2\\ISS Second game\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
         try
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(filePath);
-            var userId = doc.SelectSingleNode("/Users/CurrentUser/Id").InnerText;
+            var userId = doc.SelectSingleNode("/Users/CurrentUser/id").InnerText;
             if (userId == null)
             {
                 throw new Exception("User not found");

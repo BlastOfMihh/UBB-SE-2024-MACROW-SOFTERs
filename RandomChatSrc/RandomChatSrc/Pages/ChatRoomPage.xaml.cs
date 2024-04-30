@@ -12,7 +12,7 @@ public partial class ChatRoomPage : ContentPage
     {
         InitializeComponent();
         currentUserId = currentUser;
-        messageService = messageService;
+        this.messageService = messageService;
         LoadConversation();
     }
     private void LoadConversation()
