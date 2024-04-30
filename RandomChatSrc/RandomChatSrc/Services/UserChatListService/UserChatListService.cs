@@ -12,21 +12,21 @@ namespace RandomChatSrc.Services.UserChatListServiceDomain
 {
     public class UserChatListService : IUserChatListService
     {
-        public ChatroomsManagementService chatroomsManagementService;
-        public Guid currentUserId;
+        private readonly ChatroomsManagementService _chatroomsManagementService;
+        private readonly Guid _currentUserId;
         public UserChatListService(ChatroomsManagementService chatroomsManagementService)
         {
-            this.chatroomsManagementService = chatroomsManagementService;
+            this._chatroomsManagementService = chatroomsManagementService;
             string filePath = "D:\\School\\An 2\\Sem 2\\ISS\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
             try {
-                XmlDocument doc = new XmlDocument();
-                doc.Load(filePath);
-                var userId = doc.SelectSingleNode("/Users/CurrentUser/id").InnerText;
+                XmlDocument document = new XmlDocument();
+                document.Load(filePath);
+                var userId = document.SelectSingleNode("/Users/CurrentUser/id").InnerText;
                 if(userId == null)
                 {
                     throw new Exception("User not found");
                 }
-                this.currentUserId = new Guid(userId);
+                this._currentUserId = new Guid(userId);
             }
             catch (Exception e)
             {
@@ -34,12 +34,18 @@ namespace RandomChatSrc.Services.UserChatListServiceDomain
             }
 
         }
-
-        // get a list of all chats which the user with id 'currentUserId' is a member of.
+        public Guid getCurrentUserGuid()
+        {
+            return _currentUserId;
+        }
+        /// <summary>
+        /// Retrieves a list of all open chats that the current user is a member of.
+        /// </summary>
+        /// <returns>A list of open chats.</returns>
         public List<TextChat> getOpenChats()
         {
-            List<TextChat> openChats = chatroomsManagementService.getAllChats();
-            openChats = openChats.Where(chat => chat.participants.Any(user => user.id == currentUserId)).ToList();
+            List<TextChat> openChats = _chatroomsManagementService.getAllChats();
+            openChats = openChats.Where(chat => chat.participants.Any(user => user.id == _currentUserId)).ToList();
             return openChats;
         }
     }

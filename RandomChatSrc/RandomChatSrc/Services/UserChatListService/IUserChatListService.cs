@@ -11,5 +11,6 @@ namespace RandomChatSrc.Services.UserChatListServiceDomain
     public interface IUserChatListService
     {
         List<TextChat> getOpenChats();
+        Guid getCurrentUserGuid();
     }
 }

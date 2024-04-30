@@ -8,18 +8,32 @@ using System.Threading.Tasks;
 
 namespace RandomChatSrc.Services.MessageService
 {
-    internal class MessageService{
-        TextChat chat;
-        Guid userID;
+    /// <summary>
+    /// Service for sending messages to a text chat.
+    /// </summary>
+    internal class MessageService
+    {
+        private readonly TextChat _textChat;
+        private readonly Guid _userId;
 
-        public MessageService(TextChat chat, Guid userID)
-        {
-            this.chat = chat;
-            this.userID = userID;
-        }
+        /// <summary>
+        /// Initializes a new instance of the MessageService class.
+        /// </summary>
+        /// <param name="textChat">The text chat to which messages will be sent.</param>
+        /// <param name="userId">The ID of the user sending the messages.</param>
+            public MessageService(TextChat textChat, Guid userId)
+            {
+                _textChat = textChat;
+                _userId = userId;
+            }
+
+        /// <summary>
+        /// Sends a message to the text chat.
+        /// </summary>
+        /// <param name="message">The message to send.</param>
         public void SendMessage(string message)
         {
-            chat.AddMessage(userID.ToString(), message);
+            _textChat.AddMessage(_userId.ToString(), message);
         }
     }
 }

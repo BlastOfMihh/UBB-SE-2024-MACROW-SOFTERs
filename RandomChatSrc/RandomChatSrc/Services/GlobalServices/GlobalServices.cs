@@ -8,22 +8,44 @@ using RandomChatSrc.Services.MapService;
 using RandomChatSrc.Services.RequestChatService;
 using RandomChatSrc.Repository;
 
-namespace RandomChatSrc.Services.GlobalServices
-{
-    public class GlobalServices
-    {   
-        public ChatroomsManagementService chatroomsManagementService { get; set; }
-        public MapService.MapService mapService { get; set; }
-        public RequestChatService.RequestChatService requestChatService {  get; set; }
-        public UserRepo userRepo { get; set; }
-
-        public GlobalServices(ChatroomsManagementService chatroomsManagementService, MapService.MapService mapService,
-                              RequestChatService.RequestChatService requestChatService, UserRepo userRepo)
+    namespace RandomChatSrc.Services.GlobalServices
+    {
+        public class GlobalServices
         {
-            this.chatroomsManagementService = chatroomsManagementService;
-            this.mapService = mapService;
-            this.requestChatService = requestChatService;
-            this.userRepo = userRepo;
+            private IChatroomsManagementService ChatroomsManagementService { get; }
+            private IMapService MapService { get; }
+            private IRequestChatService RequestChatService { get; }
+            private UserRepo UserRepo { get; }
+
+            public GlobalServices(IChatroomsManagementService chatroomsManagementService,
+                                  IMapService mapService,
+                                  IRequestChatService requestChatService,
+                                  UserRepo userRepo)
+            {
+                ChatroomsManagementService = chatroomsManagementService;
+                MapService = mapService;
+                RequestChatService = requestChatService;
+                UserRepo = userRepo;
+            }
+        public IChatroomsManagementService GetChatroomsManagementService()
+        {
+            return ChatroomsManagementService;
+        }
+
+        public IMapService GetMapService()
+        {
+            return MapService;
+        }
+
+        public IRequestChatService GetRequestChatService()
+        {
+            return RequestChatService;
+        }
+
+        public UserRepo GetUserRepo()
+        {
+            return UserRepo;
         }
     }
-}
+    }
+

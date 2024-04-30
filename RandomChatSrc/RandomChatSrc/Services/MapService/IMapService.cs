@@ -12,6 +12,6 @@ namespace RandomChatSrc.Services.MapService
         void makeRequest(Guid senderId, Guid receiverId);
         List<MapLocation> getAllUserLocations();
         List<Guid> getAllUsers();
-        void updaUserLocation(Guid userId, MapLocation location);
+        void updateUserLocation(Guid userId, MapLocation location);
     }
 }
