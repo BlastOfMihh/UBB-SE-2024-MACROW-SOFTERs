@@ -3,7 +3,6 @@
     /// <summary>
     /// Interface for a chat room. Contains the chat's identifier, the list of participants and the maximum number of participants.
     /// </summary>
-    
     internal interface IChat
     {
         public Guid Id { get; }

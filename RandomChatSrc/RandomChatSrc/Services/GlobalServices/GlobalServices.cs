@@ -9,41 +9,22 @@ using RandomChatSrc.Repository;
 namespace RandomChatSrc.Services.GlobalServices
 {
     public class GlobalServices
-        {
-            private IChatroomsManagementService ChatroomsManagementService { get; }
-            private IMapService MapService { get; }
-            private IRequestChatService RequestChatService { get; }
-            private UserRepository UserRepository { get; }
+    {
+        public IChatroomsManagementService ChatroomsManagementService { get; }
+        public IMapService MapService { get; }
+        public IRequestChatService RequestChatService { get; }
+        public UserRepository UserRepository { get; }
 
-            public GlobalServices(IChatroomsManagementService chatroomsManagementService,
-                                  IMapService mapService,
-                                  IRequestChatService requestChatService,
-                                  UserRepository userRepository)
-            {
-                ChatroomsManagementService = chatroomsManagementService;
-                MapService = mapService;
-                RequestChatService = requestChatService;
-                UserRepository = userRepository;
-            }
-        public IChatroomsManagementService GetChatroomsManagementService()
+        public GlobalServices(IChatroomsManagementService chatroomsManagementService,
+                                IMapService mapService,
+                                IRequestChatService requestChatService,
+                                UserRepository userRepository)
         {
-            return ChatroomsManagementService;
-        }
-
-        public IMapService GetMapService()
-        {
-            return MapService;
-        }
-
-        public IRequestChatService GetRequestChatService()
-        {
-            return RequestChatService;
-        }
-
-        public UserRepository GetUserRepo()
-        {
-            return UserRepository;
+            ChatroomsManagementService = chatroomsManagementService;
+            MapService = mapService;
+            RequestChatService = requestChatService;
+            UserRepository = userRepository;
         }
     }
-    }
+}
 
