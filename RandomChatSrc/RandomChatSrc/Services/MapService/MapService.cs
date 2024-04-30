@@ -21,7 +21,7 @@ namespace RandomChatSrc.Services.MapService
         /// <param name="globalServices">The global services for handling requests.</param>
         public MapService(MapRepository mapRepo, GlobalServices.GlobalServices globalServices)
         {
-            this.mapRepository = mapRepo;
+            this.mapRepo = mapRepo;
             this.globalServices = globalServices;
         }
 
