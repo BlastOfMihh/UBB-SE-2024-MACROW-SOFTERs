@@ -15,7 +15,7 @@ namespace RandomChatSrc.Services.MessageService
     /// <summary>
     /// Service for sending messages to a text chat.
     /// </summary>
-    internal class MessageService
+    public class MessageService
     {
         private readonly TextChat textChat;
         private readonly Guid userId;
@@ -38,6 +38,11 @@ namespace RandomChatSrc.Services.MessageService
         public void SendMessage(string message)
         {
             textChat.AddMessage(userId.ToString(), message);
+        }
+
+        public TextChat GetTextChat()
+        {
+            return textChat;
         }
     }
 }

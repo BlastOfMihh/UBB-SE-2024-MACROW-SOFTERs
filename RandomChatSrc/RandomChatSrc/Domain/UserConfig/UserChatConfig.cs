@@ -7,10 +7,10 @@ using RandomChatSrc.Domain.UserDomain;
 
 namespace RandomChatSrc.Domain.UserConfig
 {
-    public class UserChatConfig 
+    public class UserChatConfig
     {
         public User user { get; set; }
-        public UserChatConfig(User user) { 
+        public UserChatConfig(User user) {
             this.user = user;
         }
     }
