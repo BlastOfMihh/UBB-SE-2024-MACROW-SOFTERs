@@ -22,7 +22,7 @@ namespace RandomChatSrc.Services.RequestChatService
 
         public List<Request> getAllRequests()
         {
-            return this.requestsChatRepo.chatRequests;
+            return this.requestsChatRepo.getAllChatRequests();
         }
 
         public void addRequest(Guid senderId, Guid receiverId)

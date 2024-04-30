@@ -1,4 +1,4 @@
-﻿// <copyright file="SongRepository.cs" company="PlaceholderCompany">
+﻿// <copyright file="MapRepository.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 

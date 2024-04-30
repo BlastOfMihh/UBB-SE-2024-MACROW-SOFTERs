@@ -101,23 +101,31 @@ namespace RandomChatSrc.Repository
         {
             Guid requestId = Guid.NewGuid();
             string requestPath = this.RequestsFolderPath + "/request_" + requestId.ToString() + ".xml";
-            DateTime requestTimestamp = DateTime.Now;
             Request currentRequest = new(requestId, senderUserId, receiverUserId, requestPath);
             this.chatRequests.Add(currentRequest);
-            XDocument requestDocument = new(
-                new XElement("request",
-                    new XElement("RequestId", requestId),
-                    new XElement("senderUser", senderUserId),
-                    new XElement("receiverUser", receiverUserId)
-                 //   new XElement("timestamp", requestTimestamp.ToString("yyyy-MM-ddTHH:mm:ss"))
-                )
-            );
+            XDocument requestDocument = new(new XElement("request",
+                                                new XElement("RequestId", requestId),
+                                                new XElement("senderUser", senderUserId),
+                                                new XElement("receiverUser", receiverUserId)));
             requestDocument.Save(requestPath);
         }
 
+        /// <summary>
+        ///     Deletes a Chat Request from the XML file.
+        /// </summary>
+        /// <param name="senderUserId">The ID of the user who sent the request.</param>
+        /// <param name="receiverUserId">The ID of the user who received the request.</param>
         public void removeRequest(Guid senderUserId, Guid receiverUserId)
         {
             this.chatRequests = this.chatRequests.Where(request => !(request.SenderUserId == senderUserId && request.ReceiverUserId == receiverUserId)).ToList();
+        }
+
+        /// <summary>
+        ///     Deletes a Chat Request from the XML file.
+        /// </summary>
+        public List<Request> getAllChatRequests()
+        {
+            return this.chatRequests;
         }
     }
 }
