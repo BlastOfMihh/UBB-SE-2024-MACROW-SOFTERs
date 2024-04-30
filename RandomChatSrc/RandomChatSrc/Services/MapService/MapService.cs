@@ -1,20 +1,20 @@
 ﻿using RandomChatSrc.Domain.MapLocation;
-using RandomChatSrc.Repo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RandomChatSrc.Services.GlobalServices;
+using RandomChatSrc.Repositories;
 
 namespace RandomChatSrc.Services.MapService
 {
     public class MapService : IMapService
     {
         GlobalServices.GlobalServices globalServices;
-        MapRepo mapRepo;
+        MapRepository mapRepo;
         public MapService(GlobalServices.GlobalServices globalServices) {
-            mapRepo = new MapRepo();
+            mapRepo = new MapRepository();
             this.globalServices = globalServices;
         }
         public List<MapLocation> getAllUserLocations()

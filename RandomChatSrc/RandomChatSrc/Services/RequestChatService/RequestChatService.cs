@@ -13,16 +13,16 @@ namespace RandomChatSrc.Services.RequestChatService
     public class RequestChatService
     {
         public GlobalServices.GlobalServices globalServices { get; set; }
-        public RequestsChatRepo requestsChatRepo {  get; set; }
+        public ChatRequestsRepository requestsChatRepo {  get; set; }
 
-        public RequestChatService(RequestsChatRepo requestsChatRepo)
+        public RequestChatService(ChatRequestsRepository requestsChatRepo)
         {
             this.requestsChatRepo = requestsChatRepo;
         }
 
         public List<Request> getAllRequests()
         {
-            return this.requestsChatRepo.Requests;
+            return this.requestsChatRepo.chatRequests;
         }
 
         public void addRequest(Guid senderId, Guid receiverId)

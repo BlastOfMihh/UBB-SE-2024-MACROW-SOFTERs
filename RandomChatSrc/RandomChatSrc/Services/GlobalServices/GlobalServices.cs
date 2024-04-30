@@ -15,10 +15,10 @@ namespace RandomChatSrc.Services.GlobalServices
         public ChatroomsManagementService chatroomsManagementService { get; set; }
         public MapService.MapService mapService { get; set; }
         public RequestChatService.RequestChatService requestChatService {  get; set; }
-        public UserRepo userRepo { get; set; }
+        public UserRepository userRepo { get; set; }
 
         public GlobalServices(ChatroomsManagementService chatroomsManagementService, MapService.MapService mapService,
-                              RequestChatService.RequestChatService requestChatService, UserRepo userRepo)
+                              RequestChatService.RequestChatService requestChatService, UserRepository userRepo)
         {
             this.chatroomsManagementService = chatroomsManagementService;
             this.mapService = mapService;

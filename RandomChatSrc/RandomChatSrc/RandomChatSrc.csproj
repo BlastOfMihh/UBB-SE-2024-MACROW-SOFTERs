@@ -87,6 +87,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Repo\" />
 	  <Folder Include="test\" />
 	</ItemGroup>
 	
