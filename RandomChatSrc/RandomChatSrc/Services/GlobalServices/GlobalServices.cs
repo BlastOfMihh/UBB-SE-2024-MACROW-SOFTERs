@@ -13,17 +13,17 @@ namespace RandomChatSrc.Services.GlobalServices
             private IChatroomsManagementService ChatroomsManagementService { get; }
             private IMapService MapService { get; }
             private IRequestChatService RequestChatService { get; }
-            private UserRepo UserRepo { get; }
+            private UserRepository UserRepository { get; }
 
             public GlobalServices(IChatroomsManagementService chatroomsManagementService,
                                   IMapService mapService,
                                   IRequestChatService requestChatService,
-                                  UserRepo userRepo)
+                                  UserRepository userRepository)
             {
                 ChatroomsManagementService = chatroomsManagementService;
                 MapService = mapService;
                 RequestChatService = requestChatService;
-                UserRepo = userRepo;
+                UserRepository = userRepository;
             }
         public IChatroomsManagementService GetChatroomsManagementService()
         {
@@ -40,9 +40,9 @@ namespace RandomChatSrc.Services.GlobalServices
             return RequestChatService;
         }
 
-        public UserRepo GetUserRepo()
+        public UserRepository GetUserRepo()
         {
-            return UserRepo;
+            return UserRepository;
         }
     }
     }

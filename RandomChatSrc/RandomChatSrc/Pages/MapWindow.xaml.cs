@@ -8,6 +8,25 @@ public partial class MapWindow : ContentPage
 
     public MapWindow()
     {
+    /*
+        //string filePath = "D:\\School\\An 2\\Sem 2\\ISS\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
+        string filePath = "C:\\GitHub_Repos\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
+        try
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(filePath);
+            var userId = doc.SelectSingleNode("/Users/CurrentUser/id").InnerText;
+            if (userId == null)
+            {
+                throw new Exception("User not found");
+            }
+            this.currentUserId = new Guid(userId);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+     */
         InitializeComponent();
         map.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(46.773545, 23.622010), Distance.FromKilometers(0)));
         var pin = new Microsoft.Maui.Controls.Maps.Pin()

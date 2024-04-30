@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 using RandomChatSrc.Domain.MapLocation;
-using RandomChatSrc.Repo;
+using RandomChatSrc.Repositories;
 
 namespace RandomChatSrc.Services.MapService
 {
@@ -11,7 +11,7 @@ namespace RandomChatSrc.Services.MapService
     /// </summary>
     public class MapService : IMapService
     {
-        private readonly MapRepo mapRepo;
+        private readonly MapRepository mapRepo;
         private readonly GlobalServices.GlobalServices globalServices;
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace RandomChatSrc.Services.MapService
         /// </summary>
         /// <param name="mapRepo">The repository for map-related operations.</param>
         /// <param name="globalServices">The global services for handling requests.</param>
-        public MapService(MapRepo mapRepo, GlobalServices.GlobalServices globalServices)
+        public MapService(MapRepository mapRepo, GlobalServices.GlobalServices globalServices)
         {
             this.mapRepo = mapRepo;
             this.globalServices = globalServices;
