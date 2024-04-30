@@ -1,10 +1,6 @@
-
-
+using System.Xml;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
-using System.Xml;
-
-
 namespace RandomChatSrc.Pages;
 public partial class MapWindow : ContentPage
 {
@@ -12,6 +8,7 @@ public partial class MapWindow : ContentPage
 
     public MapWindow()
     {
+    /*
         //string filePath = "D:\\School\\An 2\\Sem 2\\ISS\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
         string filePath = "C:\\GitHub_Repos\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
         try
@@ -29,19 +26,18 @@ public partial class MapWindow : ContentPage
         {
             Console.WriteLine(e.Message);
         }
-
+     */
         InitializeComponent();
         map.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(46.773545, 23.622010), Distance.FromKilometers(0)));
-        var pin1 = new Microsoft.Maui.Controls.Maps.Pin()
+        var pin = new Microsoft.Maui.Controls.Maps.Pin()
         {
             Location = new Location(46.773545, 23.622010),
             Label = $"You",
         };
-        map.Pins.Add(pin1);
+        map.Pins.Add(pin);
 
-        pin1.MarkerClicked += Pin_Clicked;
-        pin1.InfoWindowClicked += InfoWindow_Clicked;
-        
+        pin.MarkerClicked += Pin_Clicked;
+        pin.InfoWindowClicked += InfoWindow_Clicked;
     }
 
     private void InfoWindow_Clicked(object sender, PinClickedEventArgs e)
@@ -51,6 +47,5 @@ public partial class MapWindow : ContentPage
 
     private void Pin_Clicked(object sender, PinClickedEventArgs e)
     {
-        
     }
 }

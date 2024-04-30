@@ -8,7 +8,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
     public class ChatroomsManagementService : IChatroomsManagementService
     {
        // schimba asta de fiecare data cand dai pull asta e nivelul
-        private readonly string textChatsDirectoryPath = "C:\\Users\\potat\\OneDrive\\Documents\\Visual Studio 2022\\ISS\\Macrow\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";       private List<TextChat> ActiveChats { get; set; }
+        private readonly string textChatsDirectoryPath = "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";       private List<TextChat> ActiveChats { get; set; }
 
         public ChatroomsManagementService()
         {

@@ -3,6 +3,7 @@ using RandomChatSrc.Services.ChatroomsManagement;
 using RandomChatSrc.Models;
 using RandomChatSrc.Services.RandomMatchingService;
 using RandomChatSrc.Services.UserChatListServiceDomain;
+using RandomChatSrc.Services.MessageService;
 
 namespace RandomChatSrc.Pages;
 
@@ -13,9 +14,9 @@ public partial class OpenChatsWindow : ContentPage
     private UserChatListService userChatListService;
 
     private UserChatConfig currentUserConfig;
-    public OpenChatsWindow()
+    public OpenChatsWindow(ChatroomsManagementService chatService)
 	{
-        this.chatService = new ChatroomsManagementService();
+        this.chatService = chatService;
         this.WidthRequest = 800;
         this.HeightRequest = 600;
         this.BackgroundColor = Color.FromHex("#FFFFFF");
@@ -56,11 +57,10 @@ public partial class OpenChatsWindow : ContentPage
 
     private void RefreshActiveChats()
     {
-        // dunno really how to make viewModels so I simply used what I had in the .XAML file
-        // Clear existing items
+        // Clear the layout
         chatStackLayout.Children.Clear();
 
-        // Iterate through active chats and add them to the UI
+        // Parse the chats
         foreach (TextChat chat in chatService.GetAllChats())
         {
             // Create a custom UI element for each chat
@@ -76,9 +76,7 @@ public partial class OpenChatsWindow : ContentPage
 
             chatInfoLayout.Children.Add(chatIdLabel);
             chatInfoLayout.Children.Add(lastMessageLabel);
-
             chatHeaderLayout.Children.Add(chatInfoLayout);
-
             chatLayout.Children.Add(chatHeaderLayout);
             chatLayout.GestureRecognizers.Add(new TapGestureRecognizer
             {
@@ -95,7 +93,9 @@ public partial class OpenChatsWindow : ContentPage
     {
         if (sender is TextChat selectedChat)
         {
-            await Navigation.PushAsync(new ChatRoomPage(selectedChat, currentUserId));
+            // Open the chat page
+            MessageService messageService = new MessageService(selectedChat, currentUserId);
+            await Navigation.PushAsync(new ChatRoomPage(currentUserId, messageService));
         }
     }
 
@@ -104,7 +104,8 @@ public partial class OpenChatsWindow : ContentPage
         RefreshActiveChats();
         RandomMatchingService randomMatchingService = new RandomMatchingService(chatService, new UserChatListService(chatService));
         TextChat textChat = randomMatchingService.RequestMatchingChatRoom(currentUserConfig);
-        await Navigation.PushAsync(new ChatRoomPage(textChat, currentUserId));
+        MessageService messageService = new MessageService(textChat, currentUserId);
+        await Navigation.PushAsync(new ChatRoomPage(currentUserId, messageService));
     }
     private void OpenChatButton_Clicked(object sender, EventArgs e)
     {
@@ -117,7 +118,6 @@ public partial class OpenChatsWindow : ContentPage
     private async void ChatItem_Clicked(object sender, EventArgs e)
     {
     }
-
     private async void MapButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new MapWindow());
