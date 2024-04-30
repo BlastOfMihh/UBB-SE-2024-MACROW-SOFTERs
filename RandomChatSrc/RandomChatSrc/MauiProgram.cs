@@ -1,27 +1,27 @@
-﻿using Microsoft.Extensions.Logging;
-using RandomChatSrc.Services.ChatroomsManagement;
-using RandomChatSrc.Pages;
-using RandomChatSrc.Services.RandomMatchingService;
+﻿// <copyright file="MauiProgram.cs" company="SuperBet BeClean">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 using System.Diagnostics;
-using RandomChatSrc.Domain.TextChat;
-using RandomChatSrc.Services.UserChatListServiceDomain;
-using RandomChatSrc.Domain.UserDomain;
-using RandomChatSrc.Domain.UserConfig;
-using RandomChatSrc.Domain.InterestDomain;
 using CommunityToolkit.Maui.Maps;
-using RandomChatSrc.Services.GlobalServices;
+using Microsoft.Extensions.Logging;
+using RandomChatSrc.Domain.InterestDomain;
+using RandomChatSrc.Domain.TextChat;
+using RandomChatSrc.Domain.UserDomain;
+using RandomChatSrc.Services.ChatroomsManagement;
+using RandomChatSrc.Services.RandomMatchingService;
+using RandomChatSrc.Services.UserChatListServiceDomain;
 
 namespace RandomChatSrc
 {
     public static class MauiProgram
         // va bat
     {
-        public static void test()
+        public static void Test()
         {
-            //test the ChatroomsManagementService
+            // test the ChatroomsManagementService
             ChatroomsManagementService chatroomsManagementService = new ChatroomsManagementService();
             chatroomsManagementService.CreateChat(2);
-            var chats = chatroomsManagementService.getAllChats();
+            var chats = chatroomsManagementService.GetAllChats();
             foreach (TextChat chat in chats)
             {
                 Trace.WriteLine(chat.availableParticipantsCount());
@@ -43,10 +43,10 @@ namespace RandomChatSrc
             {
                 Trace.WriteLine(chat.participants[0].name);
             }
-            //test the RandomMatchingService
-            //RandomMatchingService randomMatchingService = new RandomMatchingService(chatroomsManagementService, userChatListService);
-            //TextChat newChat = randomMatchingService.RequestMatchingChatRoom(new UserChatConfig(user));
-            //Trace.WriteLine(newChat.participants[0].name);
+            // test the RandomMatchingService
+            // RandomMatchingService randomMatchingService = new RandomMatchingService(chatroomsManagementService, userChatListService);
+            // TextChat newChat = randomMatchingService.RequestMatchingChatRoom(new UserChatConfig(user));
+            // Trace.WriteLine(newChat.participants[0].name);
         }
         public static MauiApp CreateMauiApp()
         {
@@ -54,8 +54,8 @@ namespace RandomChatSrc
             builder.Services.AddSingleton<IChatroomsManagementService, ChatroomsManagementService>();
             builder.Services.AddSingleton<IRandomMatchingService, RandomMatchingService>();
             Trace.WriteLine("Hello World");
-            //test();
-            //test git push
+            // test();
+            // test git push
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkitMaps("AuWwu13opzaX2zDZ2q3J38mL94MNzfRNmfiJkN4fvv_LfS-vhB19UvBNV27ER4iw")
@@ -64,10 +64,8 @@ namespace RandomChatSrc
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-
-
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
             Console.WriteLine("Debug");
 #endif
 

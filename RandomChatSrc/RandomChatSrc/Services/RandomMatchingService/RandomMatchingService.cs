@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RandomChatSrc.Domain.InterestDomain;
-using RandomChatSrc.Domain.ChatDomain;
+﻿// <copyright file="RandomMatchingService.cs" company="SuperBet BeClean">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 using RandomChatSrc.Domain.TextChat;
 using RandomChatSrc.Domain.UserConfig;
 using RandomChatSrc.Services.ChatroomsManagement;
@@ -14,14 +10,15 @@ namespace RandomChatSrc.Services.RandomMatchingService
 {
     public class RandomMatchingService : IRandomMatchingService
     {
-        private readonly ChatroomsManagementService _chatroomsManagementService;
-        private readonly UserChatListService _userChatListService;
+        private readonly ChatroomsManagementService chatroomsManagementService;
+        private readonly UserChatListService userChatListService;
 
         public RandomMatchingService(ChatroomsManagementService chatroomsManagementService, UserChatListService userChatListService)
         {
-            _chatroomsManagementService = chatroomsManagementService;
-            _userChatListService = userChatListService;
+            this.chatroomsManagementService = chatroomsManagementService;
+            this.userChatListService = userChatListService;
         }
+
         /// <summary>
         /// Requests a matching chat room for a user based on their configuration.
         /// </summary>
@@ -29,7 +26,7 @@ namespace RandomChatSrc.Services.RandomMatchingService
         /// <returns>The matched text chat room.</returns>
         public TextChat RequestMatchingChatRoom(UserChatConfig chatConfig)
         {
-            var allChats = _chatroomsManagementService.getAllChats();
+            var allChats = chatroomsManagementService.GetAllChats();
             int currentChatIndex = -1;
             List<int> bestChatIndexes = [];
 
@@ -46,12 +43,10 @@ namespace RandomChatSrc.Services.RandomMatchingService
             foreach (var chat in allChats)
             {
                 ++currentChatIndex;
-                if (chat.availableParticipantsCount() == 0 || chat.participants.Any(participant => participant.id == _userChatListService.getCurrentUserGuid()))
+                if (chat.availableParticipantsCount() == 0 || chat.participants.Any(participant => participant.id == userChatListService.getCurrentUserGuid()))
                 {
                     continue;
                 }
-
-
                 currentScore = 0;
                 foreach (var participant in chat.participants)
                 {
@@ -73,7 +68,7 @@ namespace RandomChatSrc.Services.RandomMatchingService
             if (bestChatIndexes.Count == 0)
             {
                 // All chats are full, or user is a member of all chats
-                TextChat newChat = _chatroomsManagementService.CreateChat(5);
+                TextChat newChat = chatroomsManagementService.CreateChat(5);
                 newChat.addParticipant(chatConfig.user);
                 return newChat;
             }

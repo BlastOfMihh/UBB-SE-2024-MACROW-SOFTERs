@@ -1,30 +1,34 @@
-﻿using RandomChatSrc.Domain.TextChat;
-using RandomChatSrc.Services.UserChatListServiceDomain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="MessageService.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace RandomChatSrc.Services.MessageService
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using RandomChatSrc.Domain.TextChat;
+    using RandomChatSrc.Services.UserChatListServiceDomain;
+
     /// <summary>
     /// Service for sending messages to a text chat.
     /// </summary>
     internal class MessageService
     {
-        private readonly TextChat _textChat;
-        private readonly Guid _userId;
+        private readonly TextChat textChat;
+        private readonly Guid userId;
 
         /// <summary>
-        /// Initializes a new instance of the MessageService class.
+        /// Initializes a new instance of the <see cref="MessageService"/> class.
         /// </summary>
         /// <param name="textChat">The text chat to which messages will be sent.</param>
         /// <param name="userId">The ID of the user sending the messages.</param>
-            public MessageService(TextChat textChat, Guid userId)
+        public MessageService(TextChat textChat, Guid userId)
             {
-                _textChat = textChat;
-                _userId = userId;
+                this.textChat = textChat;
+                this.userId = userId;
             }
 
         /// <summary>
@@ -33,7 +37,7 @@ namespace RandomChatSrc.Services.MessageService
         /// <param name="message">The message to send.</param>
         public void SendMessage(string message)
         {
-            _textChat.AddMessage(_userId.ToString(), message);
+            textChat.AddMessage(userId.ToString(), message);
         }
     }
 }
