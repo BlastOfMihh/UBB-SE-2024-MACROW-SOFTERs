@@ -1,5 +1,5 @@
-using RandomChatSrc.Services.ChatroomsManagement;
 using System.Xml;
+using RandomChatSrc.Services.ChatroomsManagement;
 using RandomChatSrc.Models;
 using RandomChatSrc.Services.RandomMatchingService;
 using RandomChatSrc.Services.UserChatListServiceDomain;
@@ -8,17 +8,10 @@ namespace RandomChatSrc.Pages;
 
 public partial class OpenChatsWindow : ContentPage
 {
-   
     private ChatroomsManagementService chatService;
     private Guid currentUserId;
     private UserChatListService userChatListService;
-  //  public OpenChatsWindow()
-//	{
-//         this.chatService = new ChatroomsManagementService();
-//         this.userChatListService = new UserChatListService(chatService);
-//         currentUserId = userChatListService.currentUserId;
-//         InitializeComponent();
-//         RefreshActiveChats();
+
     private UserChatConfig currentUserConfig;
     public OpenChatsWindow()
 	{
@@ -26,13 +19,13 @@ public partial class OpenChatsWindow : ContentPage
         this.WidthRequest = 800;
         this.HeightRequest = 600;
         this.BackgroundColor = Color.FromHex("#FFFFFF");
-        //start test code
-        //we test the matching with a dummy User
+        // start test code
+        // we test the matching with a dummy User
         User user = new User("gigel");
         user.AddInterest(new Interest("music"));
-        TextChat textChat = chatService.getAllChats()[2];
+        TextChat textChat = chatService.GetAllChats()[2];
         textChat.AddParticipant(user);
-        //end test code
+        // end test code
         string filePath = "D:\\School\\An 2\\Sem 2\\ISS\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
         try
         {
@@ -51,10 +44,10 @@ public partial class OpenChatsWindow : ContentPage
         }
         InitializeComponent();
         RefreshActiveChats();
-        //code to test current User
-        //we should have a current User in the system, which we read and save at the start of the app
-        //for now, we create a dummy User at the start of the app
-        //we create it in the constructor of the OpenChatsWindow, since it's the first page that is opened
+        // code to test current User
+        // we should have a current User in the system, which we read and save at the start of the app
+        // for now, we create a dummy User at the start of the app
+        // we create it in the constructor of the OpenChatsWindow, since it's the first page that is opened
         User currentUser = new User("current User");
         currentUser.Id = currentUserId;
         this.currentUserConfig = new UserChatConfig(currentUser);
@@ -68,7 +61,7 @@ public partial class OpenChatsWindow : ContentPage
         chatStackLayout.Children.Clear();
 
         // Iterate through active chats and add them to the UI
-        foreach (TextChat chat in chatService.getAllChats())
+        foreach (TextChat chat in chatService.GetAllChats())
         {
             // Create a custom UI element for each chat
             var chatLayout = new StackLayout { Margin = new Thickness(7) };
@@ -112,27 +105,21 @@ public partial class OpenChatsWindow : ContentPage
         RandomMatchingService randomMatchingService = new RandomMatchingService(chatService, new UserChatListService(chatService));
         TextChat textChat = randomMatchingService.RequestMatchingChatRoom(currentUserConfig);
         await Navigation.PushAsync(new ChatRoomPage(textChat, currentUserId));
-    }   
-
-
-    private  void OpenChatButton_Clicked(object sender, EventArgs e)
+    }
+    private void OpenChatButton_Clicked(object sender, EventArgs e)
     {
-    
     }
 
     private async void RequestsButton_Clicked(object sender, EventArgs e)
     {
-       
     }
 
     private async void ChatItem_Clicked(object sender, EventArgs e)
     {
-       
     }
 
-    private async void MapButton_Clicked(Object sender, EventArgs e)
+    private async void MapButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new MapWindow());
     }
-
 }

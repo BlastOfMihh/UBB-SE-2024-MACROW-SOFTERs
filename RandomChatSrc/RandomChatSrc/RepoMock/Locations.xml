@@ -2,14 +2,14 @@
 <MapLocations>
 	<MapLocation>
 		<userId>10030000-0300-0200-0000-000000000000</userId>
-		<XCoordinates>4.7</XCoordinates>
-		<YCoordinates>5.3</YCoordinates>
-		<Description>Location 1</Description>
+		<xCoordinates>4.7</xCoordinates>
+		<yCoordinates>5.3</yCoordinates>
+		<description>Location 1</description>
 	</MapLocation>
 	<MapLocation>
 		<userId>20030000-0300-0200-0000-000000000000</userId>
-		<XCoordinates>6.7</XCoordinates>
-		<YCoordinates>7.3</YCoordinates>
-		<Description>Location 2</Description>
+		<xCoordinates>1000.7</xCoordinates>
+		<yCoordinates>500.3</yCoordinates>
+		<description>Location 2</description>
 	</MapLocation>
 </MapLocations>

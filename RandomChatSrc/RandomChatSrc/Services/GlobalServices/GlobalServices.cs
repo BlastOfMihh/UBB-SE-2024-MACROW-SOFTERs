@@ -1,9 +1,7 @@
-﻿using RandomChatSrc.Services.ChatroomsManagement;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="GlobalServices.cs" company="SuperBet BeClean">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+using RandomChatSrc.Services.ChatroomsManagement;
 using RandomChatSrc.Services.MapService;
 using RandomChatSrc.Services.RequestChatService;
 using RandomChatSrc.Repository;
@@ -11,19 +9,41 @@ using RandomChatSrc.Repository;
 namespace RandomChatSrc.Services.GlobalServices
 {
     public class GlobalServices
-    {   
-        public ChatroomsManagementService chatroomsManagementService { get; set; }
-        public MapService.MapService mapService { get; set; }
-        public RequestChatService.RequestChatService requestChatService {  get; set; }
-        public UserRepo userRepo { get; set; }
-
-        public GlobalServices(ChatroomsManagementService chatroomsManagementService, MapService.MapService mapService,
-                              RequestChatService.RequestChatService requestChatService, UserRepo userRepo)
         {
-            this.chatroomsManagementService = chatroomsManagementService;
-            this.mapService = mapService;
-            this.requestChatService = requestChatService;
-            this.userRepo = userRepo;
+            private IChatroomsManagementService ChatroomsManagementService { get; }
+            private IMapService MapService { get; }
+            private IRequestChatService RequestChatService { get; }
+            private UserRepository UserRepository { get; }
+
+            public GlobalServices(IChatroomsManagementService chatroomsManagementService,
+                                  IMapService mapService,
+                                  IRequestChatService requestChatService,
+                                  UserRepository userRepository)
+            {
+                ChatroomsManagementService = chatroomsManagementService;
+                MapService = mapService;
+                RequestChatService = requestChatService;
+                UserRepository = userRepository;
+            }
+        public IChatroomsManagementService GetChatroomsManagementService()
+        {
+            return ChatroomsManagementService;
+        }
+
+        public IMapService GetMapService()
+        {
+            return MapService;
+        }
+
+        public IRequestChatService GetRequestChatService()
+        {
+            return RequestChatService;
+        }
+
+        public UserRepository GetUserRepo()
+        {
+            return UserRepository;
         }
     }
-}
+    }
+

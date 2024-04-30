@@ -14,7 +14,7 @@ namespace RandomChatSrc.Models
         public TextChat(List<Message> messages, string chatFolderPath, string oldId = "") : base()
         {
             Id = string.IsNullOrEmpty(oldId) ? Guid.NewGuid() : new Guid(oldId);
-            Messages = messages ?? [];
+            Messages = messages;
             MessagesFolderPath = Path.Combine(chatFolderPath, Id.ToString());
 
             EnsureDirectoryExists(MessagesFolderPath);
@@ -42,10 +42,7 @@ namespace RandomChatSrc.Models
                     new XElement("message",
                         new XElement("sender", senderId),
                         new XElement("timestamp", messageTimestamp.ToString("yyyy-MM-ddTHH:mm:ss")),
-                        new XElement("content", messageContent)
-                    )
-                )
-            );
+                        new XElement("content", messageContent))));
             messageDoc.Save(messagePath);
         }
 
@@ -57,7 +54,10 @@ namespace RandomChatSrc.Models
                 var messageDoc = XDocument.Load(messageFilePath);
 
                 var messageElement = messageDoc.Root?.Element("message");
-                if (messageElement == null) continue;
+                if (messageElement == null)
+                {
+                    continue;
+                }
 
                 var senderId = messageElement.Element("sender")?.Value;
                 var timestampStr = messageElement.Element("timestamp")?.Value;

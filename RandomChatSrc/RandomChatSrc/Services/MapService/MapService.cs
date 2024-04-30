@@ -1,33 +1,46 @@
-﻿using RandomChatSrc.Repo;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using RandomChatSrc.Models;
-using RandomChatSrc.Services.GlobalServices;
+using RandomChatSrc.Repositories;
 
 namespace RandomChatSrc.Services.MapService
 {
+    /// <summary>
+    /// Service for managing user locations on the map and handling user requests.
+    /// </summary>
     public class MapService : IMapService
     {
-        GlobalServices.GlobalServices globalServices;
-        MapRepo mapRepo;
-        public MapService(GlobalServices.GlobalServices globalServices) {
-            mapRepo = new MapRepo();
+        private readonly MapRepository mapRepo;
+        private readonly GlobalServices.GlobalServices globalServices;
+
+        /// <summary>
+        /// Initializes a new instance of the MapService class.
+        /// </summary>
+        /// <param name="mapRepo">The repository for map-related operations.</param>
+        /// <param name="globalServices">The global services for handling requests.</param>
+        public MapService(MapRepository mapRepo, GlobalServices.GlobalServices globalServices)
+        {
+            this.mapRepo = mapRepo;
             this.globalServices = globalServices;
         }
-        public List<MapLocation> getAllUserLocations()
+
+        /// <summary>
+        /// Retrieves the locations of all users on the map.
+        /// </summary>
+        /// <returns>A list of map locations for all users.</returns>
+        public List<MapLocation> GetAllUserLocations()
         {
             return mapRepo.getAllUsersLocationList();
         }
 
-        public List<Guid> getAllUsers()
+        /// <summary>
+        /// Retrieves the IDs of all users with known locations on the map.
+        /// </summary>
+        /// <returns>A list of user IDs.</returns>
+        public List<Guid> GetAllUsers()
         {
             List<Guid> users = new List<Guid>();
             foreach (MapLocation mapLocation in mapRepo.getAllUsersLocationList())
             {
-                if (mapLocation.UserId != null)
+                if (mapLocation.UserId != Guid.Empty)
                 {
                     users.Add(mapLocation.UserId);
                 }
@@ -35,14 +48,22 @@ namespace RandomChatSrc.Services.MapService
             return users;
         }
 
-        public void makeRequest(Guid senderId, Guid receiverId)
+        /// <summary>
+        /// Initiates a chat request from a sender to a receiver.
+        /// </summary>
+        /// <param name="senderId">The ID of the sender initiating the request.</param>
+        /// <param name="receiverId">The ID of the receiver being requested.</param>
+        public void MakeRequest(Guid senderId, Guid receiverId)
         {
-            //call the requestService to make a request using the currentUserId as sender and the receiverId as receiver  // todo should be 'using the `senderId` as sender'?
-            //the requestService will be called from the globalServices per Mihnea's request
-            this.globalServices.requestChatService.addRequest(senderId, receiverId);
+            globalServices.GetRequestChatService().AddRequest(senderId, receiverId);
         }
 
-        public void updaUserLocation(Guid userId, MapLocation location)
+        /// <summary>
+        /// Updates the location of a user on the map.
+        /// </summary>
+        /// <param name="userId">The ID of the user whose location is being updated.</param>
+        /// <param name="location">The new location of the user.</param>
+        public void UpdateUserLocation(Guid userId, MapLocation location)
         {
             mapRepo.updateUserLocation(userId, location);
         }

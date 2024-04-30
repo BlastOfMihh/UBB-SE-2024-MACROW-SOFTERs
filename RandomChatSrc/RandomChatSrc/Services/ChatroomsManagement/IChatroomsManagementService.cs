@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+// <copyright file="IChatroomsManagementService.cs" company="SuperBet BeClean">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 using RandomChatSrc.Models;
 
 namespace RandomChatSrc.Services.ChatroomsManagement
@@ -12,7 +10,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         TextChat GetChat();
         TextChat CreateChat(int size);
         void DeleteChat(Guid id);
-        TextChat getChatById(Guid id);
-        List<TextChat> getAllChats();
+        TextChat GetChatById(Guid id);
+        List<TextChat> GetAllChats();
     }
 }
