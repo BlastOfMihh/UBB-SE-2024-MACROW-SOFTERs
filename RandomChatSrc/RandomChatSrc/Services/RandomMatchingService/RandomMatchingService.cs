@@ -28,7 +28,7 @@ namespace RandomChatSrc.Services.RandomMatchingService
         {
             var allChats = chatroomsManagementService.GetAllChats();
             int currentChatIndex = -1;
-            List<int> bestChatIndexes = [];
+            List<int> bestChatIndexes = new List<int>();
 
             // score - the number of matching interests of the user we want to assign
             // to a chat (i.e. `chatConfig` parameter) across all users that are members

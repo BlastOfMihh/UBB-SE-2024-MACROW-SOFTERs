@@ -1,4 +1,5 @@
 ﻿using RandomChatSrc.Pages;
+using RandomChatSrc.Services.ChatroomsManagement;
 
 namespace RandomChatSrc
 {
@@ -7,13 +8,13 @@ namespace RandomChatSrc
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new OpenChatsWindow());
+            ChatroomsManagementService cms = new ChatroomsManagementService();
+            MainPage = new NavigationPage(new OpenChatsWindow(cms));
 
             // In order to see the chatroom page uncomment the below line and comment the other main page
             // MainPage = new NavigationPage(new ChatRoomPage());
 
-            //MainPage = new AppShell();
+            // MainPage = new AppShell();
         }
     }
 }
