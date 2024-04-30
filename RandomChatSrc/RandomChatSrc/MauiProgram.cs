@@ -9,6 +9,7 @@ using RandomChatSrc.Domain.UserDomain;
 using RandomChatSrc.Domain.UserConfig;
 using RandomChatSrc.Domain.InterestDomain;
 using CommunityToolkit.Maui.Maps;
+using RandomChatSrc.Services.GlobalServices;
 
 namespace RandomChatSrc
 {
@@ -36,7 +37,7 @@ namespace RandomChatSrc
             chats[chats.Count - 1].addParticipant(user2);
             Trace.WriteLine(chats[chats.Count - 1].availableParticipantsCount());
             UserChatListService userChatListService = new UserChatListService(chatroomsManagementService);
-            Trace.WriteLine(userChatListService.currentUserId.ToString());
+            Trace.WriteLine(userChatListService._currentUserId.ToString());
             var openChats = userChatListService.getOpenChats();
             foreach (TextChat chat in openChats)
             {
