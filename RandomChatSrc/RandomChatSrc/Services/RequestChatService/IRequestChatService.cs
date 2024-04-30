@@ -12,13 +12,13 @@ namespace RandomChatSrc.Services.RequestChatService
 {
     public interface IRequestChatService
     { 
-        public List<Request> getAllRequests();
+        List<Request> getAllRequests();
 
-        public void addRequest(Guid senderId, Guid receiverId);
+        void addRequest(Guid senderId, Guid receiverId);
 
-        public void declineRequest(Guid senderId, Guid receiverId);
+        void declineRequest(Guid senderId, Guid receiverId);
 
-        public void acceptRequest(Guid senderId, Guid receiverId);
+        void acceptRequest(Guid senderId, Guid receiverId);
         
     }
 }

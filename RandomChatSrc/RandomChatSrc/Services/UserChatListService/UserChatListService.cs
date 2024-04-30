@@ -13,7 +13,7 @@ namespace RandomChatSrc.Services.UserChatListServiceDomain
     public class UserChatListService : IUserChatListService
     {
         private readonly ChatroomsManagementService _chatroomsManagementService;
-        public readonly Guid _currentUserId;
+        private readonly Guid _currentUserId;
         public UserChatListService(ChatroomsManagementService chatroomsManagementService)
         {
             this._chatroomsManagementService = chatroomsManagementService;
@@ -34,7 +34,10 @@ namespace RandomChatSrc.Services.UserChatListServiceDomain
             }
 
         }
-
+        public Guid getCurrentUserGuid()
+        {
+            return _currentUserId;
+        }
         /// <summary>
         /// Retrieves a list of all open chats that the current user is a member of.
         /// </summary>

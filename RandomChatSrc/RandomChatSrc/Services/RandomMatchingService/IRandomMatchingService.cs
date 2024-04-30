@@ -11,6 +11,6 @@ namespace RandomChatSrc.Services.RandomMatchingService
 {
     public interface IRandomMatchingService
     {
-        public TextChat RequestMatchingChatRoom(UserChatConfig chatConfig);
+        TextChat RequestMatchingChatRoom(UserChatConfig chatConfig);
     }
 }

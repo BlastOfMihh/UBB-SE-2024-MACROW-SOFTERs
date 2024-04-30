@@ -37,7 +37,7 @@ namespace RandomChatSrc
             chats[chats.Count - 1].addParticipant(user2);
             Trace.WriteLine(chats[chats.Count - 1].availableParticipantsCount());
             UserChatListService userChatListService = new UserChatListService(chatroomsManagementService);
-            Trace.WriteLine(userChatListService._currentUserId.ToString());
+            Trace.WriteLine(userChatListService.getCurrentUserGuid().ToString());
             var openChats = userChatListService.getOpenChats();
             foreach (TextChat chat in openChats)
             {

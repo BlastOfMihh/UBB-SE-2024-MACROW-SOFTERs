@@ -29,7 +29,7 @@ namespace RandomChatSrc.Services.RandomMatchingService
         /// <returns>The matched text chat room.</returns>
         public TextChat RequestMatchingChatRoom(UserChatConfig chatConfig)
         {
-            var allChats = _chatroomsManagementService.ActiveChats;
+            var allChats = _chatroomsManagementService.getAllChats();
             int currentChatIndex = -1;
             List<int> bestChatIndexes = [];
 
@@ -46,7 +46,7 @@ namespace RandomChatSrc.Services.RandomMatchingService
             foreach (var chat in allChats)
             {
                 ++currentChatIndex;
-                if (chat.availableParticipantsCount() == 0 || chat.participants.Any(participant => participant.id == _userChatListService._currentUserId))
+                if (chat.availableParticipantsCount() == 0 || chat.participants.Any(participant => participant.id == _userChatListService.getCurrentUserGuid()))
                 {
                     continue;
                 }

@@ -21,7 +21,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
     public class ChatroomsManagementService : IChatroomsManagementService
     {
         private readonly string _textChatsDirectoryPath = "D:\\facultate\\anu 2\\SEMESTRUL 2\\ISS Second game\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";
-        public List<TextChat> ActiveChats { get; set; }
+        private List<TextChat> ActiveChats { get; set; }
 
         public ChatroomsManagementService()
         {
