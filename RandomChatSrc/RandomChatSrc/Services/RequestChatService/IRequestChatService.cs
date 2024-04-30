@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RandomChatSrc.Repository;
+﻿// <copyright file="IRequestChatService.cs" company="SuperBet BeClean">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 using RandomChatSrc.Domain.RequestDomain;
-using RandomChatSrc.Domain.TextChat;
-using RandomChatSrc.Services.GlobalServices;
 
 namespace RandomChatSrc.Services.RequestChatService
 {
     public interface IRequestChatService
-    { 
-        List<Request> getAllRequests();
+    {
+        List<Request> GetAllRequests();
 
-        void addRequest(Guid senderId, Guid receiverId);
+        void AddRequest(Guid senderId, Guid receiverId);
 
-        void declineRequest(Guid senderId, Guid receiverId);
+        void DeclineRequest(Guid senderId, Guid receiverId);
 
-        void acceptRequest(Guid senderId, Guid receiverId);
-        
+        void AcceptRequest(Guid senderId, Guid receiverId);
     }
 }

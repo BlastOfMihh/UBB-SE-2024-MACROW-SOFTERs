@@ -33,7 +33,7 @@ public partial class OpenChatsWindow : ContentPage
         //we test the matching with a dummy user
         User user = new User("gigel");
         user.AddInterest(new Interest("music"));
-        TextChat textChat = chatService.getAllChats()[2];
+        TextChat textChat = chatService.GetAllChats()[2];
         textChat.addParticipant(user);
         //end test code
         string filePath = "D:\\School\\An 2\\Sem 2\\ISS\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
@@ -71,7 +71,7 @@ public partial class OpenChatsWindow : ContentPage
         chatStackLayout.Children.Clear();
 
         // Iterate through active chats and add them to the UI
-        foreach (TextChat chat in chatService.getAllChats())
+        foreach (TextChat chat in chatService.GetAllChats())
         {
             // Create a custom UI element for each chat
             var chatLayout = new StackLayout { Margin = new Thickness(7) };

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RandomChatSrc.Domain.ChatDomain;
+﻿// <copyright file="IRandomMatchingService.cs" company="SuperBet BeClean">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 using RandomChatSrc.Domain.TextChat;
 using RandomChatSrc.Domain.UserConfig;
 

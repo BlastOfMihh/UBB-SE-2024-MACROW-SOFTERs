@@ -1,16 +1,14 @@
-﻿using RandomChatSrc.Services.ChatroomsManagement;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="GlobalServices.cs" company="SuperBet BeClean">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+using RandomChatSrc.Services.ChatroomsManagement;
 using RandomChatSrc.Services.MapService;
 using RandomChatSrc.Services.RequestChatService;
 using RandomChatSrc.Repository;
 
-    namespace RandomChatSrc.Services.GlobalServices
-    {
-        public class GlobalServices
+namespace RandomChatSrc.Services.GlobalServices
+{
+    public class GlobalServices
         {
             private IChatroomsManagementService ChatroomsManagementService { get; }
             private IMapService MapService { get; }
