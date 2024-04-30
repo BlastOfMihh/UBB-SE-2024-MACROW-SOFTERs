@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomChatSrc.Repo
+namespace RandomChatSrc.Repositories
 {
     public interface IMapRepo
     {
