@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RandomChatSrc.Domain.UserDomain;
+﻿using RandomChatSrc.Models;
 
 namespace RandomChatSrc.Domain.UserConfig
 {
     public class UserChatConfig
     {
-        public User user { get; set; }
-        public UserChatConfig(User user) {
-            this.user = user;
+        public User User { get; set; }
+
+        public UserChatConfig(User user)
+        {
+            User = user;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿// <copyright file="IRequestChatService.cs" company="SuperBet BeClean">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-using RandomChatSrc.Domain.RequestDomain;
+using RandomChatSrc.Models;
 
 namespace RandomChatSrc.Services.RequestChatService
 {

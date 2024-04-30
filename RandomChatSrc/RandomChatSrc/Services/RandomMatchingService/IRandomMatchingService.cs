@@ -1,8 +1,7 @@
-﻿// <copyright file="IRandomMatchingService.cs" company="SuperBet BeClean">
+// <copyright file="IRandomMatchingService.cs" company="SuperBet BeClean">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-using RandomChatSrc.Domain.TextChat;
-using RandomChatSrc.Domain.UserConfig;
+using RandomChatSrc.Models;
 
 namespace RandomChatSrc.Services.RandomMatchingService
 {

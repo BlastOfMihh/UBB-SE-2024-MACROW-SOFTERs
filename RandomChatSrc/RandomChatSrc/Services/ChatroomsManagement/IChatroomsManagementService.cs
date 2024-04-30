@@ -1,7 +1,7 @@
-﻿// <copyright file="IChatroomsManagementService.cs" company="SuperBet BeClean">
+// <copyright file="IChatroomsManagementService.cs" company="SuperBet BeClean">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-using RandomChatSrc.Domain.TextChat;
+using RandomChatSrc.Models;
 
 namespace RandomChatSrc.Services.ChatroomsManagement
 {

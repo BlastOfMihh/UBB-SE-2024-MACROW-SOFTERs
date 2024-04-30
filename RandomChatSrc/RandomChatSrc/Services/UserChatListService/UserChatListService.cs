@@ -1,8 +1,8 @@
-﻿// <copyright file="UserChatListService.cs" company="SuperBet BeClean">
+// <copyright file="UserChatListService.cs" company="SuperBet BeClean">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 using System.Xml;
-using RandomChatSrc.Domain.TextChat;
+using RandomChatSrc.Models;
 using RandomChatSrc.Services.ChatroomsManagement;
 
 namespace RandomChatSrc.Services.UserChatListServiceDomain
@@ -17,30 +17,33 @@ namespace RandomChatSrc.Services.UserChatListServiceDomain
             string filePath = "D:\\School\\An 2\\Sem 2\\ISS\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
             try
             {
-                XmlDocument document = new XmlDocument();
-                document.Load(filePath);
-                var userId = document.SelectSingleNode("/Users/CurrentUser/id").InnerText ?? throw new Exception("User not found");
-                this.currentUserId = new Guid(userId);
+                XmlDocument doc = new XmlDocument();
+                doc.Load(filePath);
+                var userId = doc.SelectSingleNode("/Users/CurrentUser/Id").InnerText;
+                if (userId == null)
+                {
+                    throw new Exception("User not found");
+                }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
         }
-        public Guid getCurrentUserGuid()
-        {
-            return currentUserId;
-        }
+        public Guid GetCurrentUserGuid()
+            {
+                return currentUserId;
+            }
 
         /// <summary>
         /// Retrieves a list of all open chats that the current user is a member of.
         /// </summary>
         /// <returns>A list of open chats.</returns>
-        public List<TextChat> getOpenChats()
+        public List<TextChat> GetOpenChats()
         {
             List<TextChat> openChats = chatroomsManagementService.GetAllChats();
-            openChats = openChats.Where(chat => chat.participants.Any(user => user.id == currentUserId)).ToList();
+            openChats = openChats.Where(chat => chat.Participants.Any(user => user.Id == currentUserId)).ToList();
             return openChats;
         }
     }
-}
+    }

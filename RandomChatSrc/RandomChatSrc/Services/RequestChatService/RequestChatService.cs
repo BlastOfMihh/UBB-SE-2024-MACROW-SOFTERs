@@ -2,8 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 using RandomChatSrc.Repository;
-using RandomChatSrc.Domain.RequestDomain;
-using RandomChatSrc.Domain.TextChat;
+using RandomChatSrc.Models;
 
 namespace RandomChatSrc.Services.RequestChatService
 {
@@ -24,7 +23,7 @@ namespace RandomChatSrc.Services.RequestChatService
         /// <returns>A list of requests.</returns>
         public List<Request> GetAllRequests()
         {
-            return this.requestsChatRepo.getAllChatRequests();
+            return this.requestsChatRepo.GetAllChatRequests();
         }
 
         /// <summary>
@@ -34,7 +33,7 @@ namespace RandomChatSrc.Services.RequestChatService
         /// <param name="receiverId">The ID of the receiver.</param>
         public void AddRequest(Guid senderId, Guid receiverId)
         {
-            requestsChatRepo.addRequest(senderId, receiverId);
+            requestsChatRepo.AddRequest(senderId, receiverId);
         }
 
         /// <summary>
@@ -44,7 +43,7 @@ namespace RandomChatSrc.Services.RequestChatService
         /// <param name="receiverId">The ID of the receiver.</param>
         public void DeclineRequest(Guid senderId, Guid receiverId)
         {
-            requestsChatRepo.removeRequest(senderId, receiverId);
+            requestsChatRepo.RemoveRequest(senderId, receiverId);
         }
 
         /// <summary>
@@ -55,9 +54,9 @@ namespace RandomChatSrc.Services.RequestChatService
         public void AcceptRequest(Guid senderId, Guid receiverId)
         {
             TextChat newTextChat = globalServices.GetChatroomsManagementService().CreateChat(5);
-            newTextChat.addParticipant(globalServices.GetUserRepo().getUserById(senderId));
-            newTextChat.addParticipant(globalServices.GetUserRepo().getUserById(receiverId));
-            requestsChatRepo.removeRequest(senderId, receiverId);
+            newTextChat.AddParticipant(globalServices.GetUserRepo().GetUserById(senderId));
+            newTextChat.AddParticipant(globalServices.GetUserRepo().GetUserById(receiverId));
+            requestsChatRepo.RemoveRequest(senderId, receiverId);
         }
     }
 }

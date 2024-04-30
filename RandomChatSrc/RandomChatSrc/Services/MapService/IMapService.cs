@@ -1,7 +1,7 @@
-﻿// <copyright file="IMapService.cs" company="SuperBet BeClean">
+// <copyright file="IMapService.cs" company="SuperBet BeClean">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-using RandomChatSrc.Domain.MapLocation;
+using RandomChatSrc.Models;
 
 namespace RandomChatSrc.Services.MapService
 {

@@ -1,11 +1,11 @@
-﻿// <copyright file="ChatRequestsRepository.cs" company="PlaceholderCompany">
+// <copyright file="ChatRequestsRepository.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace RandomChatSrc.Repository
 {
     using System.Xml.Linq;
-    using RandomChatSrc.Domain.RequestDomain;
+    using Models;
 
     /// <summary>
     ///     Class responsible for writing Chat Requests to the XML file.
@@ -13,8 +13,8 @@ namespace RandomChatSrc.Repository
     public class ChatRequestsRepository
     {
         private Guid Id { get; set; }
-        private List<Request> chatRequests {  get; set; }
-        private string RequestsFolderPath {  get; set; }
+        private List<Request> ChatRequests { get; set; }
+        private string RequestsFolderPath { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatRequestsRepository"/> class.
@@ -22,20 +22,20 @@ namespace RandomChatSrc.Repository
         public ChatRequestsRepository(List<Request> chatRequests, string requestsFolderPath)
         {
             this.Id = Guid.NewGuid();
-            this.chatRequests = chatRequests;
+            this.ChatRequests = chatRequests;
             this.RequestsFolderPath = requestsFolderPath + this.Id.ToString();
 
             if (!Directory.Exists(this.RequestsFolderPath))
             {
                 Directory.CreateDirectory(this.RequestsFolderPath);
             }
-            this.loadFromMemory();
+            this.LoadFromMemory();
         }
 
         /// <summary>
         ///     Retrieves all Chat Requests from the XML file.
         /// </summary>
-        private void loadFromMemory()
+        private void LoadFromMemory()
         {
             foreach (string requestPath in Directory.GetFiles(this.RequestsFolderPath))
             {
@@ -87,8 +87,8 @@ namespace RandomChatSrc.Repository
                       Console.WriteLine($"There is no timestamp content for the document with file path '${requestPath}'");
                       continue;
                   }*/
-                Request currentRequest = new(Guid.Parse(requestId), Guid.Parse(senderUserId), Guid.Parse(receiverUserId), requestPath);
-                this.chatRequests.Add(currentRequest);
+                Request currentRequest = new (Guid.Parse(requestId), Guid.Parse(senderUserId), Guid.Parse(receiverUserId), requestPath);
+                this.ChatRequests.Add(currentRequest);
             }
         }
 
@@ -97,13 +97,13 @@ namespace RandomChatSrc.Repository
         /// </summary>
         /// <param name="senderUserId">The ID of the user who sent the request.</param>
         /// <param name="receiverUserId">The ID of the user who will receive the request.</param>
-        public void addRequest(Guid senderUserId, Guid receiverUserId)
+        public void AddRequest(Guid senderUserId, Guid receiverUserId)
         {
             Guid requestId = Guid.NewGuid();
             string requestPath = this.RequestsFolderPath + "/request_" + requestId.ToString() + ".xml";
-            Request currentRequest = new(requestId, senderUserId, receiverUserId, requestPath);
-            this.chatRequests.Add(currentRequest);
-            XDocument requestDocument = new(new XElement("request",
+            Request currentRequest = new (requestId, senderUserId, receiverUserId, requestPath);
+            this.ChatRequests.Add(currentRequest);
+            XDocument requestDocument = new (new XElement("request",
                                                 new XElement("RequestId", requestId),
                                                 new XElement("senderUser", senderUserId),
                                                 new XElement("receiverUser", receiverUserId)));
@@ -115,17 +115,17 @@ namespace RandomChatSrc.Repository
         /// </summary>
         /// <param name="senderUserId">The ID of the user who sent the request.</param>
         /// <param name="receiverUserId">The ID of the user who received the request.</param>
-        public void removeRequest(Guid senderUserId, Guid receiverUserId)
+        public void RemoveRequest(Guid senderUserId, Guid receiverUserId)
         {
-            this.chatRequests = this.chatRequests.Where(request => !(request.SenderUserId == senderUserId && request.ReceiverUserId == receiverUserId)).ToList();
+            ChatRequests = ChatRequests.Where(request => !(request.SenderUserId == senderUserId && request.ReceiverUserId == receiverUserId)).ToList();
         }
 
         /// <summary>
         ///     Deletes a Chat Request from the XML file.
         /// </summary>
-        public List<Request> getAllChatRequests()
+        public List<Request> GetAllChatRequests()
         {
-            return this.chatRequests;
+            return this.ChatRequests;
         }
     }
 }

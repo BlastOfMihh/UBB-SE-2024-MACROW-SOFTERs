@@ -15,7 +15,7 @@ public partial class MapWindow : ContentPage
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(filePath);
-            var userId = doc.SelectSingleNode("/Users/CurrentUser/id").InnerText;
+            var userId = doc.SelectSingleNode("/Users/CurrentUser/Id").InnerText;
             if (userId == null)
             {
                 throw new Exception("User not found");

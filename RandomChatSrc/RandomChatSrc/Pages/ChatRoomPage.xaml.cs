@@ -1,5 +1,4 @@
-using RandomChatSrc.Domain;
-using RandomChatSrc.Domain.TextChat;
+using RandomChatSrc.Models;
 using RandomChatSrc.Services.MessageService;
 
 namespace RandomChatSrc.Pages;
@@ -12,7 +11,7 @@ public partial class ChatRoomPage : ContentPage
     public ChatRoomPage(Guid currentUser, MessageService messageService)
     {
         InitializeComponent();
-        this.currentUserId = currentUser;
+        currentUserId = currentUser;
         this.messageService = messageService;
         LoadConversation();
     }
@@ -23,7 +22,7 @@ public partial class ChatRoomPage : ContentPage
         var chatHeaderLayout = new StackLayout { Orientation = StackOrientation.Horizontal, BackgroundColor = Color.FromHex("#332769"), Padding = new Thickness(8) };
         var chatIdLabel = new Label
         {
-            Text = $"Chatroom: {textChat.id}", HorizontalOptions = LayoutOptions.CenterAndExpand,
+            Text = $"Chatroom: {textChat.Id}", HorizontalOptions = LayoutOptions.CenterAndExpand,
             FontSize = 16,
             FontAttributes = FontAttributes.Bold
         };

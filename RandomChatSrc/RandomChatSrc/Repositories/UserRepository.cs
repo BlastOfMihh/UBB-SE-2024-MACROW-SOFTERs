@@ -4,21 +4,21 @@
 
 namespace RandomChatSrc.Repository
 {
-    using RandomChatSrc.Domain.UserDomain;
+    using RandomChatSrc.Models;
 
     /// <summary>
     ///     Class responsible for storing and getting Users from the repository.
     /// </summary>
     public class UserRepository
     {
-        private List<User> users {  get; set; }
+        private List<User> Users { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserRepository"/> class.
         /// </summary>
         public UserRepository(List<User> users)
         {
-            this.users = users;
+            Users = users;
         }
 
         /// <summary>
@@ -26,9 +26,9 @@ namespace RandomChatSrc.Repository
         /// </summary>
         /// <param name="id">The ID of the user to search for.</param>
         /// <returns>The user with the specified ID, if it's found.</returns>
-        public User getUserById(Guid id)
+        public User GetUserById(Guid id)
         {
-            return this.users.FirstOrDefault(user => user.id == id);
+            return Users.FirstOrDefault(user => user.Id == id);
         }
     }
 }

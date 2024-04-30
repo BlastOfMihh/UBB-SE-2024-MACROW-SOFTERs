@@ -1,8 +1,4 @@
-﻿// <copyright file="ChatroomsManagementService.cs" company="SuperBet BeClean">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
-using RandomChatSrc.Domain;
-using RandomChatSrc.Domain.TextChat;
+using RandomChatSrc.Models;
 
 namespace RandomChatSrc.Services.ChatroomsManagement
 {
@@ -12,7 +8,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
     public class ChatroomsManagementService : IChatroomsManagementService
     {
        // schimba asta de fiecare data cand dai pull asta e nivelul
-        private readonly string textChatsDirectoryPath = "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";       private List<TextChat> ActiveChats { get; set; }
+        private readonly string textChatsDirectoryPath = "D:\\facultate\\anu 2\\SEMESTRUL 2\\ISS Second game\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";       private List<TextChat> ActiveChats { get; set; }
 
         public ChatroomsManagementService()
         {
@@ -59,7 +55,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         {
             foreach (TextChat chat in ActiveChats.ToList())
             {
-                if (chat.id == id)
+                if (chat.Id == id)
                 {
                     ActiveChats.Remove(chat);
                     return;
@@ -88,7 +84,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         {
             foreach (TextChat chat in ActiveChats)
             {
-                if (chat.id == id)
+                if (chat.Id == id)
                 {
                     return chat;
                 }

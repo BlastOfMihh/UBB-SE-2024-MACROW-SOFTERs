@@ -1,11 +1,9 @@
+using System.Xml;
 using RandomChatSrc.Services.ChatroomsManagement;
-using RandomChatSrc.Domain.TextChat;
+using RandomChatSrc.Models;
 using RandomChatSrc.Services.RandomMatchingService;
 using RandomChatSrc.Services.UserChatListServiceDomain;
-using RandomChatSrc.Domain.UserConfig;
 using RandomChatSrc.Services.MessageService;
-using Microsoft.Maui.Graphics.Text;
-using RandomChatSrc.Domain.UserDomain;
 
 namespace RandomChatSrc.Pages;
 
@@ -13,6 +11,8 @@ public partial class OpenChatsWindow : ContentPage
 {
     private ChatroomsManagementService chatService;
     private Guid currentUserId;
+    private UserChatListService userChatListService;
+
     private UserChatConfig currentUserConfig;
     public OpenChatsWindow(ChatroomsManagementService chatService)
 	{
@@ -20,10 +20,39 @@ public partial class OpenChatsWindow : ContentPage
         this.WidthRequest = 800;
         this.HeightRequest = 600;
         this.BackgroundColor = Color.FromHex("#FFFFFF");
-        // Hardcoded user (wtf)
-        this.currentUserConfig = new UserChatConfig(new User("Alex"));
+        // start test code
+        // we test the matching with a dummy User
+        User user = new User("gigel");
+        user.AddInterest(new Interest("music"));
+        TextChat textChat = chatService.GetAllChats()[2];
+        textChat.AddParticipant(user);
+        // end test code
+        string filePath = "D:\\facultate\\anu 2\\SEMESTRUL 2\\ISS Second game\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
+        try
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(filePath);
+            var userId = doc.SelectSingleNode("/Users/CurrentUser/id").InnerText;
+            if (userId == null)
+            {
+                throw new Exception("User not found");
+            }
+            this.currentUserId = new Guid(userId);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
         InitializeComponent();
         RefreshActiveChats();
+        // code to test current User
+        // we should have a current User in the system, which we read and save at the start of the app
+        // for now, we create a dummy User at the start of the app
+        // we create it in the constructor of the OpenChatsWindow, since it's the first page that is opened
+        User currentUser = new User("current User");
+        currentUser.Id = currentUserId;
+        this.currentUserConfig = new UserChatConfig(currentUser);
+        currentUserConfig.User.AddInterest(new Interest("music"));
     }
 
     private void RefreshActiveChats()
@@ -35,35 +64,17 @@ public partial class OpenChatsWindow : ContentPage
         foreach (TextChat chat in chatService.GetAllChats())
         {
             // Create a custom UI element for each chat
-            var chatLayout = new StackLayout
-            {
-                Margin = new Thickness(7),
-                BackgroundColor = Color.FromHex("#E2E2E2"),
-            };
-            var chatHeaderLayout = new StackLayout
-            {
-                Margin = new Thickness(10),
-                Orientation = StackOrientation.Horizontal,
-            };
-            var chatInfoLayout = new StackLayout
-            {
-                Margin = new Thickness(8),
-                VerticalOptions = LayoutOptions.Center,
-            };
-            var chatIDLabel = new Label
-            {
-                Text = $"Chat ID: {chat.id}",
-                FontSize = 18,
-                FontAttributes = FontAttributes.Bold,
-                TextColor = Color.FromHex("#000000"),
-            };
-            var lastMessageLabel = new Label
-            {
-                Text = $"Last Message: {((chat.Messages.Count != 0) ? chat.Messages.Last().Content : "No messages yet")}",
-                FontSize = 15,
-                TextColor = Color.FromHex("#000000"),
-            };
-            chatInfoLayout.Children.Add(chatIDLabel);
+            var chatLayout = new StackLayout { Margin = new Thickness(7) };
+            chatLayout.BackgroundColor = Color.FromHex("#E2E2E2");
+
+            var chatHeaderLayout = new StackLayout { Orientation = StackOrientation.Horizontal, Margin = new Thickness(10) };
+            var chatInfoLayout = new StackLayout { VerticalOptions = LayoutOptions.Center, Margin = new Thickness(8) };
+            var chatIdLabel = new Label { Text = $"Chat ID: {chat.Id}", FontSize = 18, FontAttributes = FontAttributes.Bold };
+            chatIdLabel.TextColor = Color.FromHex("#000000");
+            var lastMessageLabel = new Label { Text = $"Last Message: {((chat.Messages.Count != 0) ? chat.Messages.Last().Content : "No messages yet")}", FontSize = 15 };
+            lastMessageLabel.TextColor = Color.FromHex("#000000");
+
+            chatInfoLayout.Children.Add(chatIdLabel);
             chatInfoLayout.Children.Add(lastMessageLabel);
             chatHeaderLayout.Children.Add(chatInfoLayout);
             chatLayout.Children.Add(chatHeaderLayout);
@@ -96,7 +107,6 @@ public partial class OpenChatsWindow : ContentPage
         MessageService messageService = new MessageService(textChat, currentUserId);
         await Navigation.PushAsync(new ChatRoomPage(currentUserId, messageService));
     }
-
     private void OpenChatButton_Clicked(object sender, EventArgs e)
     {
     }
@@ -108,7 +118,6 @@ public partial class OpenChatsWindow : ContentPage
     private async void ChatItem_Clicked(object sender, EventArgs e)
     {
     }
-
     private async void MapButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new MapWindow());
