@@ -9,7 +9,7 @@ namespace RandomChatSrc.Services.MapService
     public class MapService : IMapService
     {
         private readonly MapRepository mapRepo;
-        private readonly GlobalServices.GlobalServices globalServices;
+        private GlobalServices.GlobalServices globalServices;
 
         /// <summary>
         /// Initializes a new instance of the MapService class.
@@ -55,7 +55,7 @@ namespace RandomChatSrc.Services.MapService
         /// <param name="receiverId">The ID of the receiver being requested.</param>
         public void MakeRequest(Guid senderId, Guid receiverId)
         {
-            globalServices.GetRequestChatService().AddRequest(senderId, receiverId);
+            globalServices.RequestChatService.AddRequest(senderId, receiverId);
         }
 
         /// <summary>

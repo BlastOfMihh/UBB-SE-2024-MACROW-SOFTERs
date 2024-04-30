@@ -2,12 +2,16 @@
 {
     /// <summary>
     /// Represents the interests of a User.
-    /// </summary>
-
-    public class Interest(string interestName)
+    /// </summary
+    public class Interest
     {
         public Guid Id { get; } = Guid.NewGuid();
-        public string InterestName { get; } = interestName;
+        public string InterestName { get; }
+
+        public Interest(string interestName)
+        {
+            InterestName = interestName;
+        }
 
         public override bool Equals(object? obj)
         {
@@ -15,7 +19,7 @@
             {
                 return false;
             }
-            if (obj.GetType() != this.GetType())
+            if (obj.GetType() != GetType())
             {
                 return false;
             }

@@ -43,6 +43,9 @@
 		<CodeAnalysisRuleSet>SE.ruleset </CodeAnalysisRuleSet>
 		
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -68,10 +71,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui.Maps" Version="2.0.1" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.7" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.21" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.20" />
+		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.21" />
 		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -94,7 +97,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Repo\" />
 	  <Folder Include="test\" />
 	</ItemGroup>
 	

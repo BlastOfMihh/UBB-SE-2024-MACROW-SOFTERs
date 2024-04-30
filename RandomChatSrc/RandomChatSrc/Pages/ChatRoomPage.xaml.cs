@@ -15,6 +15,7 @@ public partial class ChatRoomPage : ContentPage
         this.messageService = messageService;
         LoadConversation();
     }
+
     private void LoadConversation()
     {
         TextChat textChat = messageService.GetTextChat();
