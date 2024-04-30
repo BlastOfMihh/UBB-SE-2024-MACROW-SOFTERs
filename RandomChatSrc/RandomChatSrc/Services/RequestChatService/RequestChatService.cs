@@ -10,9 +10,9 @@ namespace RandomChatSrc.Services.RequestChatService
     public class RequestChatService
     {
         private readonly GlobalServices.GlobalServices globalServices;
-        private readonly RequestsChatRepository requestsChatRepo;
+        private readonly ChatRequestsRepository requestsChatRepo;
 
-        public RequestChatService(RequestsChatRepository requestsChatRepo, GlobalServices.GlobalServices globalServices)
+        public RequestChatService(ChatRequestsRepository requestsChatRepo, GlobalServices.GlobalServices globalServices)
         {
             this.requestsChatRepo = requestsChatRepo;
             this.globalServices = globalServices;
