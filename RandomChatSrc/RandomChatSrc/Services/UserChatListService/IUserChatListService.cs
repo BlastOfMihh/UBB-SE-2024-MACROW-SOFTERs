@@ -1,15 +1,13 @@
-﻿using RandomChatSrc.Domain.ChatDomain;
+﻿// <copyright file="IUserChatListService.cs" company="SuperBet BeClean">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 using RandomChatSrc.Domain.TextChat;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RandomChatSrc.Services.UserChatListServiceDomain
 {
     public interface IUserChatListService
     {
         List<TextChat> getOpenChats();
+        Guid getCurrentUserGuid();
     }
 }

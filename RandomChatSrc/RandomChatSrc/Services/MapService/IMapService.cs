@@ -1,17 +1,15 @@
-﻿using RandomChatSrc.Domain.MapLocation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="IMapService.cs" company="SuperBet BeClean">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+using RandomChatSrc.Domain.MapLocation;
 
 namespace RandomChatSrc.Services.MapService
 {
     public interface IMapService
     {
-        void makeRequest(Guid senderId, Guid receiverId);
-        List<MapLocation> getAllUserLocations();
-        List<Guid> getAllUsers();
-        void updaUserLocation(Guid userId, MapLocation location);
+        void MakeRequest(Guid senderId, Guid receiverId);
+        List<MapLocation> GetAllUserLocations();
+        List<Guid> GetAllUsers();
+        void UpdateUserLocation(Guid userId, MapLocation location);
     }
 }

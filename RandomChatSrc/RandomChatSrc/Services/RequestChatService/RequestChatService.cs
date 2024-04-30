@@ -1,46 +1,63 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+// <copyright file="RequestChatService.cs" company="SuperBet BeClean">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 using RandomChatSrc.Repository;
 using RandomChatSrc.Domain.RequestDomain;
 using RandomChatSrc.Domain.TextChat;
-using RandomChatSrc.Services.GlobalServices;
 
 namespace RandomChatSrc.Services.RequestChatService
 {
     public class RequestChatService
     {
-        public GlobalServices.GlobalServices globalServices { get; set; }
-        public ChatRequestsRepository requestsChatRepo {  get; set; }
+        private readonly GlobalServices.GlobalServices globalServices;
+        private readonly RequestsChatRepository requestsChatRepo;
 
-        public RequestChatService(ChatRequestsRepository requestsChatRepo)
+        public RequestChatService(RequestsChatRepository requestsChatRepo, GlobalServices.GlobalServices globalServices)
         {
             this.requestsChatRepo = requestsChatRepo;
+            this.globalServices = globalServices;
         }
 
-        public List<Request> getAllRequests()
+        /// <summary>
+        /// Retrieves all requests.
+        /// </summary>
+        /// <returns>A list of requests.</returns>
+        public List<Request> GetAllRequests()
         {
             return this.requestsChatRepo.getAllChatRequests();
         }
 
-        public void addRequest(Guid senderId, Guid receiverId)
+        /// <summary>
+        /// Adds a chat request.
+        /// </summary>
+        /// <param name="senderId">The ID of the sender.</param>
+        /// <param name="receiverId">The ID of the receiver.</param>
+        public void AddRequest(Guid senderId, Guid receiverId)
         {
-            this.requestsChatRepo.addRequest(senderId, receiverId);
+            requestsChatRepo.addRequest(senderId, receiverId);
         }
 
-        public void declineRequest(Guid senderId, Guid receiverId)
+        /// <summary>
+        /// Declines a chat request.
+        /// </summary>
+        /// <param name="senderId">The ID of the sender.</param>
+        /// <param name="receiverId">The ID of the receiver.</param>
+        public void DeclineRequest(Guid senderId, Guid receiverId)
         {
-            this.requestsChatRepo.removeRequest(senderId, receiverId);
+            requestsChatRepo.removeRequest(senderId, receiverId);
         }
 
-        public void acceptRequest(Guid senderId, Guid receiverId)
+        /// <summary>
+        /// Accepts a chat request and creates a new text chat.
+        /// </summary>
+        /// <param name="senderId">The ID of the sender.</param>
+        /// <param name="receiverId">The ID of the receiver.</param>
+        public void AcceptRequest(Guid senderId, Guid receiverId)
         {
-            TextChat newTextChat = this.globalServices.chatroomsManagementService.CreateChat(5);
-            newTextChat.addParticipant(this.globalServices.userRepo.getUserById(senderId));
-            newTextChat.addParticipant(this.globalServices.userRepo.getUserById(receiverId));
-            this.requestsChatRepo.removeRequest(senderId, receiverId);
+            TextChat newTextChat = globalServices.GetChatroomsManagementService().CreateChat(5);
+            newTextChat.addParticipant(globalServices.GetUserRepo().getUserById(senderId));
+            newTextChat.addParticipant(globalServices.GetUserRepo().getUserById(receiverId));
+            requestsChatRepo.removeRequest(senderId, receiverId);
         }
     }
 }

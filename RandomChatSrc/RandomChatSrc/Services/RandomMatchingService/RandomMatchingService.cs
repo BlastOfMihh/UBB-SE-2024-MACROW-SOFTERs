@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RandomChatSrc.Domain.InterestDomain;
-using RandomChatSrc.Domain.ChatDomain;
+﻿// <copyright file="RandomMatchingService.cs" company="SuperBet BeClean">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 using RandomChatSrc.Domain.TextChat;
 using RandomChatSrc.Domain.UserConfig;
 using RandomChatSrc.Services.ChatroomsManagement;
@@ -14,18 +10,25 @@ namespace RandomChatSrc.Services.RandomMatchingService
 {
     public class RandomMatchingService : IRandomMatchingService
     {
-        ChatroomsManagementService chatroomsManagementService;
-        UserChatListService userChatListService;
+        private readonly ChatroomsManagementService chatroomsManagementService;
+        private readonly UserChatListService userChatListService;
+
         public RandomMatchingService(ChatroomsManagementService chatroomsManagementService, UserChatListService userChatListService)
         {
             this.chatroomsManagementService = chatroomsManagementService;
             this.userChatListService = userChatListService;
         }
+
+        /// <summary>
+        /// Requests a matching chat room for a user based on their configuration.
+        /// </summary>
+        /// <param name="chatConfig">The user's chat configuration.</param>
+        /// <returns>The matched text chat room.</returns>
         public TextChat RequestMatchingChatRoom(UserChatConfig chatConfig)
         {
-            var allChats = this.chatroomsManagementService.activeChats;
-            int curIdx = -1;
-            List<int> bestIdxs = [];
+            var allChats = chatroomsManagementService.GetAllChats();
+            int currentChatIndex = -1;
+            List<int> bestChatIndexes = [];
 
             // score - the number of matching interests of the user we want to assign
             // to a chat (i.e. `chatConfig` parameter) across all users that are members
@@ -36,56 +39,44 @@ namespace RandomChatSrc.Services.RandomMatchingService
             // user2 has 1 matching interest -''-;
             // user3 has 2 matching interests -''-;
             // => for this chat, the score will simply be 2 + 1 + 2 = 5.
-            int curScore = -1, bestScore = -1;
+            int currentScore = -1, bestScore = -1;
             foreach (var chat in allChats)
             {
-                ++curIdx;
-                if (chat.availableParticipantsCount() == 0)
+                ++currentChatIndex;
+                if (chat.availableParticipantsCount() == 0 || chat.participants.Any(participant => participant.id == userChatListService.getCurrentUserGuid()))
                 {
                     continue;
                 }
-
-                // check if our user is already part of this chat
-                // todo: couldn't we have done `participant.id == chatConfig.user.id` ?
-                if (chat.participants.Any(participant => participant.id == userChatListService.currentUserId))
-                {
-                    continue;
-                }
-
-                curScore = 0;
+                currentScore = 0;
                 foreach (var participant in chat.participants)
                 {
                     foreach (var participantInterest in participant.interests)
                     {
-                        curScore += Convert.ToInt32(chatConfig.user.interests.Any(curUserInterest => curUserInterest.Equals(participantInterest)));
+                        currentScore += Convert.ToInt32(chatConfig.user.interests.Any(curUserInterest => curUserInterest.Equals(participantInterest)));
                     }
                 }
-                if (curScore > bestScore)
+                if (currentScore > bestScore)
                 {
-                    bestScore = curScore;
-                    bestIdxs = [curIdx];
+                    bestScore = currentScore;
+                    bestChatIndexes = new List<int> { currentChatIndex };
                 }
-                if (curScore == bestScore)
+                else if (currentScore == bestScore)
                 {
-                    bestIdxs.Add(curIdx);
+                    bestChatIndexes.Add(currentChatIndex);
                 }
             }
-            if (bestIdxs.Count == 0)
+            if (bestChatIndexes.Count == 0)
             {
-                // all chats are full, or user is a member of all chats
-
-                // Create a new textchat to put the current user in.
-                // todo maybe should have another way to select the size of the new chat? 
-                TextChat newTextChat = this.chatroomsManagementService.CreateChat(5);  // todo: i suppose this would be passed by reference?
-                newTextChat.addParticipant(chatConfig.user);
-                return newTextChat;
+                // All chats are full, or user is a member of all chats
+                TextChat newChat = chatroomsManagementService.CreateChat(5);
+                newChat.addParticipant(chatConfig.user);
+                return newChat;
             }
-
             // choose an index randomly from the list of the best available indexes.
-            int randArrIdx = new Random().Next(bestIdxs.Count);
-            int randBestIdx = bestIdxs[randArrIdx];
-            allChats[randBestIdx].addParticipant(chatConfig.user);
-            return allChats[randBestIdx];
+            int randomIndex = new Random().Next(bestChatIndexes.Count);
+            int selectedChatIndex = bestChatIndexes[randomIndex];
+            allChats[selectedChatIndex].addParticipant(chatConfig.user);
+            return allChats[selectedChatIndex];
         }
     }
 }
