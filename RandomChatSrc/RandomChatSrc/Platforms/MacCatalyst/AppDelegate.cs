@@ -2,10 +2,11 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using Foundation;
 
 namespace RandomChatSrc
 {
+    using Foundation; 
+
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate
     {
