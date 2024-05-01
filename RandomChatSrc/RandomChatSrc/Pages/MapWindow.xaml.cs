@@ -1,51 +1,37 @@
-using System.Xml;
-using Microsoft.Maui.Controls.Maps;
-using Microsoft.Maui.Maps;
-namespace RandomChatSrc.Pages;
-public partial class MapWindow : ContentPage
+// <copyright file="MapWindow.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace RandomChatSrc.Pages
 {
-    private Guid currentUserId;
+    using Microsoft.Maui.Controls.Maps;
+    using Microsoft.Maui.Maps;
 
-    public MapWindow()
+    /// <summary>
+    /// The MapWindow class represents a page that displays a map.
+    /// It inherits from ContentPage which represents a single screen of content.
+    /// </summary>
+    public partial class MapWindow : ContentPage
     {
-    /*
-        //string filePath = "D:\\School\\An 2\\Sem 2\\ISS\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
-        string filePath = "C:\\GitHub_Repos\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
-        try
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MapWindow"/> class.
+        /// </summary>
+        public MapWindow()
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(filePath);
-            var userId = doc.SelectSingleNode("/Users/CurrentUser/Id").InnerText;
-            if (userId == null)
+            this.InitializeComponent();
+
+            // Move the map to a specific region
+            this.map.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(46.773545, 23.622010), Distance.FromKilometers(0)));
+
+            // Create a new pin at the specified location
+            var pin = new Pin()
             {
-                throw new Exception("User not found");
-            }
-            this.currentUserId = new Guid(userId);
+                Location = new Location(46.773545, 23.622010),
+                Label = $"You",
+            };
+
+            // Add the pin to the map
+            this.map.Pins.Add(pin);
         }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
-     */
-        InitializeComponent();
-        map.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(46.773545, 23.622010), Distance.FromKilometers(0)));
-        var pin = new Microsoft.Maui.Controls.Maps.Pin()
-        {
-            Location = new Location(46.773545, 23.622010),
-            Label = $"You",
-        };
-        map.Pins.Add(pin);
-
-        pin.MarkerClicked += Pin_Clicked;
-        pin.InfoWindowClicked += InfoWindow_Clicked;
-    }
-
-    private void InfoWindow_Clicked(object sender, PinClickedEventArgs e)
-    {
-         DisplayAlert("Chat Request sent", $"Sent request to {currentUserId}", "Ok");
-    }
-
-    private void Pin_Clicked(object sender, PinClickedEventArgs e)
-    {
     }
 }

@@ -1,22 +1,26 @@
-using RandomChatSrc.Models;
-using RandomChatSrc.Repositories;
+// <copyright file="MapService.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace RandomChatSrc.Services.MapService
 {
+    using RandomChatSrc.Models;
+    using RandomChatSrc.Repositories;
+
     /// <summary>
     /// Service for managing user locations on the map and handling user requests.
     /// </summary>
     public class MapService : IMapService
     {
-        private readonly MapRepository mapRepo;
+        private IMapRepository mapRepo;
         private GlobalServices.GlobalServices globalServices;
 
         /// <summary>
-        /// Initializes a new instance of the MapService class.
+        /// Initializes a new instance of the <see cref="MapService"/> class.
         /// </summary>
         /// <param name="mapRepo">The repository for map-related operations.</param>
         /// <param name="globalServices">The global services for handling requests.</param>
-        public MapService(MapRepository mapRepo, GlobalServices.GlobalServices globalServices)
+        public MapService(IMapRepository mapRepo, GlobalServices.GlobalServices globalServices)
         {
             this.mapRepo = mapRepo;
             this.globalServices = globalServices;
@@ -28,7 +32,7 @@ namespace RandomChatSrc.Services.MapService
         /// <returns>A list of map locations for all users.</returns>
         public List<MapLocation> GetAllUserLocations()
         {
-            return mapRepo.getAllUsersLocationList();
+            return this.mapRepo.GetAllUsersLocationList();
         }
 
         /// <summary>
@@ -37,14 +41,15 @@ namespace RandomChatSrc.Services.MapService
         /// <returns>A list of user IDs.</returns>
         public List<Guid> GetAllUsers()
         {
-            List<Guid> users = new List<Guid>();
-            foreach (MapLocation mapLocation in mapRepo.getAllUsersLocationList())
+            List<Guid> users = new ();
+            foreach (MapLocation mapLocation in this.mapRepo.GetAllUsersLocationList())
             {
                 if (mapLocation.UserId != Guid.Empty)
                 {
                     users.Add(mapLocation.UserId);
                 }
             }
+
             return users;
         }
 
@@ -55,7 +60,7 @@ namespace RandomChatSrc.Services.MapService
         /// <param name="receiverId">The ID of the receiver being requested.</param>
         public void MakeRequest(Guid senderId, Guid receiverId)
         {
-            globalServices.RequestChatService.AddRequest(senderId, receiverId);
+            this.globalServices.RequestChatService.AddRequest(senderId, receiverId);
         }
 
         /// <summary>
@@ -65,7 +70,7 @@ namespace RandomChatSrc.Services.MapService
         /// <param name="location">The new location of the user.</param>
         public void UpdateUserLocation(Guid userId, MapLocation location)
         {
-            mapRepo.updateUserLocation(userId, location);
+            this.mapRepo.UpdateUserLocation(userId, location);
         }
     }
 }

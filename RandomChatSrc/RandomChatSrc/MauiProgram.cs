@@ -1,19 +1,24 @@
-﻿// <copyright file="MauiProgram.cs" company="SuperBet BeClean">
+﻿// <copyright file="MauiProgram.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-using System.Diagnostics;
-using CommunityToolkit.Maui.Maps;
-using Microsoft.Extensions.Logging;
-using RandomChatSrc.Models;
-using RandomChatSrc.Services.ChatroomsManagement;
-using RandomChatSrc.Services.RandomMatchingService;
-using RandomChatSrc.Services.UserChatListServiceDomain;
 
 namespace RandomChatSrc
 {
+    using System.Diagnostics;
+    using CommunityToolkit.Maui.Maps;
+    using Microsoft.Extensions.Logging;
+    using RandomChatSrc.Services.ChatroomsManagement;
+    using RandomChatSrc.Services.RandomMatchingService;
+
+    /// <summary>
+    /// Represents the main entry point of the Maui application.
+    /// </summary>
     public static class MauiProgram
-        // va bat
     {
+        /// <summary>
+        /// Creates and configures the Maui application.
+        /// </summary>
+        /// <returns>The configured Maui application.</returns>
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();

@@ -5,20 +5,19 @@
 namespace RandomChatSrc.Repository
 {
     using System.Xml.Linq;
-    using Models;
+    using RandomChatSrc.Models;
+    using RandomChatSrc.Repositories;
 
     /// <summary>
     ///     Class responsible for writing Chat Requests to the XML file.
     /// </summary>
-    public class ChatRequestsRepository
+    public class ChatRequestsRepository : IChatRequestRepository
     {
-        private Guid Id { get; set; }
-        private List<Request> ChatRequests { get; set; }
-        private string RequestsFolderPath { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatRequestsRepository"/> class.
         /// </summary>
+        /// <param name="chatRequests"> The list of chat requests.</param>
+        /// <param name="requestsFolderPath"> The path to the folder where chat requests are stored.</param>
         public ChatRequestsRepository(List<Request> chatRequests, string requestsFolderPath)
         {
             this.Id = Guid.NewGuid();
@@ -29,13 +28,20 @@ namespace RandomChatSrc.Repository
             {
                 Directory.CreateDirectory(this.RequestsFolderPath);
             }
+
             this.LoadFromMemory();
         }
+
+        private Guid Id { get; set; }
+
+        private List<Request> ChatRequests { get; set; }
+
+        private string RequestsFolderPath { get; set; }
 
         /// <summary>
         ///     Retrieves all Chat Requests from the XML file.
         /// </summary>
-        private void LoadFromMemory()
+        public void LoadFromMemory()
         {
             foreach (string requestPath in Directory.GetFiles(this.RequestsFolderPath))
             {
@@ -45,6 +51,7 @@ namespace RandomChatSrc.Repository
                     Console.WriteLine("Could not load a document for file path '" + requestPath + "'");
                     continue;
                 }
+
                 if (requestsDocument.Root == null)
                 {
                     Console.WriteLine("The root for the document with file path '" + requestPath + "' is inexistent.");
@@ -64,6 +71,7 @@ namespace RandomChatSrc.Repository
                     Console.WriteLine($"There is no request id content for the document with file path '${requestPath}'");
                     continue;
                 }
+
                 string requestId = requestElement.Value;
 
                 XElement? senderElement = requestElement.Element("senderUser");
@@ -72,6 +80,7 @@ namespace RandomChatSrc.Repository
                     Console.WriteLine($"There is no sender content for the document with file path '${requestPath}'");
                     continue;
                 }
+
                 string senderUserId = senderElement.Value;
 
                 XElement? receiverElement = requestElement.Element("receiverUser");
@@ -80,13 +89,8 @@ namespace RandomChatSrc.Repository
                     Console.WriteLine($"There is no receiver content for the document with file path '${requestPath}`");
                     continue;
                 }
+
                 string receiverUserId = receiverElement.Value;
-                /*  XElement? timestampElement = requestElement.Element("timestamp");
-                  if (timestampElement == null)
-                  {
-                      Console.WriteLine($"There is no timestamp content for the document with file path '${requestPath}'");
-                      continue;
-                  }*/
                 Request currentRequest = new (Guid.Parse(requestId), Guid.Parse(senderUserId), Guid.Parse(receiverUserId), requestPath);
                 this.ChatRequests.Add(currentRequest);
             }
@@ -103,10 +107,8 @@ namespace RandomChatSrc.Repository
             string requestPath = this.RequestsFolderPath + "/request_" + requestId.ToString() + ".xml";
             Request currentRequest = new (requestId, senderUserId, receiverUserId, requestPath);
             this.ChatRequests.Add(currentRequest);
-            XDocument requestDocument = new (new XElement("request",
-                                                new XElement("RequestId", requestId),
-                                                new XElement("senderUser", senderUserId),
-                                                new XElement("receiverUser", receiverUserId)));
+            XDocument requestDocument = new (new XElement(
+                "request", new XElement("RequestId", requestId), new XElement("senderUser", senderUserId), new XElement("receiverUser", receiverUserId)));
             requestDocument.Save(requestPath);
         }
 
@@ -117,15 +119,13 @@ namespace RandomChatSrc.Repository
         /// <param name="receiverUserId">The ID of the user who received the request.</param>
         public void RemoveRequest(Guid senderUserId, Guid receiverUserId)
         {
-            ChatRequests = ChatRequests.Where(request => !(request.SenderUserId == senderUserId && request.ReceiverUserId == receiverUserId)).ToList();
+            this.ChatRequests = this.ChatRequests.Where(request => !(request.SenderUserId == senderUserId && request.ReceiverUserId == receiverUserId)).ToList();
         }
 
         /// <summary>
-        ///     Deletes a Chat Request from the XML file.
+        ///     Retrieves all Chat Requests.
         /// </summary>
-        public List<Request> GetAllChatRequests()
-        {
-            return this.ChatRequests;
-        }
+        /// <returns>A list of all Chat Requests.</returns>
+        public List<Request> GetAllChatRequests() => this.ChatRequests;
     }
 }

@@ -1,17 +1,26 @@
 // <copyright file="RandomMatchingService.cs" company="SuperBet BeClean">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-using RandomChatSrc.Models;
-using RandomChatSrc.Services.ChatroomsManagement;
-using RandomChatSrc.Services.UserChatListServiceDomain;
 
 namespace RandomChatSrc.Services.RandomMatchingService
 {
+    using RandomChatSrc.Models;
+    using RandomChatSrc.Services.ChatroomsManagement;
+    using RandomChatSrc.Services.UserChatListServiceDomain;
+
+    /// <summary>
+    /// Service responsible for random matching users to chat rooms based on their configurations.
+    /// </summary>
     public class RandomMatchingService : IRandomMatchingService
     {
         private readonly ChatroomsManagementService chatroomsManagementService;
         private readonly UserChatListService userChatListService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RandomMatchingService"/> class.
+        /// </summary>
+        /// <param name="chatroomsManagementService">The chatrooms management service.</param>
+        /// <param name="userChatListService">The user chat list service.</param>
         public RandomMatchingService(ChatroomsManagementService chatroomsManagementService, UserChatListService userChatListService)
         {
             this.chatroomsManagementService = chatroomsManagementService;
@@ -25,7 +34,7 @@ namespace RandomChatSrc.Services.RandomMatchingService
         /// <returns>The matched text chat room.</returns>
         public TextChat RequestMatchingChatRoom(UserChatConfig chatConfig)
         {
-            var allChats = chatroomsManagementService.GetAllChats();
+            var allChats = this.chatroomsManagementService.GetAllChats();
             int currentChatIndex = -1;
             List<int> bestChatIndexes = new ();
 
@@ -39,14 +48,17 @@ namespace RandomChatSrc.Services.RandomMatchingService
             // user3 has 2 matching interests -''-;
             // => for this chat, the score will simply be 2 + 1 + 2 = 5.
             int currentScore = -1, bestScore = -1;
+
             foreach (var chat in allChats)
             {
                 ++currentChatIndex;
-                if (chat.AvailableParticipantsCount() == 0 || chat.Participants.Any(participant => participant.Id == userChatListService.GetCurrentUserGuid()))
+                if (chat.AvailableParticipantsCount() == 0 || chat.Participants.Any(participant => participant.Id == this.userChatListService.CurrentUserId))
                 {
                     continue;
                 }
+
                 currentScore = 0;
+
                 foreach (var participant in chat.Participants)
                 {
                     foreach (var participantInterest in participant.Interests)
@@ -54,6 +66,7 @@ namespace RandomChatSrc.Services.RandomMatchingService
                         currentScore += Convert.ToInt32(chatConfig.User.Interests.Any(curUserInterest => curUserInterest.Equals(participantInterest)));
                     }
                 }
+
                 if (currentScore > bestScore)
                 {
                     bestScore = currentScore;
@@ -64,14 +77,14 @@ namespace RandomChatSrc.Services.RandomMatchingService
                     bestChatIndexes.Add(currentChatIndex);
                 }
             }
+
             if (bestChatIndexes.Count == 0)
             {
-                // All chats are full, or user is a member of all chats
-                TextChat newChat = chatroomsManagementService.CreateChat(5);
+                TextChat newChat = this.chatroomsManagementService.CreateChat(5);
                 newChat.AddParticipant(chatConfig.User);
                 return newChat;
             }
-            // choose an index randomly from the list of the best available indexes.
+
             int randomIndex = new Random().Next(bestChatIndexes.Count);
             int selectedChatIndex = bestChatIndexes[randomIndex];
             allChats[selectedChatIndex].AddParticipant(chatConfig.User);

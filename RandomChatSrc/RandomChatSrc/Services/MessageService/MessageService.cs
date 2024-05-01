@@ -32,12 +32,16 @@ namespace RandomChatSrc.Services.MessageService
         /// <param name="message">The message to send.</param>
         public void SendMessage(string message)
         {
-            textChat.AddMessage(userId.ToString(), message);
+            this.textChat.AddMessage(this.userId.ToString(), message);
         }
 
+        /// <summary>
+        /// Gets the text chat to which messages are sent.
+        /// </summary>
+        /// <returns>The text chat.</returns>
         public TextChat GetTextChat()
         {
-            return textChat;
+            return this.textChat;
         }
     }
 }

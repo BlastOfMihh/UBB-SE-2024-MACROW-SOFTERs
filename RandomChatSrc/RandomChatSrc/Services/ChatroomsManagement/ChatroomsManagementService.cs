@@ -1,39 +1,29 @@
-using RandomChatSrc.Models;
+// <copyright file="ChatroomsManagementService.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace RandomChatSrc.Services.ChatroomsManagement
 {
+    using RandomChatSrc.Models;
+
     /// <summary>
     /// Service for managing chatrooms.
     /// </summary>
     public class ChatroomsManagementService : IChatroomsManagementService
     {
-       // schimba asta de fiecare data cand dai pull asta e nivelul
-        private readonly string textChatsDirectoryPath = "D:\\facultate\\anu 2\\SEMESTRUL 2\\ISS Second game\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";       private List<TextChat> ActiveChats { get; set; }
+        // schimba asta de fiecare data cand dai pull asta e nivelul
+        private readonly string textChatsDirectoryPath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepo/";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChatroomsManagementService"/> class.
+        /// </summary>
         public ChatroomsManagementService()
         {
-            ActiveChats = new List<TextChat>();
-            LoadActiveChats();
+            this.ActiveChats = new List<TextChat>();
+            this.LoadActiveChats();
         }
 
-        private string GetIdFromPath(string folderPath)
-        {
-            string id = string.Empty;
-            for (int i = folderPath.Length - 1; folderPath[i] != '\\' && i >= 0; --i)
-            {
-                id += folderPath[i];
-            }
-            return new string(id.Reverse().ToArray());
-        }
-        private void LoadActiveChats()
-        {
-            foreach (string chatFolderPath in Directory.GetDirectories(textChatsDirectoryPath))
-            {
-                string foundId = GetIdFromPath(chatFolderPath);
-                TextChat newTextChat = new TextChat(new List<Message>(), textChatsDirectoryPath, foundId);
-                ActiveChats.Add(newTextChat);
-            }
-        }
+        private List<TextChat> ActiveChats { get; set; }
 
         /// <summary>
         /// Creates a new chatroom with a specified size.
@@ -42,8 +32,8 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         /// <returns>The created chatroom.</returns>
         public TextChat CreateChat(int size)
         {
-            var newChat = new TextChat(new List<Message>(), textChatsDirectoryPath);
-            ActiveChats.Add(newChat);
+            var newChat = new TextChat(new List<Message>(), this.textChatsDirectoryPath);
+            this.ActiveChats.Add(newChat);
             return newChat;
         }
 
@@ -53,14 +43,15 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         /// <param name="id">The ID of the chatroom to delete.</param>
         public void DeleteChat(Guid id)
         {
-            foreach (TextChat chat in ActiveChats.ToList())
+            foreach (TextChat chat in this.ActiveChats.ToList())
             {
                 if (chat.Id == id)
                 {
-                    ActiveChats.Remove(chat);
+                    this.ActiveChats.Remove(chat);
                     return;
                 }
             }
+
             throw new Exception("Chat could not be deleted!! not enough permissions");
         }
 
@@ -71,8 +62,8 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         public TextChat GetChat()
         {
             Random random = new Random();
-            int index = random.Next(ActiveChats.Count);
-            return ActiveChats[index];
+            int index = random.Next(this.ActiveChats.Count);
+            return this.ActiveChats[index];
         }
 
         /// <summary>
@@ -82,13 +73,14 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         /// <returns>The chatroom with the specified ID.</returns>
         public TextChat GetChatById(Guid id)
         {
-            foreach (TextChat chat in ActiveChats)
+            foreach (TextChat chat in this.ActiveChats)
             {
                 if (chat.Id == id)
                 {
                     return chat;
                 }
             }
+
             throw new Exception("Chat not found");
         }
 
@@ -98,7 +90,28 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         /// <returns>A list of all active chatrooms.</returns>
         public List<TextChat> GetAllChats()
         {
-            return ActiveChats;
+            return this.ActiveChats;
+        }
+
+        private string GetIdFromPath(string folderPath)
+        {
+            string id = string.Empty;
+            for (int i = folderPath.Length - 1; folderPath[i] != '/' && i >= 0; --i)
+            {
+                id += folderPath[i];
+            }
+
+            return new string(id.Reverse().ToArray());
+        }
+
+        private void LoadActiveChats()
+        {
+            foreach (string chatFolderPath in Directory.GetDirectories(this.textChatsDirectoryPath))
+            {
+                string foundId = this.GetIdFromPath(chatFolderPath);
+                TextChat newTextChat = new TextChat(new List<Message>(), this.textChatsDirectoryPath, foundId);
+                this.ActiveChats.Add(newTextChat);
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <Users>
 	<CurrentUser>
-		<id>20030000-0300-0200-0000-000000000000</id>
-		<name>John Doe</name>
+		<Id>20030000-0300-0200-0000-000000000000</Id>
+		<Name>John Doe</Name>
 	</CurrentUser>
 </Users>

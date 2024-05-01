@@ -10,9 +10,8 @@ namespace RandomChatSrc.Repositories
     /// <summary>
     ///     Class responsible for getting and writing User Locations entities to the XML file.
     /// </summary>
-    public class MapRepository : IMapRepo
+    public class MapRepository : IMapRepository
     {
-        private List<MapLocation> Locations { get; set; }
         private readonly string locationsPath;
 
         /// <summary>
@@ -22,26 +21,42 @@ namespace RandomChatSrc.Repositories
         {
             // this.locationsPath = "C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml";
             // this.locationsPath = "C:\\Users\\MiHH\\Gits\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\";
-            locationsPath = "C:\\GitHub_Repos\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\";
-            Locations = new List<MapLocation>();
-            loadFromMemory();
+            this.locationsPath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RepoMock/";
+            this.Locations = [];
+            this.LoadFromMemory();
         }
+
+        private List<MapLocation> Locations { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MapRepository"/> class.
+        /// </summary>
 
         /// <summary>
         ///     Retrieves all User Locations from the XML file.
         /// </summary>
-        public void loadFromMemory()
+        public void LoadFromMemory()
         {
-            XDocument userLocationsXML = XDocument.Load(locationsPath);
+            XDocument userLocationsXML = XDocument.Load(this.locationsPath);
             foreach (XElement location in userLocationsXML.Descendants("MapLocations"))
             {
-                Guid userId = new (location.Element("UserId").Value);
-                float xCoordinates = float.Parse(location.Element("xCoordinates").Value);
-                float yCoordinates = float.Parse(location.Element("yCoordinates").Value);
-                string description = location.Element("description").Value;
+                XElement? userIdElement = location.Element("UserId");
+                XElement? xCoordinatesElement = location.Element("xCoordinates");
+                XElement? yCoordinatesElement = location.Element("yCoordinates");
+                XElement? descriptionElement = location.Element("description");
+
+                if (userIdElement == null || xCoordinatesElement == null || yCoordinatesElement == null || descriptionElement == null)
+                {
+                    continue;
+                }
+
+                Guid userId = new (userIdElement.Value);
+                float xCoordinates = float.Parse(xCoordinatesElement.Value);
+                float yCoordinates = float.Parse(yCoordinatesElement.Value);
+                string description = descriptionElement.Value;
 
                 MapLocation newLocation = new (userId, xCoordinates, yCoordinates, description);
-                Locations.Add(newLocation);
+                this.Locations.Add(newLocation);
             }
         }
 
@@ -51,28 +66,36 @@ namespace RandomChatSrc.Repositories
         /// </summary>
         /// <param name="userID">The ID of the user.</param>
         /// <param name="userLocation">The location of the user.</param>
-        public void addUserLocation(Guid userID, MapLocation userLocation)
+        public void AddUserLocation(Guid userID, MapLocation userLocation)
         {
-            if (Locations.Contains(Locations.Find(x => x.UserId == userID)))
+            // Check if the user location already exists
+            MapLocation? existingLocation = this.Locations.FirstOrDefault(x => x.UserId == userID);
+
+            if (existingLocation != null)
             {
-                updateUserLocation(userID, userLocation);
-                XDocument userLocationsXML = XDocument.Load(locationsPath);
-                userLocationsXML.Element("MapLocations").Add(new XElement("MapLocation", new XElement("UserId", userID),
-                                                        new XElement("xCoordinates", userLocation.XCoordinates),
-                                                        new XElement("yCoordinates", userLocation.YCoordinates),
-                                                        new XElement("description", userLocation.Description)));
-                userLocationsXML.Save(locationsPath);
+                // Update the existing location if found
+                this.UpdateUserLocation(userID, userLocation);
             }
             else
             {
-                Locations.Add(userLocation);
-                XDocument userLocationsXML = XDocument.Load(locationsPath);
-                userLocationsXML.Element("MapLocations").Add(new XElement("MapLocation",
-                                                        new XElement("UserId", userID),
-                                                        new XElement("xCoordinates", userLocation.XCoordinates),
-                                                        new XElement("yCoordinates", userLocation.YCoordinates),
-                                                        new XElement("description", userLocation.Description)));
-                userLocationsXML.Save(locationsPath);
+                // Add the new location if it doesn't exist
+                this.Locations.Add(userLocation);
+            }
+
+            // Add the user location to the XML file
+            XDocument userLocationsXML = XDocument.Load(this.locationsPath);
+            XElement? mapLocationsElement = userLocationsXML.Element("MapLocations");
+
+            if (mapLocationsElement != null)
+            {
+                mapLocationsElement.Add(new XElement(
+                    "MapLocation",
+                    new XElement("UserId", userID),
+                    new XElement("xCoordinates", userLocation.XCoordinates),
+                    new XElement("yCoordinates", userLocation.YCoordinates),
+                    new XElement("description", userLocation.Description)));
+
+                userLocationsXML.Save(this.locationsPath);
             }
         }
 
@@ -80,15 +103,21 @@ namespace RandomChatSrc.Repositories
         ///     Deletes the User Location with ID from the XML file.
         /// </summary>
         /// <param name="userID">The ID of the User to delete.</param>
-        public void removeUserLocation(Guid userID)
+        public void RemoveUserLocation(Guid userID)
         {
-            if (Locations.Contains(Locations.Find(x => x.UserId == userID)))
+            MapLocation? locationToRemove = this.Locations.Find(x => x.UserId == userID);
+            if (locationToRemove != null)
             {
-                Locations.Remove(Locations.Find(x => x.UserId == userID));
+                this.Locations.Remove(locationToRemove);
             }
-            XDocument userLocationsXML = XDocument.Load(locationsPath);
-            userLocationsXML.Descendants("MapLocations").Where(x => x.Element("UserId").Value == userID.ToString()).Remove();
-            userLocationsXML.Save(locationsPath);
+
+            XDocument userLocationsXML = XDocument.Load(this.locationsPath);
+            IEnumerable<XElement> elementsToRemove = userLocationsXML.Descendants("MapLocations").Where(x => x.Element("UserId")?.Value == userID.ToString());
+            if (elementsToRemove != null)
+            {
+                elementsToRemove.Remove();
+                userLocationsXML.Save(this.locationsPath);
+            }
         }
 
         /// <summary>
@@ -96,20 +125,31 @@ namespace RandomChatSrc.Repositories
         /// </summary>
         /// <param name="userID">The ID of the User to delete.</param>
         /// <param name="newLocation">The new location of the User.</param>
-        public void updateUserLocation(Guid userID, MapLocation newLocation)
+        public void UpdateUserLocation(Guid userID, MapLocation newLocation)
         {
-            if (Locations.Contains(Locations.Find(x => x.UserId == userID)))
+            MapLocation? locationToUpdate = this.Locations.Find(x => x.UserId == userID);
+            if (locationToUpdate != null)
             {
-                Locations.Remove(Locations.Find(x => x.UserId == userID));
-                Locations.Add(newLocation);
-                XDocument userLocationsXML = XDocument.Load(locationsPath);
-                userLocationsXML.Descendants("MapLocations").Where(x => x.Element("UserId").Value == userID.ToString()).Remove();
-                userLocationsXML.Element("MapLocations").Add(new XElement("MapLocation",
-                                                                new XElement("UserId", userID),
-                                                                new XElement("xCoordinates", newLocation.XCoordinates),
-                                                                new XElement("yCoordinates", newLocation.YCoordinates),
-                                                                new XElement("description", newLocation.Description)));
-                userLocationsXML.Save(locationsPath);
+                this.Locations.Remove(locationToUpdate);
+                this.Locations.Add(newLocation);
+
+                XDocument userLocationsXML = XDocument.Load(this.locationsPath);
+                IEnumerable<XElement> elementsToRemove = userLocationsXML.Descendants("MapLocations").Where(x => x.Element("UserId")?.Value == userID.ToString());
+                if (elementsToRemove != null)
+                {
+                    elementsToRemove.Remove();
+                    XElement? mapLocationsElement = userLocationsXML.Element("MapLocations");
+                    if (mapLocationsElement != null)
+                    {
+                        mapLocationsElement.Add(new XElement(
+                            "MapLocation",
+                            new XElement("UserId", userID),
+                            new XElement("xCoordinates", newLocation.XCoordinates),
+                            new XElement("yCoordinates", newLocation.YCoordinates),
+                            new XElement("description", newLocation.Description)));
+                        userLocationsXML.Save(this.locationsPath);
+                    }
+                }
             }
         }
 
@@ -117,9 +157,9 @@ namespace RandomChatSrc.Repositories
         ///     Retrieves all User Locations from the repository.
         /// </summary>
         /// <returns>A list of all user locations from the repository.</returns>
-        public List<MapLocation> getAllUsersLocationList()
+        public List<MapLocation> GetAllUsersLocationList()
         {
-            return Locations;
+            return this.Locations;
         }
     }
 }

@@ -1,125 +1,179 @@
-using System.Xml;
-using RandomChatSrc.Services.ChatroomsManagement;
-using RandomChatSrc.Models;
-using RandomChatSrc.Services.RandomMatchingService;
-using RandomChatSrc.Services.UserChatListServiceDomain;
-using RandomChatSrc.Services.MessageService;
+// <copyright file="OpenChatsWindow.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
-namespace RandomChatSrc.Pages;
-
-public partial class OpenChatsWindow : ContentPage
+namespace RandomChatSrc.Pages
 {
-    private ChatroomsManagementService chatService;
-    private Guid currentUserId;
-    private UserChatListService userChatListService;
+    using System.Xml;
+    using RandomChatSrc.Models;
+    using RandomChatSrc.Services.ChatroomsManagement;
+    using RandomChatSrc.Services.MessageService;
+    using RandomChatSrc.Services.RandomMatchingService;
+    using RandomChatSrc.Services.UserChatListServiceDomain;
 
-    private UserChatConfig currentUserConfig;
-    public OpenChatsWindow(ChatroomsManagementService chatService)
-	{
-        this.chatService = chatService;
-        this.WidthRequest = 800;
-        this.HeightRequest = 600;
-        this.BackgroundColor = Color.FromHex("#FFFFFF");
-        // start test code
-        // we test the matching with a dummy User
-        User user = new User("gigel");
-        user.AddInterest(new Interest("music"));
-        TextChat textChat = chatService.GetAllChats()[2];
-        textChat.AddParticipant(user);
-        // end test code
-        string filePath = "D:\\facultate\\anu 2\\SEMESTRUL 2\\ISS Second game\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
-        try
+    /// <summary>
+    /// Represents the OpenChatsWindow view.
+    /// </summary>
+    public partial class OpenChatsWindow : ContentPage
+    {
+        private readonly ChatroomsManagementService chatService;
+        private readonly Guid currentUserId;
+
+        private readonly UserChatConfig currentUserConfig;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OpenChatsWindow"/> class.
+        /// </summary>
+        /// <param name="chatService">The chat service instance.</param>
+        public OpenChatsWindow(ChatroomsManagementService chatService)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(filePath);
-            var userId = doc.SelectSingleNode("/Users/CurrentUser/id").InnerText;
-            if (userId == null)
+            this.chatService = chatService;
+            this.WidthRequest = 800;
+            this.HeightRequest = 600;
+            this.BackgroundColor = Color.FromArgb("#FFFFFF");
+
+            string filePath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RepoMock/CurrentUser.xml";
+            try
             {
-                throw new Exception("User not found");
+                XmlDocument doc = new ();
+                doc.Load(filePath);
+                var currentNode = doc.SelectSingleNode("/Users/CurrentUser/Id");
+                if (currentNode != null)
+                {
+                    var userId = currentNode.InnerText ?? throw new Exception("User not found");
+                    this.currentUserId = new Guid(userId);
+                }
             }
-            this.currentUserId = new Guid(userId);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
-        InitializeComponent();
-        RefreshActiveChats();
-        // code to test current User
-        // we should have a current User in the system, which we read and save at the start of the app
-        // for now, we create a dummy User at the start of the app
-        // we create it in the constructor of the OpenChatsWindow, since it's the first page that is opened
-        User currentUser = new User("current User");
-        currentUser.Id = currentUserId;
-        this.currentUserConfig = new UserChatConfig(currentUser);
-        currentUserConfig.User.AddInterest(new Interest("music"));
-    }
-
-    private void RefreshActiveChats()
-    {
-        // Clear the layout
-        chatStackLayout.Children.Clear();
-
-        // Parse the chats
-        foreach (TextChat chat in chatService.GetAllChats())
-        {
-            // Create a custom UI element for each chat
-            var chatLayout = new StackLayout { Margin = new Thickness(7) };
-            chatLayout.BackgroundColor = Color.FromHex("#E2E2E2");
-
-            var chatHeaderLayout = new StackLayout { Orientation = StackOrientation.Horizontal, Margin = new Thickness(10) };
-            var chatInfoLayout = new StackLayout { VerticalOptions = LayoutOptions.Center, Margin = new Thickness(8) };
-            var chatIdLabel = new Label { Text = $"Chat ID: {chat.Id}", FontSize = 18, FontAttributes = FontAttributes.Bold };
-            chatIdLabel.TextColor = Color.FromHex("#000000");
-            var lastMessageLabel = new Label { Text = $"Last Message: {((chat.Messages.Count != 0) ? chat.Messages.Last().Content : "No messages yet")}", FontSize = 15 };
-            lastMessageLabel.TextColor = Color.FromHex("#000000");
-
-            chatInfoLayout.Children.Add(chatIdLabel);
-            chatInfoLayout.Children.Add(lastMessageLabel);
-            chatHeaderLayout.Children.Add(chatInfoLayout);
-            chatLayout.Children.Add(chatHeaderLayout);
-            chatLayout.GestureRecognizers.Add(new TapGestureRecognizer
+            catch (Exception e)
             {
-                CommandParameter = chat,
-                Command = new Command(this.OpenDummyPage)
-            });
+                Console.WriteLine(e.Message);
+            }
 
-            // Add the custom UI element to the stack layout
-            chatStackLayout.Children.Add(chatLayout);
+            this.InitializeComponent();
+            this.RefreshActiveChats();
+
+            User currentUser = new ("current User")
+            {
+                Id = this.currentUserId,
+            };
+
+            this.currentUserConfig = new UserChatConfig(currentUser);
+            this.currentUserConfig.User.AddInterest(new ("music"));
         }
-    }
 
-    private async void OpenDummyPage(object sender)
-    {
-        if (sender is TextChat selectedChat)
+        /// <summary>
+        /// Refreshes the list of active chats displayed on the UI.
+        /// </summary>
+        private void RefreshActiveChats()
         {
-            // Open the chat page
-            MessageService messageService = new MessageService(selectedChat, currentUserId);
-            await Navigation.PushAsync(new ChatRoomPage(currentUserId, messageService));
+            // Clear the layout
+            this.chatStackLayout.Children.Clear();
+
+            // Parse the chats
+            foreach (TextChat chat in this.chatService.GetAllChats())
+            {
+                // Create a custom UI element for each chat
+                var chatLayout = new StackLayout
+                {
+                    Margin = new Thickness(7),
+                    BackgroundColor = Color.FromArgb("#E2E2E2"),
+                };
+
+                var chatHeaderLayout = new StackLayout { Orientation = StackOrientation.Horizontal, Margin = new Thickness(10) };
+                var chatInfoLayout = new StackLayout { VerticalOptions = LayoutOptions.Center, Margin = new Thickness(8) };
+                var chatIdLabel = new Label
+                {
+                    Text = $"Chat ID: {chat.Id}",
+                    FontSize = 18,
+                    FontAttributes = FontAttributes.Bold,
+                    TextColor = Color.FromArgb("#000000"),
+                };
+
+                var lastMessageLabel = new Label
+                {
+                    Text = $"Last Message: {((chat.Messages.Count != 0) ? chat.Messages.Last().Content : "No messages yet")}",
+                    FontSize = 15,
+                    TextColor = Color.FromArgb("#000000"),
+                };
+
+                chatInfoLayout.Children.Add(chatIdLabel);
+                chatInfoLayout.Children.Add(lastMessageLabel);
+                chatHeaderLayout.Children.Add(chatInfoLayout);
+                chatLayout.Children.Add(chatHeaderLayout);
+                chatLayout.GestureRecognizers.Add(new TapGestureRecognizer
+                {
+                    CommandParameter = chat,
+                    Command = new Command(this.OpenDummyPage),
+                });
+
+                // Add the custom UI element to the stack layout
+                this.chatStackLayout.Children.Add(chatLayout);
+            }
         }
-    }
 
-    private async void RandomChatButton_Clicked(object sender, EventArgs e)
-    {
-        RefreshActiveChats();
-        RandomMatchingService randomMatchingService = new RandomMatchingService(chatService, new UserChatListService(chatService));
-        TextChat textChat = randomMatchingService.RequestMatchingChatRoom(currentUserConfig);
-        MessageService messageService = new MessageService(textChat, currentUserId);
-        await Navigation.PushAsync(new ChatRoomPage(currentUserId, messageService));
-    }
-    private void OpenChatButton_Clicked(object sender, EventArgs e)
-    {
-    }
+        /// <summary>
+        /// Opens the chat page corresponding to the selected chat.
+        /// </summary>
+        /// <param name="sender">The sender object.</param>
+        private async void OpenDummyPage(object sender)
+        {
+            if (sender is TextChat selectedChat)
+            {
+                // Open the chat page
+                MessageService messageService = new (selectedChat, this.currentUserId);
+                await this.Navigation.PushAsync(new ChatRoomPage(this.currentUserId, messageService));
+            }
+        }
 
-    private async void RequestsButton_Clicked(object sender, EventArgs e)
-    {
-    }
+        /// <summary>
+        /// Handles the event when the random chat button is clicked.
+        /// </summary>
+        /// <param name="sender">The sender object.</param>
+        /// <param name="e">The event arguments.</param>
+        private async void RandomChatButton_Clicked(object sender, EventArgs e)
+        {
+            this.RefreshActiveChats();
+            RandomMatchingService randomMatchingService = new (this.chatService, new UserChatListService(this.chatService));
+            TextChat textChat = randomMatchingService.RequestMatchingChatRoom(this.currentUserConfig);
+            MessageService messageService = new (textChat, this.currentUserId);
+            await this.Navigation.PushAsync(new ChatRoomPage(this.currentUserId, messageService));
+        }
 
-    private async void ChatItem_Clicked(object sender, EventArgs e)
-    {
-    }
-    private async void MapButton_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new MapWindow());
+        /// <summary>
+        /// Handles the event when the open chat button is clicked.
+        /// </summary>
+        /// <param name="sender">The sender object.</param>
+        /// <param name="e">The event arguments.</param>
+        private void OpenChatButton_Clicked(object sender, EventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Handles the event when the requests button is clicked.
+        /// </summary>
+        /// <param name="sender">The sender object.</param>
+        /// <param name="e">The event arguments.</param>
+        private void RequestsButton_Clicked(object sender, EventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Handles the event when a chat item is clicked.
+        /// </summary>
+        /// <param name="sender">The sender object.</param>
+        /// <param name="e">The event arguments.</param>
+        private void ChatItem_Clicked(object sender, EventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Handles the event when the map button is clicked.
+        /// </summary>
+        /// <param name="sender">The sender object.</param>
+        /// <param name="e">The event arguments.</param>
+        private async void MapButton_Clicked(object sender, EventArgs e)
+        {
+            await this.Navigation.PushAsync(new MapWindow());
+        }
     }
 }

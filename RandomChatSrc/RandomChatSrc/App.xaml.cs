@@ -1,20 +1,25 @@
-﻿using RandomChatSrc.Pages;
-using RandomChatSrc.Services.ChatroomsManagement;
+﻿// <copyright file="App.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace RandomChatSrc
 {
+    using RandomChatSrc.Pages;
+    using RandomChatSrc.Services.ChatroomsManagement;
+
+    /// <summary>
+    ///     Entry point of the MauiApp.
+    /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="App"/> class.
+        /// </summary>
         public App()
         {
-            InitializeComponent();
-            ChatroomsManagementService cms = new ChatroomsManagementService();
-            MainPage = new NavigationPage(new OpenChatsWindow(cms));
-
-            // In order to see the chatroom page uncomment the below line and comment the other main page
-            //MainPage = new NavigationPage(new ChatRoomPage());
-
-            // MainPage = new AppShell();
+            this.InitializeComponent();
+            ChatroomsManagementService cms = new ();
+            this.MainPage = new NavigationPage(new OpenChatsWindow(cms));
         }
     }
 }
