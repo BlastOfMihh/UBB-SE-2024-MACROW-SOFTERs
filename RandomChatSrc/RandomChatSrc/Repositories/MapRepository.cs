@@ -21,8 +21,8 @@ namespace RandomChatSrc.Repositories
         {
             // this.locationsPath = "C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml";
             // this.locationsPath = "C:\\Users\\MiHH\\Gits\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\";
-            // this.locationsPath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RepoMock/";
-            this.locationsPath = "mockPath";
+            this.locationsPath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RepoMock/";
+            // this.locationsPath = "mockPath";
             this.Locations = new List<MapLocation>();
             this.LoadFromMemory();
         }
