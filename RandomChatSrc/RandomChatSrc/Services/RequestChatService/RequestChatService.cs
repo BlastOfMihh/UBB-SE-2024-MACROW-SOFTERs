@@ -61,7 +61,7 @@ namespace RandomChatSrc.Services.RequestChatService
         /// <param name="receiverId">The ID of the receiver.</param>
         public void AcceptRequest(Guid senderId, Guid receiverId)
         {
-            TextChat newTextChat = this.globalServices.ChatroomsManagementService.CreateChat(5);
+            TextChat newTextChat = this.globalServices.ChatroomsManagementService.CreateChat();
             newTextChat.AddParticipant(this.globalServices.UserRepository.GetUserById(senderId));
             newTextChat.AddParticipant(this.globalServices.UserRepository.GetUserById(receiverId));
             this.chatRequestRepository.RemoveRequest(senderId, receiverId);
