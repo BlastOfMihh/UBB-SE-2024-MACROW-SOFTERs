@@ -40,7 +40,7 @@ namespace RandomChatSrc.Pages
             var chatIdLabel = new Label
             {
                 Text = $"Chatroom: {textChat.Id}",
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.Center,
                 FontSize = 16,
                 FontAttributes = FontAttributes.Bold,
             };
@@ -52,7 +52,7 @@ namespace RandomChatSrc.Pages
                 var messageLabel = new Label
                 {
                     Text = $"[{message.SentTime}] User {message.SenderId}: {message.Content}",
-                    HorizontalOptions = message.SenderId == this.currentUserId.ToString() ? LayoutOptions.EndAndExpand : LayoutOptions.Start,
+                    HorizontalOptions = message.SenderId == this.currentUserId.ToString() ? LayoutOptions.End : LayoutOptions.Start,
                     VerticalOptions = LayoutOptions.Start,
                     BackgroundColor = message.SenderId == this.currentUserId.ToString() ? Color.FromArgb("#ADD8E6") : Color.FromArgb("#CCCCCC"),
                     TextColor = Color.FromArgb("#000000"),
@@ -81,8 +81,8 @@ namespace RandomChatSrc.Pages
                 // Display the new message in the conversation UI
                 var messageLabel = new Label
                 {
-                    Text = $"[Now] User {this.currentUserId.ToString()}: {messageText}",
-                    HorizontalOptions = LayoutOptions.EndAndExpand,
+                    Text = $"[Now] User {this.currentUserId}: {messageText}",
+                    HorizontalOptions = LayoutOptions.End,
                     VerticalOptions = LayoutOptions.Start,
                     BackgroundColor = Color.FromArgb("ADD8E6"),
                     TextColor = Color.FromArgb("000000"),
