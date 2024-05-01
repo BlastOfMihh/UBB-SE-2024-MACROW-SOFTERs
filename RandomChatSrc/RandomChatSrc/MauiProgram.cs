@@ -2,11 +2,16 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+using System;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui.Controls.Hosting;
+
 namespace RandomChatSrc
 {
     using System.Diagnostics;
     using CommunityToolkit.Maui.Maps;
     using Microsoft.Extensions.Logging;
+    using Microsoft.Maui.Hosting;
     using RandomChatSrc.Services.ChatroomsManagement;
     using RandomChatSrc.Services.RandomMatchingService;
 
