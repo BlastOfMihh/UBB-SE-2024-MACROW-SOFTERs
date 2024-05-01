@@ -1,25 +1,26 @@
-﻿// <copyright file="MapRepository.cs" company="PlaceholderCompany">
+﻿// <copyright file="UserRepository.cs" company="Superbet Beclean">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace RandomChatSrc.Repository
+namespace RandomChatSrc.Repositories
 {
     using RandomChatSrc.Models;
 
     /// <summary>
     ///     Class responsible for storing and getting Users from the repository.
     /// </summary>
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
-        private List<User> Users { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="UserRepository"/> class.
         /// </summary>
+        /// <param name="users">The list of users to store in the repository.</param>
         public UserRepository(List<User> users)
         {
-            Users = users;
+            this.Users = users;
         }
+
+        private List<User> Users { get; set; }
 
         /// <summary>
         ///     Searches for a user with the specified ID in the repository.
@@ -28,7 +29,7 @@ namespace RandomChatSrc.Repository
         /// <returns>The user with the specified ID, if it's found.</returns>
         public User GetUserById(Guid id)
         {
-            return Users.FirstOrDefault(user => user.Id == id);
+            return this.Users.FirstOrDefault(user => user.Id == id);
         }
     }
 }

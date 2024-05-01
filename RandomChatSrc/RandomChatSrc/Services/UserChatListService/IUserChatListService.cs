@@ -1,13 +1,20 @@
 // <copyright file="IUserChatListService.cs" company="SuperBet BeClean">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-using RandomChatSrc.Models;
 
 namespace RandomChatSrc.Services.UserChatListServiceDomain
 {
+    using RandomChatSrc.Models;
+
+    /// <summary>
+    /// Interface for services that manage the list of chats for a user.
+    /// </summary>
     public interface IUserChatListService
     {
+        /// <summary>
+        /// Retrieves a list of all open chats.
+        /// </summary>
+        /// <returns>A list of open chats.</returns>
         List<TextChat> GetOpenChats();
-        Guid GetCurrentUserGuid();
     }
 }

@@ -1,4 +1,8 @@
-﻿using Foundation;
+﻿// <copyright file="AppDelegate.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+using Foundation;
 
 namespace RandomChatSrc
 {
