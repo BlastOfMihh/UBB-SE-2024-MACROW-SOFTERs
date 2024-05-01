@@ -10,7 +10,7 @@ namespace RandomChatSrc.Services.MessageService
     /// <summary>
     /// Service for sending messages to a text chat.
     /// </summary>
-    public class MessageService
+    public class MessageService : IMessageService
     {
         private readonly TextChat textChat;
         private readonly Guid userId;
