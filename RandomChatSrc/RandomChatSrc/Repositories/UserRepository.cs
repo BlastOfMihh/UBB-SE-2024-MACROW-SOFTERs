@@ -20,7 +20,7 @@ namespace RandomChatSrc.Repositories
             this.Users = users;
         }
 
-        private List<User> Users { get; set; }
+        public List<User> Users { get; set; }
 
         /// <summary>
         ///     Searches for a user with the specified ID in the repository.
