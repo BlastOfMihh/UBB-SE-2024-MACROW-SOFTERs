@@ -41,7 +41,7 @@ namespace RandomChatSrc.Services.MapService
         /// <returns>A list of user IDs.</returns>
         public List<Guid> GetAllUsers()
         {
-            List<Guid> users = new ();
+            List<Guid> users = new();
             foreach (MapLocation mapLocation in this.mapRepo.GetAllUsersLocationList())
             {
                 if (mapLocation.UserId != Guid.Empty)
@@ -51,16 +51,6 @@ namespace RandomChatSrc.Services.MapService
             }
 
             return users;
-        }
-
-        /// <summary>
-        /// Initiates a chat request from a sender to a receiver.
-        /// </summary>
-        /// <param name="senderId">The ID of the sender initiating the request.</param>
-        /// <param name="receiverId">The ID of the receiver being requested.</param>
-        public void MakeRequest(Guid senderId, Guid receiverId)
-        {
-            this.globalServices.RequestChatService.AddRequest(senderId, receiverId);
         }
 
         /// <summary>

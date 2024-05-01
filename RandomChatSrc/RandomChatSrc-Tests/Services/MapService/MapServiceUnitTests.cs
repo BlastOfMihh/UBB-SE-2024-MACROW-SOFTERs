@@ -1,42 +1,56 @@
 using Moq;
 using RandomChatSrc.Models;
 using RandomChatSrc.Repositories;
+using RandomChatSrc.Services.ChatroomsManagement;
+using RandomChatSrc.Services.MapService;
+using RandomChatSrc.Services.RequestChatService;
 
 namespace RandomChatSrc_Tests.Services.MapService
 {
     [TestClass]
     public class MapServiceUnitTests
     {
-        private Mock<IMapRepository> mockMapRepo;
-        private Mock<RandomChatSrc.Services.GlobalServices.GlobalServices> mockGlobalServices;
-        private RandomChatSrc.Services.MapService.IMapService mapService;
+        private Mock<IMapRepository> mockMapRepo = null!;
+
+        private Mock<IChatroomsManagementService> mockChatroomsManagementService = null!;
+        private Mock<IMapService> mockMapService = null!;
+        private Mock<IRequestChatService> mockRequestChatService = null!;
+        private Mock<IUserRepository> mockUserRepository = null!;
+
+        private RandomChatSrc.Services.GlobalServices.GlobalServices mockGlobalServices;
+        private RandomChatSrc.Services.MapService.MapService mapService = null!;
 
         [TestInitialize]
         public void Initialize()
         {
-            // Initialize mock objects
+            mockChatroomsManagementService = new Mock<IChatroomsManagementService>();
+            mockMapService = new Mock<IMapService>();
+            mockRequestChatService = new Mock<IRequestChatService>(MockBehavior.Strict); // Set MockBehavior to Strict
+            mockUserRepository = new Mock<IUserRepository>();
+
             mockMapRepo = new Mock<IMapRepository>();
-            mockGlobalServices = new Mock<RandomChatSrc.Services.GlobalServices.GlobalServices>();
-
-            // Initialize MapService with mocked dependencies
-            mapService = new RandomChatSrc.Services.MapService.MapService(mockMapRepo.Object, mockGlobalServices.Object);
+            mockGlobalServices = new RandomChatSrc.Services.GlobalServices.GlobalServices(mockChatroomsManagementService.Object, mockMapService.Object, mockRequestChatService.Object, mockUserRepository.Object);
+            mapService = new RandomChatSrc.Services.MapService.MapService(mockMapRepo.Object, mockGlobalServices);
         }
-
         [TestMethod]
         public void Constructor_ValidParameters_CreatesInstance()
         {
             // Arrange & Act
-            mapService = new RandomChatSrc.Services.MapService.MapService(mockMapRepo.Object, mockGlobalServices.Object);
+            var mapService = new RandomChatSrc.Services.MapService.MapService(mockMapRepo.Object, mockGlobalServices);
 
             // Assert
             Assert.IsNotNull(mapService);
         }
 
         [TestMethod]
-        public void GetAllUserLocations_ValidData_ReturnsLocations()
+        public void GetAllUserLocations_Returns_AllUserLocations()
         {
             // Arrange
-            var expectedLocations = new List<MapLocation> { new MapLocation(Guid.NewGuid(), 1.0f, 2.0f), new MapLocation(Guid.NewGuid(), 3.0f, 4.0f) };
+            var expectedLocations = new List<MapLocation>
+            {
+                new MapLocation(Guid.NewGuid(), 10.5f, 20.7f, "Location 1"),
+                new MapLocation(Guid.NewGuid(), 30.2f, 40.9f, "Location 2")
+            };
             mockMapRepo.Setup(repo => repo.GetAllUsersLocationList()).Returns(expectedLocations);
 
             // Act
@@ -47,16 +61,19 @@ namespace RandomChatSrc_Tests.Services.MapService
         }
 
         [TestMethod]
-        public void GetAllUsers_ValidData_ReturnsUserIds()
+        public void GetAllUsers_Returns_AllUserIdsWithKnownLocations()
         {
             // Arrange
-            var userId1 = Guid.NewGuid();
-            var userId2 = Guid.NewGuid();
+            var expectedUserIds = new List<Guid>
+            {
+                Guid.NewGuid(),
+                Guid.NewGuid()
+            };
             var locations = new List<MapLocation>
             {
-                new MapLocation(userId1, 1.0f, 2.0f),
-                new MapLocation(Guid.Empty, 3.0f, 4.0f), // Ignored
-                new MapLocation(userId2, 5.0f, 6.0f)
+                new MapLocation(expectedUserIds[0], 10.5f, 20.7f, "Location 1"),
+                new MapLocation(Guid.Empty, 30.2f, 40.9f, "Location 2"),
+                new MapLocation(expectedUserIds[1], 50.3f, 60.1f, "Location 3")
             };
             mockMapRepo.Setup(repo => repo.GetAllUsersLocationList()).Returns(locations);
 
@@ -64,30 +81,15 @@ namespace RandomChatSrc_Tests.Services.MapService
             var result = mapService.GetAllUsers();
 
             // Assert
-            CollectionAssert.AreEqual(new List<Guid> { userId1, userId2 }, result);
+            CollectionAssert.AreEqual(expectedUserIds, result);
         }
 
         [TestMethod]
-        public void MakeRequest_ValidParameters_CallsAddRequest()
-        {
-            // Arrange
-            var senderId = Guid.NewGuid();
-            var receiverId = Guid.NewGuid();
-
-            // Act
-            mapService.MakeRequest(senderId, receiverId);
-
-            // Assert
-            mockGlobalServices.Verify(gs => gs.RequestChatService.AddRequest(senderId, receiverId), Times.Once);
-        }
-
-        
-        [TestMethod]
-        public void UpdateUserLocation_ValidData_CallsUpdateUserLocation()
+        public void UpdateUserLocation_Calls_UpdateUserLocation_In_MapRepository()
         {
             // Arrange
             var userId = Guid.NewGuid();
-            var location = new MapLocation(userId, 1.0f, 2.0f);
+            var location = new MapLocation(userId, 10.5f, 20.7f, "New Location");
 
             // Act
             mapService.UpdateUserLocation(userId, location);
