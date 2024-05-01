@@ -7,7 +7,7 @@ namespace RandomChatSrc_Tests.Services.MapService
     [TestClass]
     public class MapServiceUnitTests
     {
-        private Mock<MapRepository> mockMapRepo;
+        private Mock<IMapRepository> mockMapRepo;
         private Mock<RandomChatSrc.Services.GlobalServices.GlobalServices> mockGlobalServices;
         private RandomChatSrc.Services.MapService.IMapService mapService;
 
@@ -15,7 +15,7 @@ namespace RandomChatSrc_Tests.Services.MapService
         public void Initialize()
         {
             // Initialize mock objects
-            mockMapRepo = new Mock<MapRepository>();
+            mockMapRepo = new Mock<IMapRepository>();
             mockGlobalServices = new Mock<RandomChatSrc.Services.GlobalServices.GlobalServices>();
 
             // Initialize MapService with mocked dependencies
