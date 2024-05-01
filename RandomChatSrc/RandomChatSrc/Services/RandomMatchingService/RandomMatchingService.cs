@@ -80,7 +80,7 @@ namespace RandomChatSrc.Services.RandomMatchingService
 
             if (bestChatIndexes.Count == 0)
             {
-                TextChat newChat = this.chatroomsManagementService.CreateChat(5);
+                TextChat newChat = this.chatroomsManagementService.CreateChat();
                 newChat.AddParticipant(chatConfig.User);
                 return newChat;
             }

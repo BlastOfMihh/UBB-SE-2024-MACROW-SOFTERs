@@ -111,5 +111,9 @@
 	<ItemGroup>
 	  <EmbeddedResource Remove="test\**" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="ChatRepoTesting\" />
+	</ItemGroup>
 	
 </Project>
