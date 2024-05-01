@@ -1,11 +1,6 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RandomChatSrc.Models;
 using RandomChatSrc.Repositories;
-using RandomChatSrc.Services.MapService;
-using System;
-using System.Collections.Generic;
-using System.Xml.Linq;
 
 namespace RandomChatSrc_Tests.Services.MapService
 {

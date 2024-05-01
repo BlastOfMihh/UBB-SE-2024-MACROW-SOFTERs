@@ -102,7 +102,7 @@ namespace RandomChatSrc.Models
         /// </summary>
         /// <param name="path">The path to the message file.</param>
         /// <returns>The ID of the message as a Guid.</returns>
-        private Guid ExtractMessageIdFromPath(string path)
+        public Guid ExtractMessageIdFromPath(string path)
         {
             var filename = Path.GetFileNameWithoutExtension(path);
             var idStr = filename.Split('_').Last();
