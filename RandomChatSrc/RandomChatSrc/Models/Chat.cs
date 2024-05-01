@@ -7,13 +7,15 @@ namespace RandomChatSrc.Models
     /// <summary>
     /// Represents a chat room. Contains the chat's identifier, the list of participants and the maximum number of participants.
     /// </summary>
-    public class Chat : IChat
+    public class Chat
     {
+        private const int MAX_PARTICIPANTS = 5;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Chat"/> class with a specified maximum number of participants.
         /// </summary>
         /// <param name="maximumParticipants">The maximum number of participants allowed in the chat. Defaults to 5 if not specified.</param>
-        public Chat(int maximumParticipants = 5)
+        public Chat(int maximumParticipants = MAX_PARTICIPANTS)
         {
             this.MaximumParticipants = maximumParticipants;
         }
@@ -49,7 +51,10 @@ namespace RandomChatSrc.Models
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Computes the number of available participants that can join the chat
+        /// </summary>
+        /// <returns> The number of available participants that can join the chat</returns>
         public int AvailableParticipantsCount()
         {
             return this.MaximumParticipants - this.Participants.Count;

@@ -33,26 +33,20 @@ namespace RandomChatSrc.Models
         /// </summary>
         /// <param name="obj">The object to compare with the current object.</param>
         /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
-        public override bool Equals(object? obj)
+        public override bool Equals(object? objectToCompareWith)
         {
-            if (obj == null)
+            if (objectToCompareWith == null)
             {
                 return false;
             }
 
-            if (obj.GetType() != this.GetType())
+            if (objectToCompareWith.GetType() != this.GetType())
             {
                 return false;
             }
 
-            var other = (Interest)obj;
+            var other = (Interest)objectToCompareWith;
             return this.InterestName.Equals(other.InterestName, StringComparison.CurrentCultureIgnoreCase);
-        }
-
-        /// <inheritdoc/>
-        public override int GetHashCode()
-        {
-            throw new NotImplementedException();
         }
     }
 }

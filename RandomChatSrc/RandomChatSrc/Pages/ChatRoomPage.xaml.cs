@@ -14,14 +14,14 @@ namespace RandomChatSrc.Pages
     public partial class ChatRoomPage : ContentPage
     {
         private readonly Guid currentUserId;
-        private MessageService messageService;
+        private IMessageService messageService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatRoomPage"/> class.
         /// </summary>
         /// <param name="currentUser">The ID of the current user.</param>
         /// <param name="messageService">The service used to send and receive messages.</param>
-        public ChatRoomPage(Guid currentUser, MessageService messageService)
+        public ChatRoomPage(Guid currentUser, IMessageService messageService)
         {
             this.InitializeComponent();
             this.currentUserId = currentUser;
