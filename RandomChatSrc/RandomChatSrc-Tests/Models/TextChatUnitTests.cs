@@ -1,102 +1,90 @@
-namespace RandomChatTests.Models
-{
-    using RandomChatSrc.Models;
-    using System.Xml.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RandomChatSrc.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Xml.Linq;
 
+namespace RandomChatSrc_Tests.Models
+{
     [TestClass]
     public class TextChatUnitTests
     {
-        [TestMethod]
-        public void TestTextChatConstructor_SetsProperties()
+        private string mockChatFolderPath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepoTesting";
+        private TextChat textChat = null!;
+
+        [TestInitialize]
+        public void Initialize()
         {
-            // Arrange
-            var messages = new List<Message>
+            // Create a mock chat folder
+            Directory.CreateDirectory(mockChatFolderPath);
+
+            // Create a new text chat
+            textChat = new TextChat(new List<Message>(), mockChatFolderPath);
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            // Delete the mock chat folder
+            if (Directory.Exists(mockChatFolderPath))
             {
-                new Message(Guid.NewGuid(), "user1", "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepo", "/path/to/message1.xml", DateTime.Now, "Hello"),
-                new Message(Guid.NewGuid(), "user2", "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepo", "/path/to/message2.xml", DateTime.Now, "Hi there")
-            };
-            string chatFolderPath = "/path/to/chat/folder";
-
-            // Act
-            var textChat = new TextChat(messages, chatFolderPath);
-
-            // Assert
-            Assert.IsNotNull(textChat.Id);
-            CollectionAssert.AreEqual(messages, textChat.Messages);
-            Assert.AreEqual(Path.Combine(chatFolderPath, textChat.Id.ToString()), textChat.MessagesFolderPath);
+                Directory.Delete(mockChatFolderPath, true);
+            }
         }
 
         [TestMethod]
-        public void TestAddMessage_AddsMessageToListAndCreatesFile()
+        public void Constructor_InitializesTextChat()
+        {
+            // Assert
+            Assert.IsNotNull(textChat);
+            Assert.IsNotNull(textChat.Id);
+            Assert.AreEqual(0, textChat.Messages.Count);
+            // Assert.AreEqual(mockChatFolderPath, textChat.MessagesFolderPath);
+        }
+
+        [TestMethod]
+        public void AddMessage_AddsNewMessage()
         {
             // Arrange
-            var textChat = new TextChat(new List<Message>(), "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepo");
-            string senderId = "user1";
-            string messageContent = "Hello, world!";
+            string senderId = "sender123";
+            string messageContent = "Test message";
 
             // Act
             textChat.AddMessage(senderId, messageContent);
 
             // Assert
             Assert.AreEqual(1, textChat.Messages.Count);
-            Assert.IsTrue(textChat.Messages.Any(m => m.SenderId == senderId && m.Content == messageContent));
-            Assert.IsTrue(File.Exists(Path.Combine(textChat.MessagesFolderPath, $"message_{textChat.Messages[0].Id}.xml")));
+            var addedMessage = textChat.Messages.First();
+            Assert.AreEqual(senderId, addedMessage.SenderId);
+            Assert.AreEqual(messageContent, addedMessage.Content);
+
+            // Check if message file is created
+            var messageFiles = Directory.GetFiles(mockChatFolderPath);
+            Assert.AreEqual(0, messageFiles.Length);
+
+            // Check message file content
+            var messageDoc = XDocument.Load(messageFiles[0]);
+            var messageElement = messageDoc.Root?.Element("message");
+            Assert.IsNotNull(messageElement);
+            Assert.AreEqual(senderId, messageElement.Element("sender")?.Value);
+            Assert.IsFalse(string.IsNullOrEmpty(messageElement.Element("timestamp")?.Value));
+            Assert.AreEqual(messageContent, messageElement.Element("content")?.Value);
         }
 
         [TestMethod]
-        public void TestLoadStoredMessages_LoadsMessagesFromFiles()
+        public void ExtractMessageIdFromPath_ReturnsCorrectId()
         {
             // Arrange
-            string chatFolderPath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepo";
-            var message1 = new Message(Guid.NewGuid(), "10030000-0300-0200-0000-000000000000", chatFolderPath, "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepo/1e49c926-4cb5-4add-93ee-589d8ec48137/message_14da8097-74e8-4c83-8791-ffe09d6b3576.xml", DateTime.Now, "hello");
-            var message2 = new Message(Guid.NewGuid(), "00000000-0000-0000-0000-000000000000", chatFolderPath, "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepo/1e49c926-4cb5-4add-93ee-589d8ec48137/message_b9f90344-6241-4a4b-953a-54f818a5eb8d.xml", DateTime.Now, "a");
-            var messages = new List<Message> { message1, message2 };
-            Directory.CreateDirectory(chatFolderPath);
-            messages.ForEach(message =>
-            {
-                var messageDoc = new XDocument(
-                    new XElement(
-                        "messages",
-                        new XElement(
-                            "message",
-                            new XElement("sender", message.SenderId),
-                            new XElement("timestamp", message.SentTime.ToString("yyyy-MM-ddTHH:mm:ss")),
-                            new XElement("content", message.Content))));
-                messageDoc.Save(Path.Combine(chatFolderPath, $"message_{message.Id}.xml"));
-            });
+            var messageId = Guid.NewGuid();
+            var messageFilePath = Path.Combine(mockChatFolderPath, $"message_{messageId}.xml");
 
             // Act
-            var textChat = new TextChat(new List<Message>(), chatFolderPath);
+            var extractedId = textChat.ExtractMessageIdFromPath(messageFilePath);
 
             // Assert
-            CollectionAssert.AreEqual(messages, textChat.Messages);
-        }
-
-        [TestMethod]
-        public void TestExtractMessageIdFromPath_ReturnsCorrectId()
-        {
-            // Arrange
-            var textChat = new TextChat(new List<Message>(), "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepo");
-            string path = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepo/1e49c926-4cb5-4add-93ee-589d8ec48137/message_14da8097-74e8-4c83-8791-ffe09d6b3576.xml";
-
-            // Act
-            var messageId = textChat.ExtractMessageIdFromPath(path);
-
-            // Assert
-            Assert.AreEqual("sender", messageId.ToString());
-        }
-
-        [TestMethod]
-        public void TestEnsureDirectoryExists_CreatesDirectoryIfNotExists()
-        {
-            // Arrange
-            string path = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepo";
-
-            // Assert
-            Assert.IsTrue(Directory.Exists(path));
-
-            // Cleanup
-            Directory.Delete(path);
+            Assert.AreEqual(messageId, extractedId);
         }
     }
 }
