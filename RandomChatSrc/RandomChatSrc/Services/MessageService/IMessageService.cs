@@ -2,10 +2,11 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using RandomChatSrc.Models;
 
 namespace RandomChatSrc.Services.MessageService
 {
+    using RandomChatSrc.Models;
+
     /// <summary>
     /// Interface for services that handle sending messages.
     /// </summary>

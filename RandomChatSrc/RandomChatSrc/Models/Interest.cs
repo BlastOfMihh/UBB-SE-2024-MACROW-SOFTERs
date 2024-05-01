@@ -19,11 +19,6 @@ namespace RandomChatSrc.Models
         }
 
         /// <summary>
-        /// Gets the unique identifier for the interest.
-        /// </summary>
-        public Guid Id { get; } = Guid.NewGuid();
-
-        /// <summary>
         /// Gets the name of the interest.
         /// </summary>
         public string InterestName { get; }

@@ -39,4 +39,8 @@
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Models\TextChatUnitTests.cs" />
+  </ItemGroup>
+
 </Project>

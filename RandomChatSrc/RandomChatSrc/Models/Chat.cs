@@ -9,13 +9,13 @@ namespace RandomChatSrc.Models
     /// </summary>
     public class Chat
     {
-        private const int MAX_PARTICIPANTS = 5;
+        private const int MAXPARTICIPANTS = 5;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Chat"/> class with a specified maximum number of participants.
         /// </summary>
         /// <param name="maximumParticipants">The maximum number of participants allowed in the chat. Defaults to 5 if not specified.</param>
-        public Chat(int maximumParticipants = MAX_PARTICIPANTS)
+        public Chat(int maximumParticipants = MAXPARTICIPANTS)
         {
             this.MaximumParticipants = maximumParticipants;
         }
@@ -52,7 +52,7 @@ namespace RandomChatSrc.Models
         }
 
         /// <summary>
-        /// Computes the number of available participants that can join the chat
+        /// Computes the number of available participants that can join the chat.
         /// </summary>
         /// <returns> The number of available participants that can join the chat</returns>
         public int AvailableParticipantsCount()
