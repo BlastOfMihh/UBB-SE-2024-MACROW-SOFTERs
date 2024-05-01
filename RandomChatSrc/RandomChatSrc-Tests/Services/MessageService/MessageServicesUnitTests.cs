@@ -13,7 +13,13 @@ namespace RandomChatSrc_Tests.Services.MessageService
         [TestInitialize]
         public void Initialize()
         {
-            mockTextChat = new Mock<TextChat>();
+            mockTextChat = new Mock<TextChat>(
+                    new List<Message>(),
+                    "mockPath",
+                    "")
+            {
+                CallBase = true
+            };
             testUserId = Guid.NewGuid();
         }
 
@@ -27,19 +33,30 @@ namespace RandomChatSrc_Tests.Services.MessageService
             Assert.IsNotNull(messageService);
         }
 
+        public Guid GetTestUserId()
+        {
+            return testUserId;
+        }
+
         [TestMethod]
         public void SendMessage_ValidMessage_CallsAddMessage()
         {
             // Arrange
-            var messageService = new RandomChatSrc.Services.MessageService.MessageService(mockTextChat.Object, testUserId);
+            var textChat = new TextChat(
+                new List<Message>(),
+                "mockPath",
+                "");
+            var testUserId = Guid.NewGuid();
+            var messageService = new RandomChatSrc.Services.MessageService.MessageService(textChat, testUserId);
             string message = "Random test message";
 
             // Act
             messageService.SendMessage(message);
 
             // Assert
-            mockTextChat.Verify(chat => chat.AddMessage(testUserId.ToString(), message), Times.Once);
+            Assert.IsTrue(textChat.Messages.Any(m => m.SenderId == testUserId.ToString() && m.Content == message));
         }
+
 
         [TestMethod]
         public void GetTextChat_ReturnsTextChatInstance()

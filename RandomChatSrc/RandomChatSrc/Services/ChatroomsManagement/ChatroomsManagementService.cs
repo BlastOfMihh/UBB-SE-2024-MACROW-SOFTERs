@@ -12,7 +12,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
     public class ChatroomsManagementService : IChatroomsManagementService
     {
         // schimba asta de fiecare data cand dai pull asta e nivelul
-        private readonly string textChatsDirectoryPath = "C:\\GitHub_Repos\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";
+        private readonly string textChatsDirectoryPath = "C:\\GitHub\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatroomsManagementService"/> class.
