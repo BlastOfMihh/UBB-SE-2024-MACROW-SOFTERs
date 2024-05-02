@@ -12,14 +12,14 @@ namespace RandomChatSrc.Repositories
     /// </summary>
     public class MapRepository : IMapRepository
     {
-        private readonly string locationsPath;
+        private string locationsPath;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MapRepository"/> class.
         /// </summary>
-        public MapRepository()
+        public MapRepository(string filePath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RepoMock/Locations.xml")
         {
-            this.locationsPath = Path.Combine(Directory.GetCurrentDirectory(), "RepoMock", "Locations.xml");
+            this.locationsPath = filePath;
             this.Locations = new List<MapLocation>();
             this.LoadFromMemory();
         }
@@ -38,23 +38,28 @@ namespace RandomChatSrc.Repositories
             XDocument userLocationsXML = XDocument.Load(this.locationsPath);
             foreach (XElement location in userLocationsXML.Descendants("MapLocations"))
             {
-                XElement? userIdElement = location.Element("UserId");
-                XElement? xCoordinatesElement = location.Element("xCoordinates");
-                XElement? yCoordinatesElement = location.Element("yCoordinates");
-                XElement? descriptionElement = location.Element("description");
-
-                if (userIdElement == null || xCoordinatesElement == null || yCoordinatesElement == null || descriptionElement == null)
+                // get for each location "MapLocation" the UserId, xCoordinates, yCoordinates and description
+                XElement? mapLocationElement = location.Element("MapLocation");
+                if (mapLocationElement != null)
                 {
-                    continue;
+                    XElement? userIdElement = mapLocationElement.Element("UserId");
+                    XElement? xCoordinatesElement = mapLocationElement.Element("xCoordinates");
+                    XElement? yCoordinatesElement = mapLocationElement.Element("yCoordinates");
+                    XElement? descriptionElement = mapLocationElement.Element("description");
+
+                    if (userIdElement != null && xCoordinatesElement != null && yCoordinatesElement != null &&
+                        descriptionElement != null)
+                    {
+
+                        Guid userId = new(userIdElement.Value);
+                        float xCoordinates = float.Parse(xCoordinatesElement.Value);
+                        float yCoordinates = float.Parse(yCoordinatesElement.Value);
+                        string description = descriptionElement.Value;
+
+                        MapLocation newLocation = new(userId, xCoordinates, yCoordinates, description);
+                        this.Locations.Add(newLocation);
+                    }
                 }
-
-                Guid userId = new (userIdElement.Value);
-                float xCoordinates = float.Parse(xCoordinatesElement.Value);
-                float yCoordinates = float.Parse(yCoordinatesElement.Value);
-                string description = descriptionElement.Value;
-
-                MapLocation newLocation = new (userId, xCoordinates, yCoordinates, description);
-                this.Locations.Add(newLocation);
             }
         }
 
@@ -69,16 +74,8 @@ namespace RandomChatSrc.Repositories
             // Check if the user location already exists
             MapLocation? existingLocation = this.Locations.FirstOrDefault(x => x.UserId == userID);
 
-            if (existingLocation != null)
-            {
-                // Update the existing location if found
-                this.UpdateUserLocation(userID, userLocation);
-            }
-            else
-            {
-                // Add the new location if it doesn't exist
-                this.Locations.Add(userLocation);
-            }
+            // Add the new location if it doesn't exist
+            this.Locations.Add(userLocation);
 
             // Add the user location to the XML file
             XDocument userLocationsXML = XDocument.Load(this.locationsPath);

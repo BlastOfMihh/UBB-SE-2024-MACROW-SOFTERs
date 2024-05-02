@@ -61,47 +61,18 @@ namespace RandomChatSrc.Repository
             foreach (string requestPath in Directory.GetFiles(this.RequestsFolderPath))
             {
                 XDocument? requestsDocument;
-                try
-                {
-                    requestsDocument = XDocument.Load(requestPath);
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Document could not be loaded. Invalid XML file.");
-                    continue;
-                }
+                requestsDocument = XDocument.Load(requestPath);
 
                 XElement? requestElement = requestsDocument.Element("request");
-                if (requestElement == null)
-                {
-                    Console.WriteLine("There is no request content for the document with file path '" + requestPath + "'");
-                    continue;
-                }
-
                 XElement? requestIdElement = requestElement.Element("RequestId");
-                if (requestIdElement == null)
-                {
-                    Console.WriteLine($"There is no request id content for the document with file path '${requestPath}'");
-                    continue;
-                }
 
                 string requestId = requestIdElement.Value;
 
                 XElement? senderElement = requestElement.Element("senderUser");
-                if (senderElement == null)
-                {
-                    Console.WriteLine($"There is no sender content for the document with file path '${requestPath}'");
-                    continue;
-                }
 
                 string senderUserId = senderElement.Value;
 
                 XElement? receiverElement = requestElement.Element("receiverUser");
-                if (receiverElement == null)
-                {
-                    Console.WriteLine($"There is no receiver content for the document with file path '${requestPath}`");
-                    continue;
-                }
 
                 string receiverUserId = receiverElement.Value;
                 Request currentRequest = new (Guid.Parse(requestId), Guid.Parse(senderUserId), Guid.Parse(receiverUserId), requestPath);

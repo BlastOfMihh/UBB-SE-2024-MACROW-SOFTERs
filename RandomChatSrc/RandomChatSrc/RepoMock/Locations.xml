@@ -1,15 +1,723 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <MapLocations>
-	<MapLocation>
-		<userId>10030000-0300-0200-0000-000000000000</userId>
-		<xCoordinates>4.7</xCoordinates>
-		<yCoordinates>5.3</yCoordinates>
-		<description>Location 1</description>
-	</MapLocation>
-	<MapLocation>
-		<userId>20030000-0300-0200-0000-000000000000</userId>
-		<xCoordinates>1000.7</xCoordinates>
-		<yCoordinates>500.3</yCoordinates>
-		<description>Location 2</description>
-	</MapLocation>
+  <MapLocation>
+    <UserId>544c459e-e73b-4de4-a2ed-45b12066072b</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Test description</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>d647f27b-5312-4a4c-8d3c-50015eb351c6</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>e7eaaabe-7881-47f3-b3c7-6c559f0371a8</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>e7eaaabe-7881-47f3-b3c7-6c559f0371a8</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>e7eaaabe-7881-47f3-b3c7-6c559f0371a8</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>58bfd340-bd10-4c3b-8ea5-2b6cfc6003bd</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>d14ac9d4-5fd2-476b-8402-6dded2d834ac</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>d14ac9d4-5fd2-476b-8402-6dded2d834ac</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>afe1311d-7817-402b-bdf9-4c52bc0013b0</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>2960239d-85a3-468c-9ed6-5bb623c3286b</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>2960239d-85a3-468c-9ed6-5bb623c3286b</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>2960239d-85a3-468c-9ed6-5bb623c3286b</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>30a88233-c041-4498-8eb2-c1c9c883697a</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>6790b477-6852-44d2-9aaf-1116666b1aea</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>6790b477-6852-44d2-9aaf-1116666b1aea</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>50c62d7f-305d-4d2d-bd68-763cab371241</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>0372ff9b-abb5-4461-aa5b-a70e8e7777eb</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>0372ff9b-abb5-4461-aa5b-a70e8e7777eb</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>0372ff9b-abb5-4461-aa5b-a70e8e7777eb</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>45becbf1-3e19-4263-89c1-f96da8874a9d</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>55ef3fad-a391-4d88-95d6-a3dc817c19ae</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>55ef3fad-a391-4d88-95d6-a3dc817c19ae</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>3b0027b6-52ca-411f-83f9-d42f4ad1cbda</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>af7a7c36-8117-4ce4-a5f6-331a9d6ce880</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>af7a7c36-8117-4ce4-a5f6-331a9d6ce880</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>af7a7c36-8117-4ce4-a5f6-331a9d6ce880</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>c967a513-a295-4d1d-8ff4-6ccd47c27bfd</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>d91c5c9c-8921-49d2-9cc1-ba5001b0a561</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>d91c5c9c-8921-49d2-9cc1-ba5001b0a561</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>b1051f39-293b-4775-9383-47edfc6d12d3</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>f2e7a297-cbc7-429d-81de-1261e526a08e</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>f2e7a297-cbc7-429d-81de-1261e526a08e</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>f2e7a297-cbc7-429d-81de-1261e526a08e</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>30c9adc7-82a1-4c5c-8257-b893b98f94a0</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>f9d1f5ea-6f35-4d64-adc7-eba8284ee997</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>f9d1f5ea-6f35-4d64-adc7-eba8284ee997</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>3c719342-0e6a-45bd-8b85-ba1b5b3465c2</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>fadeb8ea-f2ef-487a-b272-e12874b8806a</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>fadeb8ea-f2ef-487a-b272-e12874b8806a</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>fadeb8ea-f2ef-487a-b272-e12874b8806a</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>69c93e66-3afa-4ebc-b90b-f145c308fbc3</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>eaf7e8db-771f-4bc3-8dd1-6a4dabb42c2c</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>eaf7e8db-771f-4bc3-8dd1-6a4dabb42c2c</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>9c073733-fd50-4dfa-afa5-93d2937270bf</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>0e786484-a37c-4136-a9b9-b0fb97777999</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>0e786484-a37c-4136-a9b9-b0fb97777999</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>0e786484-a37c-4136-a9b9-b0fb97777999</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>c13cde68-31e6-48a1-a8d1-ae9bc2fded2f</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>a6058462-03f7-4ea0-90b4-e644e2c10973</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>a6058462-03f7-4ea0-90b4-e644e2c10973</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>08b78fc1-cf33-492f-bf31-d8fc0b342d8b</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>c4f06039-f74f-45f6-b787-f1a41ba8fefa</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>c4f06039-f74f-45f6-b787-f1a41ba8fefa</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>c4f06039-f74f-45f6-b787-f1a41ba8fefa</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>cf1fe328-0bf9-4f54-944b-04713a7fa369</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>6055af1c-2179-4701-b7a6-8c4c4d2aad8b</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>6055af1c-2179-4701-b7a6-8c4c4d2aad8b</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>5aa0e2c6-885c-467d-b4c7-8aa03a95a83d</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>5bce5eff-4a6d-4c4c-9e2d-851774adcb80</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>5bce5eff-4a6d-4c4c-9e2d-851774adcb80</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>5bce5eff-4a6d-4c4c-9e2d-851774adcb80</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>2527122c-58ed-4577-8c05-fe7355f5ada0</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>d0f3a19a-da27-472a-92d3-b42adb268d6d</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>d0f3a19a-da27-472a-92d3-b42adb268d6d</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>6e768ca7-2ffd-4ffb-a0b8-0b3a64ef7fc7</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>89cbe3d5-ff5b-4416-b8ba-df5f68d4571e</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>89cbe3d5-ff5b-4416-b8ba-df5f68d4571e</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>89cbe3d5-ff5b-4416-b8ba-df5f68d4571e</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>8fd6c6cd-a4fd-4e32-abd4-1d55c55ddd8e</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>871bd845-6964-441b-8d6b-b010d8297cce</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>871bd845-6964-441b-8d6b-b010d8297cce</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>ab908a15-96e0-4b4b-97ca-da2f60d57d5f</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>a3fd89e8-cea2-48e7-92c1-f70f171dc7a4</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>a3fd89e8-cea2-48e7-92c1-f70f171dc7a4</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>a3fd89e8-cea2-48e7-92c1-f70f171dc7a4</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>072cfd61-d4d1-4f43-b234-7a8676ca9b9e</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>ac41822b-9f4b-45b6-98a4-6a8b7b75bc0a</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>ac41822b-9f4b-45b6-98a4-6a8b7b75bc0a</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>aa56aa7b-3a59-4775-97b2-dfbe3e73a459</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>774de855-139d-4f7c-af42-4857fc00ea39</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>774de855-139d-4f7c-af42-4857fc00ea39</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>774de855-139d-4f7c-af42-4857fc00ea39</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>ee7581bf-e379-452a-9dea-ce52fd0fe2f9</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>2eacbfdc-e595-4782-8cb7-cf9c18bc4f90</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>2eacbfdc-e595-4782-8cb7-cf9c18bc4f90</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>ddca6432-d4e9-4c80-bce4-fd98c91f429b</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>424f9de6-070a-4f71-b40c-a8f70ac359e5</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>424f9de6-070a-4f71-b40c-a8f70ac359e5</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>424f9de6-070a-4f71-b40c-a8f70ac359e5</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>b78e137b-4c98-4bd8-a8ef-c14df0d5cf07</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>d6b5da97-2488-4e77-8c71-20ca87dadfa0</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>d6b5da97-2488-4e77-8c71-20ca87dadfa0</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>ba5c0996-5cf3-4c66-9408-8e0b93fc86d7</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>e0fccc8d-222c-423e-a4aa-993ab5e7b621</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>e0fccc8d-222c-423e-a4aa-993ab5e7b621</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>e0fccc8d-222c-423e-a4aa-993ab5e7b621</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>f73d03ae-d795-4488-b2f1-b518a213318f</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>7709548b-8f58-44f0-a363-9ef428101b20</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>7709548b-8f58-44f0-a363-9ef428101b20</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>aaf0580a-0349-4c60-bb54-7e968153c97d</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>2e20f51a-3e67-4a89-92fe-948a68141925</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>2e20f51a-3e67-4a89-92fe-948a68141925</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>2e20f51a-3e67-4a89-92fe-948a68141925</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>1fb78a6f-1c1f-4ed6-8933-b58b28883183</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>c9c7b1b8-97f9-4e07-915a-4e7d18e9f5a6</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>c9c7b1b8-97f9-4e07-915a-4e7d18e9f5a6</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>25ba4818-b677-4990-87f3-fd979f593cac</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>122bd153-b766-4051-84b0-6997bf6217b5</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>122bd153-b766-4051-84b0-6997bf6217b5</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>122bd153-b766-4051-84b0-6997bf6217b5</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>8fd825b2-070a-4cac-befa-e8cb9bd56710</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>cee01810-2a4b-463c-a9c9-b192046deff2</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>cee01810-2a4b-463c-a9c9-b192046deff2</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>5d885dd8-3a41-4b8f-b5e2-ce4d9d72f80b</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>New location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>1c092764-12c5-43ef-9513-8c682197a078</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>1c092764-12c5-43ef-9513-8c682197a078</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>1c092764-12c5-43ef-9513-8c682197a078</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>2fc76217-8495-4adc-bd5c-37966302e339</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Location to remove</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>ec73264c-9b65-42da-995f-cb596df31faf</UserId>
+    <xCoordinates>10.5</xCoordinates>
+    <yCoordinates>20.7</yCoordinates>
+    <description>Existing location</description>
+  </MapLocation>
+  <MapLocation>
+    <UserId>ec73264c-9b65-42da-995f-cb596df31faf</UserId>
+    <xCoordinates>15.3</xCoordinates>
+    <yCoordinates>25.8</yCoordinates>
+    <description>Updated location</description>
+  </MapLocation>
 </MapLocations>
