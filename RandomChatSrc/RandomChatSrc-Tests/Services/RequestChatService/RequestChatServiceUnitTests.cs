@@ -3,7 +3,6 @@ using RandomChatSrc.Models;
 using RandomChatSrc.Repositories;
 using RandomChatSrc.Repository;
 using RandomChatSrc.Services.ChatroomsManagement;
-using RandomChatSrc.Services.GlobalServices;
 using RandomChatSrc.Services.MapService;
 using RandomChatSrc.Services.RequestChatService;
 
@@ -14,7 +13,7 @@ namespace RandomChatSrc_Tests.Services.RequestChatServiceUnitTest
     {
         private string requestsRepoPath = "";
         private Mock<List<Request>> mockRequests = null!;
-        private GlobalServices mockGlobalServices = null!;
+        private RandomChatSrc.Services.GlobalServices.GlobalServices mockGlobalServices = null!;
         private ChatRequestsRepository mockRequestsRepo = null!;
         private ChatroomsManagementService mockChatroomsManagementService = null!;
         private Mock<IMapService> mockMapService = null!;
@@ -33,7 +32,7 @@ namespace RandomChatSrc_Tests.Services.RequestChatServiceUnitTest
             mockRequestChatService = new Mock<IRequestChatService>();
             mockUserRepository = new Mock<IUserRepository>();
 
-            mockGlobalServices = new GlobalServices(mockChatroomsManagementService, mockMapService.Object,
+            mockGlobalServices = new RandomChatSrc.Services.GlobalServices.GlobalServices(mockChatroomsManagementService, mockMapService.Object,
                 mockRequestChatService.Object, mockUserRepository.Object);
         }
 
