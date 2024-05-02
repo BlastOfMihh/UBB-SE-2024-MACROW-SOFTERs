@@ -3,7 +3,6 @@ using RandomChatSrc.Models;
 using RandomChatSrc.Repositories;
 using RandomChatSrc.Repository;
 using RandomChatSrc.Services.ChatroomsManagement;
-using RandomChatSrc.Services.GlobalServices;
 using RandomChatSrc.Services.MapService;
 using RandomChatSrc.Services.RequestChatService;
 

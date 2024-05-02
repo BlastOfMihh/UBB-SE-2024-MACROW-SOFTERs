@@ -41,8 +41,9 @@ namespace RandomChatSrc.Repository
             if (!Directory.Exists(this.RequestsFolderPath))
             {
                 Directory.CreateDirectory(this.RequestsFolderPath);
+                Console.WriteLine("directory doesnt exist");
             }
-
+            Console.WriteLine(this.RequestsFolderPath);
             this.LoadFromMemory();
         }
 
