@@ -19,7 +19,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
 
         /// <summary>
         /// Creates a new chatroom with the existing chats.
-        /// </summary>
+        /// </summary>CreateChat
         /// <returns>The created chatroom.</returns>
         TextChat CreateChat();
 

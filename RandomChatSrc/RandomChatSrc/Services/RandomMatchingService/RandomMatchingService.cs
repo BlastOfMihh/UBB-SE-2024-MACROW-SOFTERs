@@ -6,14 +6,14 @@ namespace RandomChatSrc.Services.RandomMatchingService
 {
     using RandomChatSrc.Models;
     using RandomChatSrc.Services.ChatroomsManagement;
-    using RandomChatSrc.Services.UserChatListServiceDomain;
+    using RandomChatSrc.Services.UserChatListService;
 
     /// <summary>
     /// Service responsible for random matching users to chat rooms based on their configurations.
     /// </summary>
     public class RandomMatchingService : IRandomMatchingService
     {
-        private readonly ChatroomsManagementService chatroomsManagementService;
+        private readonly IChatroomsManagementService chatroomsManagementService;
         private readonly UserChatListService userChatListService;
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace RandomChatSrc.Services.RandomMatchingService
         /// </summary>
         /// <param name="chatroomsManagementService">The chatrooms management service.</param>
         /// <param name="userChatListService">The user chat list service.</param>
-        public RandomMatchingService(ChatroomsManagementService chatroomsManagementService, UserChatListService userChatListService)
+        public RandomMatchingService(IChatroomsManagementService chatroomsManagementService, UserChatListService userChatListService)
         {
             this.chatroomsManagementService = chatroomsManagementService;
             this.userChatListService = userChatListService;
@@ -52,10 +52,6 @@ namespace RandomChatSrc.Services.RandomMatchingService
             foreach (var chat in allChats)
             {
                 ++currentChatIndex;
-                if (chat.AvailableParticipantsCount() == 0 || chat.Participants.Any(participant => participant.Id == this.userChatListService.CurrentUserId))
-                {
-                    continue;
-                }
 
                 currentScore = 0;
 
@@ -72,17 +68,6 @@ namespace RandomChatSrc.Services.RandomMatchingService
                     bestScore = currentScore;
                     bestChatIndexes = new List<int> { currentChatIndex };
                 }
-                else if (currentScore == bestScore)
-                {
-                    bestChatIndexes.Add(currentChatIndex);
-                }
-            }
-
-            if (bestChatIndexes.Count == 0)
-            {
-                TextChat newChat = this.chatroomsManagementService.CreateChat();
-                newChat.AddParticipant(chatConfig.User);
-                return newChat;
             }
 
             int randomIndex = new Random().Next(bestChatIndexes.Count);
