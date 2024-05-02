@@ -1,11 +1,10 @@
 ﻿using Moq;
 using RandomChatSrc.Repositories;
 using RandomChatSrc.Services.ChatroomsManagement;
-using RandomChatSrc.Services.GlobalServices;
 using RandomChatSrc.Services.MapService;
 using RandomChatSrc.Services.RequestChatService;
 
-namespace RandomChatSrc.RandomChatSrc_Tests.Services.GlobalServiceUnitTests
+namespace RandomChatSrc_Tests.Services.GlobalServices
 {
     [TestClass]
     public class GlobalServiceUnitTests
@@ -28,7 +27,7 @@ namespace RandomChatSrc.RandomChatSrc_Tests.Services.GlobalServiceUnitTests
         public void TestGetGlobalService_CorrectlyInstantiated_ReturnsInstance()
         {
             // Arrange
-            var globalServices = new GlobalServices(mockChatroomsManagementService.Object, mockMapService.Object, mockRequestChatService.Object, mockUserRepository.Object);
+            var globalServices = new RandomChatSrc.Services.GlobalServices.GlobalServices(mockChatroomsManagementService.Object, mockMapService.Object, mockRequestChatService.Object, mockUserRepository.Object);
 
             // Act
             // No action needed since we're testing the constructor
@@ -41,7 +40,7 @@ namespace RandomChatSrc.RandomChatSrc_Tests.Services.GlobalServiceUnitTests
         public void TestGetChatroomsManagementService_ReturnsInstance()
         {
             // Arrange
-            var globalServices = new GlobalServices(mockChatroomsManagementService.Object, mockMapService.Object, mockRequestChatService.Object, mockUserRepository.Object);
+            var globalServices = new RandomChatSrc.Services.GlobalServices.GlobalServices(mockChatroomsManagementService.Object, mockMapService.Object, mockRequestChatService.Object, mockUserRepository.Object);
 
             // Act
             var chatroomsManagementService = globalServices.ChatroomsManagementService;
@@ -54,7 +53,7 @@ namespace RandomChatSrc.RandomChatSrc_Tests.Services.GlobalServiceUnitTests
         public void TestGetMapService_ReturnsInstance()
         {
             // Arrange
-            var globalServices = new GlobalServices(mockChatroomsManagementService.Object, mockMapService.Object, mockRequestChatService.Object, mockUserRepository.Object);
+            var globalServices = new RandomChatSrc.Services.GlobalServices.GlobalServices(mockChatroomsManagementService.Object, mockMapService.Object, mockRequestChatService.Object, mockUserRepository.Object);
 
             // Act
             var mapService = globalServices.MapService;
@@ -67,7 +66,7 @@ namespace RandomChatSrc.RandomChatSrc_Tests.Services.GlobalServiceUnitTests
         public void TestGetRequestChatService_ReturnsInstance()
         {
             // Arrange
-            var globalServices = new GlobalServices(mockChatroomsManagementService.Object, mockMapService.Object, mockRequestChatService.Object, mockUserRepository.Object);
+            var globalServices = new RandomChatSrc.Services.GlobalServices.GlobalServices(mockChatroomsManagementService.Object, mockMapService.Object, mockRequestChatService.Object, mockUserRepository.Object);
 
             // Act
             var requestChatService = globalServices.RequestChatService;
@@ -80,7 +79,7 @@ namespace RandomChatSrc.RandomChatSrc_Tests.Services.GlobalServiceUnitTests
         public void TestGetUserRepository_ReturnsInstance()
         {
             // Arrange
-            var globalServices = new GlobalServices(mockChatroomsManagementService.Object, mockMapService.Object, mockRequestChatService.Object, mockUserRepository.Object);
+            var globalServices = new RandomChatSrc.Services.GlobalServices.GlobalServices(mockChatroomsManagementService.Object, mockMapService.Object, mockRequestChatService.Object, mockUserRepository.Object);
 
             // Act
             var userRepository = globalServices.UserRepository;

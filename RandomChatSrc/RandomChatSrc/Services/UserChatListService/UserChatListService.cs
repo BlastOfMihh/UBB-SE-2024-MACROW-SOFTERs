@@ -22,7 +22,7 @@ namespace RandomChatSrc.Services.UserChatListServiceDomain
         public UserChatListService(ChatroomsManagementService chatroomsManagementService)
         {
             this.chatroomsManagementService = chatroomsManagementService;
-            string filePath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RepoMock/CurrentUser.xml";
+            string filePath = @"/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RepoMock/CurrentUser.xml";
             try
             {
                 XmlDocument doc = new ();

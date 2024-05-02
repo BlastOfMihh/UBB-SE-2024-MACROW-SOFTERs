@@ -12,14 +12,19 @@ namespace RandomChatSrc.Services.ChatroomsManagement
     public class ChatroomsManagementService : IChatroomsManagementService
     {
         // schimba asta de fiecare data cand dai pull asta e nivelul
+<<<<<<< HEAD
         private readonly string textChatsDirectoryPath = "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\";
+=======
+        private string textChatsDirectoryPath;
+>>>>>>> 146f3c26787ad57e64e75ad933562cded088aebe
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatroomsManagementService"/> class.
         /// </summary>
-        public ChatroomsManagementService()
+        public ChatroomsManagementService(string filePath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepo")
         {
             this.ActiveChats = new List<TextChat>();
+            this.textChatsDirectoryPath = filePath;
             this.LoadActiveChats();
         }
 
@@ -30,7 +35,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         /// </summary>
         /// <param name="size">The size of the chatroom.</param>
         /// <returns>The created chatroom.</returns>
-        public TextChat CreateChat(int size)
+        public TextChat CreateChat()
         {
             var newChat = new TextChat(new List<Message>(), this.textChatsDirectoryPath);
             this.ActiveChats.Add(newChat);
@@ -51,8 +56,6 @@ namespace RandomChatSrc.Services.ChatroomsManagement
                     return;
                 }
             }
-
-            throw new Exception("Chat could not be deleted!! not enough permissions");
         }
 
         /// <summary>
@@ -73,15 +76,17 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         /// <returns>The chatroom with the specified ID.</returns>
         public TextChat GetChatById(Guid id)
         {
+            TextChat found = null;
             foreach (TextChat chat in this.ActiveChats)
             {
                 if (chat.Id == id)
                 {
-                    return chat;
+                    found = chat;
+                    break;
                 }
             }
 
-            throw new Exception("Chat not found");
+            return found;
         }
 
         /// <summary>
@@ -96,7 +101,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         private string GetIdFromPath(string folderPath)
         {
             string id = string.Empty;
-            for (int i = folderPath.Length - 1; folderPath[i] != '\\' && i >= 0; --i)
+            for (int i = folderPath.Length - 1; folderPath[i] != '/' && i >= 0; --i)
             {
                 id += folderPath[i];
             }

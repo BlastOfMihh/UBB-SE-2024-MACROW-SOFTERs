@@ -18,11 +18,10 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         TextChat GetChat();
 
         /// <summary>
-        /// Creates a new chatroom with a specified size.
+        /// Creates a new chatroom with the existing chats.
         /// </summary>
-        /// <param name="size">The size of the chatroom.</param>
         /// <returns>The created chatroom.</returns>
-        TextChat CreateChat(int size);
+        TextChat CreateChat();
 
         /// <summary>
         /// Deletes a chatroom with the specified ID.

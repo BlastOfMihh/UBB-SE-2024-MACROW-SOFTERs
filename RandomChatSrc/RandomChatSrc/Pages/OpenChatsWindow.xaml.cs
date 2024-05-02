@@ -34,7 +34,7 @@ namespace RandomChatSrc.Pages
             this.HeightRequest = 600;
             this.BackgroundColor = Color.FromArgb("#FFFFFF");
 
-            string filePath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RepoMock/CurrentUser.xml";
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "RepoMock", "CurrentUser.xml");
             try
             {
                 XmlDocument doc = new ();

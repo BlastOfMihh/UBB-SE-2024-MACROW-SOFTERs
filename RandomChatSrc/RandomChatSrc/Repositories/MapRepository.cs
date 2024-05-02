@@ -19,14 +19,12 @@ namespace RandomChatSrc.Repositories
         /// </summary>
         public MapRepository()
         {
-            // this.locationsPath = "C:\\Users\\RichardToth\\Projects\\UBB-ISS\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml";
-            // this.locationsPath = "C:\\Users\\MiHH\\Gits\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\";
-            this.locationsPath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RepoMock/";
+            this.locationsPath = Path.Combine(Directory.GetCurrentDirectory(), "RepoMock", "Locations.xml");
             this.Locations = new List<MapLocation>();
             this.LoadFromMemory();
         }
 
-        private List<MapLocation> Locations { get; set; }
+        public List<MapLocation> Locations { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MapRepository"/> class.

@@ -1,5 +1,4 @@
-﻿using RandomChatSrc.Services.MessageService;
-using Moq;
+﻿using Moq;
 using RandomChatSrc.Models;
 
 namespace RandomChatSrc_Tests.Services.MessageService
@@ -44,8 +43,7 @@ namespace RandomChatSrc_Tests.Services.MessageService
             // Arrange
             var textChat = new TextChat(
                 new List<Message>(),
-                "mockPath",
-                "");
+                "mockPath");
             var testUserId = Guid.NewGuid();
             var messageService = new RandomChatSrc.Services.MessageService.MessageService(textChat, testUserId);
             string message = "Random test message";

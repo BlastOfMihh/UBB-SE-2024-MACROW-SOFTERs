@@ -12,13 +12,6 @@ namespace RandomChatSrc.Services.MapService
     public interface IMapService
     {
         /// <summary>
-        /// Makes a request between two users.
-        /// </summary>
-        /// <param name="senderId">The ID of the sender.</param>
-        /// <param name="receiverId">The ID of the receiver.</param>
-        void MakeRequest(Guid senderId, Guid receiverId);
-
-        /// <summary>
         /// Retrieves all user locations.
         /// </summary>
         /// <returns>A list of all user locations.</returns>
