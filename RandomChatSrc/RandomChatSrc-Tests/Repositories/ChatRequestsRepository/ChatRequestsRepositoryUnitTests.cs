@@ -7,14 +7,13 @@ namespace RandomChatSrc_Tests.Repositories
     [TestClass]
     public class ChatRequestsRepositoryUnitTests
     {
-
         private string requestsRepoPath = "";
         private Mock<List<Request>> mockRequests = null!;
 
         [TestInitialize]
         public void Initialize()
         {
-            requestsRepoPath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepoTesting";
+            requestsRepoPath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RequestRepo/";
             mockRequests = new Mock<List<Request>>();
         }
 
@@ -35,7 +34,7 @@ namespace RandomChatSrc_Tests.Repositories
         public void TestGetChatRequestsRepository_CorrectlyLoadedExistingGuid_ReturnsInstance()
         {
             // Arrange
-            var requestsRepository = new ChatRequestsRepository(mockRequests.Object, requestsRepoPath, new Guid("00000000-0000-0000-0000-000000000000"));
+            var requestsRepository = new ChatRequestsRepository(mockRequests.Object, requestsRepoPath, new Guid("0ab1525c-7d57-4037-b743-cfe51a580634"));
            
             // Act
             // No action needed since we're testing the constructor
@@ -52,7 +51,7 @@ namespace RandomChatSrc_Tests.Repositories
 
             // Act
             // Delete the directory for future testing
-            DirectoryInfo di = new DirectoryInfo("/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepoTesting");
+            DirectoryInfo di = new DirectoryInfo("/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RequestRepo/00000000-0000-0000-0000-000000000001");
             di.Delete(true);
 
             // Assert

@@ -52,7 +52,6 @@ namespace RandomChatSrc.Services.UserChatListService
         /// </summary>
         public Guid CurrentUserId // Use uppercase for public properties
         {
-            get => currentUserId;
             set => currentUserId = value;
         }
 
