@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace RandomChatSrc.Services.UserChatListServiceDomain
+namespace RandomChatSrc.Services.UserChatListService
 {
     using RandomChatSrc.Models;
 
@@ -16,5 +16,6 @@ namespace RandomChatSrc.Services.UserChatListServiceDomain
         /// </summary>
         /// <returns>A list of open chats.</returns>
         List<TextChat> GetOpenChats();
+
     }
 }

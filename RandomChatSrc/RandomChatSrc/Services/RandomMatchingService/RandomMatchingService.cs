@@ -6,14 +6,14 @@ namespace RandomChatSrc.Services.RandomMatchingService
 {
     using RandomChatSrc.Models;
     using RandomChatSrc.Services.ChatroomsManagement;
-    using RandomChatSrc.Services.UserChatListServiceDomain;
+    using RandomChatSrc.Services.UserChatListService;
 
     /// <summary>
     /// Service responsible for random matching users to chat rooms based on their configurations.
     /// </summary>
     public class RandomMatchingService : IRandomMatchingService
     {
-        private readonly ChatroomsManagementService chatroomsManagementService;
+        private readonly IChatroomsManagementService chatroomsManagementService;
         private readonly UserChatListService userChatListService;
 
         /// <summary>
@@ -21,10 +21,15 @@ namespace RandomChatSrc.Services.RandomMatchingService
         /// </summary>
         /// <param name="chatroomsManagementService">The chatrooms management service.</param>
         /// <param name="userChatListService">The user chat list service.</param>
-        public RandomMatchingService(ChatroomsManagementService chatroomsManagementService, UserChatListService userChatListService)
+        public RandomMatchingService(IChatroomsManagementService chatroomsManagementService, UserChatListService userChatListService)
         {
             this.chatroomsManagementService = chatroomsManagementService;
             this.userChatListService = userChatListService;
+        }
+
+        public RandomMatchingService()
+        {
+            // parameterless Constructor
         }
 
         /// <summary>

@@ -17,13 +17,16 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatroomsManagementService"/> class.
         /// </summary>
-        public ChatroomsManagementService(string filePath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepo")
+        public ChatroomsManagementService(string filePath = "C:\\Users\\potat\\OneDrive\\Documents\\Visual Studio 2022\\ISS\\Macrow\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\")
         {
             this.ActiveChats = new List<TextChat>();
             this.textChatsDirectoryPath = filePath;
             this.LoadActiveChats();
         }
-
+        public ChatroomsManagementService()
+        {
+            // Parameterless constructor
+        }
         private List<TextChat> ActiveChats { get; set; }
 
         /// <summary>
@@ -97,7 +100,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         private string GetIdFromPath(string folderPath)
         {
             string id = string.Empty;
-            for (int i = folderPath.Length - 1; folderPath[i] != '/' && i >= 0; --i)
+            for (int i = folderPath.Length - 1; folderPath[i] != '\\' && i >= 0; --i)
             {
                 id += folderPath[i];
             }

@@ -1,7 +1,7 @@
 // <copyright file="UserChatListService.cs" company="SuperBet BeClean">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-namespace RandomChatSrc.Services.UserChatListServiceDomain
+namespace RandomChatSrc.Services.UserChatListService
 {
     using System.Xml;
     using RandomChatSrc.Models;
@@ -12,14 +12,14 @@ namespace RandomChatSrc.Services.UserChatListServiceDomain
     /// </summary>
     public class UserChatListService : IUserChatListService
     {
-        private readonly ChatroomsManagementService chatroomsManagementService;
-        private readonly Guid currentUserId;
+        private readonly IChatroomsManagementService chatroomsManagementService;
+        private Guid currentUserId;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserChatListService"/> class.
         /// </summary>
         /// <param name="chatroomsManagementService">The service for managing chatrooms.</param>
-        public UserChatListService(ChatroomsManagementService chatroomsManagementService)
+        public UserChatListService(IChatroomsManagementService chatroomsManagementService)
         {
             this.chatroomsManagementService = chatroomsManagementService;
             string filePath = @"/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RepoMock/CurrentUser.xml";
@@ -45,11 +45,19 @@ namespace RandomChatSrc.Services.UserChatListServiceDomain
                 Console.WriteLine(e.Message);
             }
         }
+        public UserChatListService()
+        {
+            // parameterless Constructor
+        }
 
         /// <summary>
         /// Gets the ID of the current user.
         /// </summary>
-        public Guid CurrentUserId { get => this.currentUserId; }
+        public Guid CurrentUserId // Use uppercase for public properties
+        {
+            get => currentUserId;
+            set => currentUserId = value;
+        }
 
         /// <summary>
         /// Retrieves a list of all open chats that the current user is a member of.

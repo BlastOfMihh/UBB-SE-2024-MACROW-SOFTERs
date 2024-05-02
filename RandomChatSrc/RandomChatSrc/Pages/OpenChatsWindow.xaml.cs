@@ -9,7 +9,7 @@ namespace RandomChatSrc.Pages
     using RandomChatSrc.Services.ChatroomsManagement;
     using RandomChatSrc.Services.MessageService;
     using RandomChatSrc.Services.RandomMatchingService;
-    using RandomChatSrc.Services.UserChatListServiceDomain;
+    using RandomChatSrc.Services.UserChatListService;
 
     /// <summary>
     /// Represents the OpenChatsWindow view.
