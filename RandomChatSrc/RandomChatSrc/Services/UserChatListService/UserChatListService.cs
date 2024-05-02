@@ -35,16 +35,13 @@ namespace RandomChatSrc.Services.UserChatListService
                     var userId = currentNode.InnerText ?? throw new Exception("User not found");
                     this.currentUserId = Guid.Parse(userId);
                 }
-                else
-                {
-                    throw new Exception("User not found");
-                }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
         }
+
         public UserChatListService()
         {
             // parameterless Constructor

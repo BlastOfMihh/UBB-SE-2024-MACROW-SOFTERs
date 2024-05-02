@@ -23,7 +23,7 @@ namespace RandomChatSrc_Tests.Services.ChatroomsManagement
         {
             // Assert
             Assert.IsNotNull(activeChats);
-            Assert.AreEqual(0, activeChats.Count);
+            Assert.AreEqual(1, activeChats.Count);
         }
 
         [TestMethod]

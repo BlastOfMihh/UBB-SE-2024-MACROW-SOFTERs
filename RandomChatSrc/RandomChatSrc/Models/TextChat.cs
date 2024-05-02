@@ -74,19 +74,10 @@ namespace RandomChatSrc.Models
                 var messageDoc = XDocument.Load(messageFilePath);
 
                 var messageElement = messageDoc.Root?.Element("message");
-                if (messageElement == null)
-                {
-                    continue;
-                }
 
                 var senderId = messageElement.Element("sender")?.Value;
                 var timestampStr = messageElement.Element("timestamp")?.Value;
                 var content = messageElement.Element("content")?.Value;
-
-                if (string.IsNullOrEmpty(senderId) || string.IsNullOrEmpty(timestampStr) || string.IsNullOrEmpty(content))
-                {
-                    continue;
-                }
 
                 var timestamp = DateTime.ParseExact(timestampStr, "yyyy-MM-ddTHH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
                 var messageId = this.ExtractMessageIdFromPath(messageFilePath);

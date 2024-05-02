@@ -27,11 +27,6 @@ namespace RandomChatSrc.Services.RandomMatchingService
             this.userChatListService = userChatListService;
         }
 
-        public RandomMatchingService()
-        {
-            // parameterless Constructor
-        }
-
         /// <summary>
         /// Requests a matching chat room for a user based on their configuration.
         /// </summary>
@@ -57,10 +52,6 @@ namespace RandomChatSrc.Services.RandomMatchingService
             foreach (var chat in allChats)
             {
                 ++currentChatIndex;
-                if (chat.AvailableParticipantsCount() == 0 || chat.Participants.Any(participant => participant.Id == this.userChatListService.CurrentUserId))
-                {
-                    continue;
-                }
 
                 currentScore = 0;
 
@@ -77,17 +68,6 @@ namespace RandomChatSrc.Services.RandomMatchingService
                     bestScore = currentScore;
                     bestChatIndexes = new List<int> { currentChatIndex };
                 }
-                else if (currentScore == bestScore)
-                {
-                    bestChatIndexes.Add(currentChatIndex);
-                }
-            }
-
-            if (bestChatIndexes.Count == 0)
-            {
-                TextChat newChat = this.chatroomsManagementService.CreateChat();
-                newChat.AddParticipant(chatConfig.User);
-                return newChat;
             }
 
             int randomIndex = new Random().Next(bestChatIndexes.Count);
