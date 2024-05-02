@@ -6,9 +6,11 @@ namespace RandomChatSrc.Pages
 {
     using System.Xml;
     using RandomChatSrc.Models;
+    using RandomChatSrc.Repository;
     using RandomChatSrc.Services.ChatroomsManagement;
     using RandomChatSrc.Services.MessageService;
     using RandomChatSrc.Services.RandomMatchingService;
+    using RandomChatSrc.Services.RequestChatService;
     using RandomChatSrc.Services.UserChatListServiceDomain;
 
     /// <summary>
