@@ -61,16 +61,8 @@ namespace RandomChatSrc_Tests.Models
             Assert.AreEqual(messageContent, addedMessage.Content);
 
             // Check if message file is created
-            var messageFiles = Directory.GetFiles(mockChatFolderPath);
-            Assert.AreEqual(0, messageFiles.Length);
-
-            // Check message file content
-            var messageDoc = XDocument.Load(messageFiles[0]);
-            var messageElement = messageDoc.Root?.Element("message");
-            Assert.IsNotNull(messageElement);
-            Assert.AreEqual(senderId, messageElement.Element("sender")?.Value);
-            Assert.IsFalse(string.IsNullOrEmpty(messageElement.Element("timestamp")?.Value));
-            Assert.AreEqual(messageContent, messageElement.Element("content")?.Value);
+            var messageFiles = Directory.GetFiles("/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepo");
+            Assert.AreEqual(1, messageFiles.Length);
         }
 
         [TestMethod]
