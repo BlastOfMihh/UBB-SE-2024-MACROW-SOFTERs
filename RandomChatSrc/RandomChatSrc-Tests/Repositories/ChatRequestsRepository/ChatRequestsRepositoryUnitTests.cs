@@ -2,7 +2,7 @@
 using RandomChatSrc.Models;
 using RandomChatSrc.Repository;
 
-namespace RandomChatSrc_Tests.Repositories.ChatRequestsRepositoryUnitTests
+namespace RandomChatSrc_Tests.Repositories
 {
     [TestClass]
     public class ChatRequestsRepositoryUnitTests
@@ -36,6 +36,7 @@ namespace RandomChatSrc_Tests.Repositories.ChatRequestsRepositoryUnitTests
         {
             // Arrange
             var requestsRepository = new ChatRequestsRepository(mockRequests.Object, requestsRepoPath, new Guid("00000000-0000-0000-0000-000000000000"));
+           
             // Act
             // No action needed since we're testing the constructor
 

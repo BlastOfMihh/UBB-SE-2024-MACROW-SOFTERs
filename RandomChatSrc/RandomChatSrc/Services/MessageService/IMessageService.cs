@@ -1,8 +1,6 @@
 ﻿// <copyright file="IMessageService.cs" company="SuperBet BeClean">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-
-
 namespace RandomChatSrc.Services.MessageService
 {
     using RandomChatSrc.Models;

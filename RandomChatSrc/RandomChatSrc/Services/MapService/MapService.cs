@@ -41,7 +41,7 @@ namespace RandomChatSrc.Services.MapService
         /// <returns>A list of user IDs.</returns>
         public List<Guid> GetAllUsers()
         {
-            List<Guid> users = new();
+            List<Guid> users = new ();
             foreach (MapLocation mapLocation in this.mapRepo.GetAllUsersLocationList())
             {
                 if (mapLocation.UserId != Guid.Empty)
