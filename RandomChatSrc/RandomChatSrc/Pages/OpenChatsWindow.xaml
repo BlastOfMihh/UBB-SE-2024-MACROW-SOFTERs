@@ -50,7 +50,7 @@
 
             <!-- Requests button -->
             <Button x:Name="RequestsButton" Grid.Column="1" Text="Requests"
-               BackgroundColor="#9991C4" 
+               BackgroundColor="#9991C4" Clicked="RequestsButton_Clicked"
                 HeightRequest="50" Padding="0 " Margin="10, 15, 20, 0"/>
         </Grid>
         <ScrollView Grid.Row="2" Margin="10,30,10, 10">

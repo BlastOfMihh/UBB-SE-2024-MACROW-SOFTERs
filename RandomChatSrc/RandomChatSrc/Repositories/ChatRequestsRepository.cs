@@ -32,6 +32,20 @@ namespace RandomChatSrc.Repository
             this.LoadFromMemory();
         }
 
+        public ChatRequestsRepository(List<Request> chatRequests, string requestsFolderPath, Guid id)
+        {
+            this.Id = id;
+            this.ChatRequests = chatRequests;
+            this.RequestsFolderPath = requestsFolderPath + this.Id.ToString();
+
+            if (!Directory.Exists(this.RequestsFolderPath))
+            {
+                Directory.CreateDirectory(this.RequestsFolderPath);
+            }
+
+            this.LoadFromMemory();
+        }
+
         private Guid Id { get; set; }
 
         private List<Request> ChatRequests { get; set; }
@@ -45,20 +59,18 @@ namespace RandomChatSrc.Repository
         {
             foreach (string requestPath in Directory.GetFiles(this.RequestsFolderPath))
             {
-                XDocument? requestsDocument = XDocument.Load(requestPath);
-                if (requestsDocument == null)
+                XDocument? requestsDocument;
+                try
                 {
-                    Console.WriteLine("Could not load a document for file path '" + requestPath + "'");
+                    requestsDocument = XDocument.Load(requestPath);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Document could not be loaded. Invalid XML file.");
                     continue;
                 }
 
-                if (requestsDocument.Root == null)
-                {
-                    Console.WriteLine("The root for the document with file path '" + requestPath + "' is inexistent.");
-                    continue;
-                }
-
-                XElement? requestElement = requestsDocument.Root.Element("request");
+                XElement? requestElement = requestsDocument.Element("request");
                 if (requestElement == null)
                 {
                     Console.WriteLine("There is no request content for the document with file path '" + requestPath + "'");
@@ -72,7 +84,7 @@ namespace RandomChatSrc.Repository
                     continue;
                 }
 
-                string requestId = requestElement.Value;
+                string requestId = requestIdElement.Value;
 
                 XElement? senderElement = requestElement.Element("senderUser");
                 if (senderElement == null)
