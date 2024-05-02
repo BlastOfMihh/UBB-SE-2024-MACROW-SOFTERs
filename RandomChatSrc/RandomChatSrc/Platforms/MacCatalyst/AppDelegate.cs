@@ -1,11 +1,9 @@
 ﻿// <copyright file="AppDelegate.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-
-
 namespace RandomChatSrc
 {
-    using Foundation; 
+    using Foundation;
 
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate
