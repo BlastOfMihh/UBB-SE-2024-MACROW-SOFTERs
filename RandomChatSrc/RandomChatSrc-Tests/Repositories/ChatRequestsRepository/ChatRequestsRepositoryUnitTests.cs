@@ -2,20 +2,20 @@
 using RandomChatSrc.Models;
 using RandomChatSrc.Repository;
 
-namespace RandomChatSrc.RandomChatSrc_Tests.Services.ChatRequestsRepositoryUnitTests
+namespace RandomChatSrc_Tests.Repositories.ChatRequestsRepositoryUnitTests
 {
     [TestClass]
     public class ChatRequestsRepositoryUnitTests
     {
 
         private string requestsRepoPath = "";
-        private Mock< List < Request > > mockRequests = null!;
+        private Mock<List<Request>> mockRequests = null!;
 
         [TestInitialize]
         public void Initialize()
         {
             requestsRepoPath = "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RequestRepo\\";
-            mockRequests = new Mock<List<Request>> ();
+            mockRequests = new Mock<List<Request>>();
         }
 
         [TestMethod]
@@ -51,7 +51,7 @@ namespace RandomChatSrc.RandomChatSrc_Tests.Services.ChatRequestsRepositoryUnitT
 
             // Act
             // Delete the directory for future testing
-            System.IO.DirectoryInfo di = new DirectoryInfo("C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RequestRepo\\00000000-0000-0000-0000-000000000001\\");
+            DirectoryInfo di = new DirectoryInfo("C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RequestRepo\\00000000-0000-0000-0000-000000000001\\");
             di.Delete(true);
 
             // Assert
