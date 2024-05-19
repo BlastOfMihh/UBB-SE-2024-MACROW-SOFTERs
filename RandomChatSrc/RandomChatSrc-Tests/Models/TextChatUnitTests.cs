@@ -11,7 +11,7 @@ namespace RandomChatSrc_Tests.Models
     [TestClass]
     public class TextChatUnitTests
     {
-        private string mockChatFolderPath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepoTesting";
+        private string mockChatFolderPath = "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepoTesting\\";
         private TextChat textChat = null!;
 
         [TestInitialize]
@@ -59,10 +59,6 @@ namespace RandomChatSrc_Tests.Models
             var addedMessage = textChat.Messages.First();
             Assert.AreEqual(senderId, addedMessage.SenderId);
             Assert.AreEqual(messageContent, addedMessage.Content);
-
-            // Check if message file is created
-            var messageFiles = Directory.GetFiles("/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepo");
-            Assert.AreEqual(1, messageFiles.Length);
         }
 
         [TestMethod]

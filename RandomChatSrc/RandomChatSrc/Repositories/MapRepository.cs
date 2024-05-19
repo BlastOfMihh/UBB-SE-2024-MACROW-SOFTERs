@@ -17,7 +17,7 @@ namespace RandomChatSrc.Repositories
         /// <summary>
         /// Initializes a new instance of the <see cref="MapRepository"/> class.
         /// </summary>
-        public MapRepository(string filePath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RepoMock/Locations.xml")
+        public MapRepository(string filePath = "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations.xml")
         {
             this.locationsPath = filePath;
             this.Locations = new List<MapLocation>();

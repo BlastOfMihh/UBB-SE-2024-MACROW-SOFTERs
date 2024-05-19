@@ -32,7 +32,7 @@ namespace RandomChatSrc.Services.RandomMatchingService
         /// </summary>
         /// <param name="chatConfig">The user's chat configuration.</param>
         /// <returns>The matched text chat room.</returns>
-        public TextChat RequestMatchingChatRoom(UserChatConfig chatConfig)
+        public TextChat RequestMatchingChatRoom(User user)
         {
             var allChats = this.chatroomsManagementService.GetAllChats();
             int currentChatIndex = -1;
@@ -59,7 +59,7 @@ namespace RandomChatSrc.Services.RandomMatchingService
                 {
                     foreach (var participantInterest in participant.Interests)
                     {
-                        currentScore += Convert.ToInt32(chatConfig.User.Interests.Any(curUserInterest => curUserInterest.Equals(participantInterest)));
+                        currentScore += Convert.ToInt32(user.Interests.Any(curUserInterest => curUserInterest.Equals(participantInterest)));
                     }
                 }
 
@@ -72,7 +72,7 @@ namespace RandomChatSrc.Services.RandomMatchingService
 
             int randomIndex = new Random().Next(bestChatIndexes.Count);
             int selectedChatIndex = bestChatIndexes[randomIndex];
-            allChats[selectedChatIndex].AddParticipant(chatConfig.User);
+            allChats[selectedChatIndex].AddParticipant(user);
             return allChats[selectedChatIndex];
         }
     }

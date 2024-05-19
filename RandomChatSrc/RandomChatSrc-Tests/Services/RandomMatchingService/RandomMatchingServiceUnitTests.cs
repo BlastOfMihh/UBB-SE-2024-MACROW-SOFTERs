@@ -27,7 +27,7 @@ namespace RandomChatSrc_Tests.Services.RandomMatchingService
             // Arrange
             var chatConfig = new UserChatConfig(new User("testUser", new List<Interest> { new Interest("interest1"), new Interest("interest2") }));
             var user1 = new User("user1", new List<Interest> { new Interest("interest1"), new Interest("interest2") });
-            var chat1 = new TextChat(new List<Message>(), "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepoTesting", "");
+            var chat1 = new TextChat(new List<Message>(), "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepoTesting\\", "");
             chat1.AddParticipant(user1);
 
             mockChatroomsManagementService.Setup(m => m.GetAllChats()).Returns(new List<TextChat> { chat1 });

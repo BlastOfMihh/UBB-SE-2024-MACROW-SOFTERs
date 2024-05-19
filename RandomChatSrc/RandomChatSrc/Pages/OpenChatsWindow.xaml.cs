@@ -21,7 +21,7 @@ namespace RandomChatSrc.Pages
         private readonly ChatroomsManagementService chatService;
         private readonly Guid currentUserId;
 
-        private readonly UserChatConfig currentUserConfig;
+        private readonly User currentUser;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenChatsWindow"/> class.
@@ -58,9 +58,8 @@ namespace RandomChatSrc.Pages
             {
                 Id = this.currentUserId,
             };
-
-            this.currentUserConfig = new UserChatConfig(currentUser);
-            this.currentUserConfig.User.AddInterest(new ("music"));
+            this.currentUser = currentUser;
+            this.currentUser.AddInterest(new ("music"));
         }
 
         /// <summary>
@@ -136,7 +135,7 @@ namespace RandomChatSrc.Pages
         {
             this.RefreshActiveChats();
             RandomMatchingService randomMatchingService = new (this.chatService, new UserChatListService(this.chatService));
-            TextChat textChat = randomMatchingService.RequestMatchingChatRoom(this.currentUserConfig);
+            TextChat textChat = randomMatchingService.RequestMatchingChatRoom(this.currentUser);
             MessageService messageService = new (textChat, this.currentUserId);
             await this.Navigation.PushAsync(new ChatRoomPage(this.currentUserId, messageService));
         }
