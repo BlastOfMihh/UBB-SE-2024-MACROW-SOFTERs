@@ -66,11 +66,18 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\profile_icon.svg" />
 	  <None Remove="Resources\Images\settings_icon.svg" />
+	  <None Remove="ChatRepoTesting\**" />
 	  <None Remove="test\**" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui.Maps" Version="2.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.5">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.21" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -91,6 +98,7 @@
 	  <MauiXaml Update="MainPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Remove="ChatRepoTesting\**" />
 	  <MauiXaml Remove="test\**" />
 	</ItemGroup>
 
@@ -101,19 +109,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiCss Remove="ChatRepoTesting\**" />
 	  <MauiCss Remove="test\**" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="ChatRepoTesting\**" />
 	  <Compile Remove="test\**" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Remove="ChatRepoTesting\**" />
 	  <EmbeddedResource Remove="test\**" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="ChatRepoTesting\" />
 	</ItemGroup>
 	
 </Project>

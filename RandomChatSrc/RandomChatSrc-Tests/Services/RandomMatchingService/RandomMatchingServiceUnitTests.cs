@@ -27,10 +27,10 @@ namespace RandomChatSrc_Tests.Services.RandomMatchingService
             // Arrange
             var chatConfig = new UserChatConfig(new User("testUser", new List<Interest> { new Interest("interest1"), new Interest("interest2") }));
             var user1 = new User("user1", new List<Interest> { new Interest("interest1"), new Interest("interest2") });
-            var chat1 = new TextChat(new List<Message>(), "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepoTesting", "");
+            var chat1 = new Chat(new List<Message>(), "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepoTesting\\", "");
             chat1.AddParticipant(user1);
 
-            mockChatroomsManagementService.Setup(m => m.GetAllChats()).Returns(new List<TextChat> { chat1 });
+            mockChatroomsManagementService.Setup(m => m.GetAllChats()).Returns(new List<Chat> { chat1 });
 
             // Act
             var result = randomMatchingService.RequestMatchingChatRoom(chatConfig);
@@ -43,7 +43,7 @@ namespace RandomChatSrc_Tests.Services.RandomMatchingService
         // {
         //     // Arrange
         //     UserChatConfig firstUserChatConfig = new UserChatConfig(new User("firstUser"));
-        //     mockChatroomsManagementService.Setup(m => m.GetAllChats()).Returns(new List<TextChat>());
+        //     mockChatroomsManagementService.Setup(m => m.GetAllChats()).Returns(new List<Chat>());
         //
         //     // Act
         //    var chat= randomMatchingService.RequestMatchingChatRoom(firstUserChatConfig);
@@ -62,12 +62,12 @@ namespace RandomChatSrc_Tests.Services.RandomMatchingService
             var user1 = new User("user1", new List<Interest> { new Interest("interest1"), new Interest("interest3") });
             var user2 = new User("user2", new List<Interest> { new Interest("interest1"), new Interest("interest4") });
             var user3 = new User("user3", new List<Interest> { new Interest("interest2"), new Interest("interest5") });
-            var chat1 = new TextChat(new List<Message>(), "mockPath", "");
+            var chat1 = new Chat(new List<Message>(), "mockPath", "");
             chat1.AddParticipant(user1);
             chat1.AddParticipant(user2);
-            var chat2 = new TextChat(new List<Message>(), "mockPath", "");
+            var chat2 = new Chat(new List<Message>(), "mockPath", "");
             chat2.AddParticipant(user3);
-            mockChatroomsManagementService.Setup(m => m.GetAllChats()).Returns(new List<TextChat> { chat1, chat2 });
+            mockChatroomsManagementService.Setup(m => m.GetAllChats()).Returns(new List<Chat> { chat1, chat2 });
 
             //Act
             var result = randomMatchingService.RequestMatchingChatRoom(chatConfig);

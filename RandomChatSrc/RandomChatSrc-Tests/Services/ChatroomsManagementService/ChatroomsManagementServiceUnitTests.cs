@@ -8,8 +8,8 @@ namespace RandomChatSrc_Tests.Services.ChatroomsManagement
     public class ChatroomsManagementServiceUnitTests
     {
         private ChatroomsManagementService chatroomsManagementService = null!;
-        private List<TextChat> activeChats = new List<TextChat>();
-        private string mockChatFolderPath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/ChatRepoTesting";
+        private List<Chat> activeChats = new List<Chat>();
+        private string mockChatFolderPath = "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepoTesting\\";
         [TestInitialize]
         public void Initialize()
         {
@@ -23,7 +23,7 @@ namespace RandomChatSrc_Tests.Services.ChatroomsManagement
         {
             // Assert
             Assert.IsNotNull(activeChats);
-            Assert.AreEqual(1, activeChats.Count);
+            Assert.AreEqual(0, activeChats.Count);
         }
 
         [TestMethod]

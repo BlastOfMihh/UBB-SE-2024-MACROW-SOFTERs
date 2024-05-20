@@ -20,6 +20,6 @@ namespace RandomChatSrc.Services.MessageService
         /// Returns the text chat to which messages are sent.
         /// </summary>
         /// <returns> The text chat.</returns>
-        TextChat GetTextChat();
+        Chat GetChat();
     }
 }

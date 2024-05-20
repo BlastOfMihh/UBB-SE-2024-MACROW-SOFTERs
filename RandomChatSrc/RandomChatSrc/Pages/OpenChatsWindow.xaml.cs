@@ -8,6 +8,7 @@ namespace RandomChatSrc.Pages
     using RandomChatSrc.Models;
     using RandomChatSrc.Repository;
     using RandomChatSrc.Services.ChatroomsManagement;
+    using RandomChatSrc.Services.MapService;
     using RandomChatSrc.Services.MessageService;
     using RandomChatSrc.Services.RandomMatchingService;
     using RandomChatSrc.Services.RequestChatService;
@@ -19,9 +20,7 @@ namespace RandomChatSrc.Pages
     public partial class OpenChatsWindow : ContentPage
     {
         private readonly ChatroomsManagementService chatService;
-        private readonly Guid currentUserId;
-
-        private readonly UserChatConfig currentUserConfig;
+        private readonly User currentUser;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenChatsWindow"/> class.
@@ -43,7 +42,6 @@ namespace RandomChatSrc.Pages
                 if (currentNode != null)
                 {
                     var userId = currentNode.InnerText ?? throw new Exception("User not found");
-                    this.currentUserId = new Guid(userId);
                 }
             }
             catch (Exception e)
@@ -54,13 +52,9 @@ namespace RandomChatSrc.Pages
             this.InitializeComponent();
             this.RefreshActiveChats();
 
-            User currentUser = new ("current User")
-            {
-                Id = this.currentUserId,
-            };
-
-            this.currentUserConfig = new UserChatConfig(currentUser);
-            this.currentUserConfig.User.AddInterest(new ("music"));
+            User currentUser = new ("Current User");
+            this.currentUser = currentUser;
+            this.currentUser.AddInterest(new ("music"));
         }
 
         /// <summary>
@@ -72,7 +66,7 @@ namespace RandomChatSrc.Pages
             this.chatStackLayout.Children.Clear();
 
             // Parse the chats
-            foreach (TextChat chat in this.chatService.GetAllChats())
+            foreach (Chat chat in this.chatService.GetAllChats())
             {
                 // Create a custom UI element for each chat
                 var chatLayout = new StackLayout
@@ -119,11 +113,11 @@ namespace RandomChatSrc.Pages
         /// <param name="sender">The sender object.</param>
         private async void OpenDummyPage(object sender)
         {
-            if (sender is TextChat selectedChat)
+            if (sender is Chat selectedChat)
             {
                 // Open the chat page
-                MessageService messageService = new (selectedChat, this.currentUserId);
-                await this.Navigation.PushAsync(new ChatRoomPage(this.currentUserId, messageService));
+                MessageService messageService = new (selectedChat, this.currentUser.Id);
+                await this.Navigation.PushAsync(new ChatRoomPage(this.currentUser.Id, messageService));
             }
         }
 
@@ -136,9 +130,9 @@ namespace RandomChatSrc.Pages
         {
             this.RefreshActiveChats();
             RandomMatchingService randomMatchingService = new (this.chatService, new UserChatListService(this.chatService));
-            TextChat textChat = randomMatchingService.RequestMatchingChatRoom(this.currentUserConfig);
-            MessageService messageService = new (textChat, this.currentUserId);
-            await this.Navigation.PushAsync(new ChatRoomPage(this.currentUserId, messageService));
+            Chat textChat = randomMatchingService.RequestMatchingChatRoom(this.currentUser);
+            MessageService messageService = new (textChat, this.currentUser.Id);
+            await this.Navigation.PushAsync(new ChatRoomPage(this.currentUser.Id, messageService));
         }
 
         /// <summary>
@@ -175,7 +169,7 @@ namespace RandomChatSrc.Pages
         /// <param name="e">The event arguments.</param>
         private async void MapButton_Clicked(object sender, EventArgs e)
         {
-            await this.Navigation.PushAsync(new MapWindow());
+            await this.Navigation.PushAsync(new MapWindow(new MapService()));
         }
     }
 }

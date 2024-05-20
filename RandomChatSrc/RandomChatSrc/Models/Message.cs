@@ -24,7 +24,7 @@ namespace RandomChatSrc.Models
         {
             this.Id = id;
             this.SenderId = senderId;
-            this.TextChatFolderPath = textChatFolderPath;
+            this.ChatFolderPath = textChatFolderPath;
             this.MessagePath = messagePath;
             this.SentTime = sentTime;
             this.Content = content;
@@ -43,7 +43,7 @@ namespace RandomChatSrc.Models
         /// <summary>
         /// Gets the path to the text chat folder.
         /// </summary>
-        public string TextChatFolderPath { get; }
+        public string ChatFolderPath { get; }
 
         /// <summary>
         /// Gets the path to the message.

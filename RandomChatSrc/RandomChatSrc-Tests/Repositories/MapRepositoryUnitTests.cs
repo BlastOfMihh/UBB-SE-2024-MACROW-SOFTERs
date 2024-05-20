@@ -14,7 +14,7 @@ namespace RandomChatSrc_Tests.Repositories
     public class MapRepositoryUnitTests
     {
         private MapRepository mapRepository = null!;
-        private string mockFilePath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RepoMock/Locations_Testing.xml";
+        private string mockFilePath = "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\Locations_Testing.xml";
         [TestInitialize]
         public void Initialize()
         {

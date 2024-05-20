@@ -1,37 +1,53 @@
-// <copyright file="MapWindow.xaml.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
+using System;
+using System.Threading.Tasks;
+using Microsoft.Maui.Controls.Maps;
+using Microsoft.Maui.Maps;
+using RandomChatSrc.Models;
+using RandomChatSrc.Services.MapService;
 
 namespace RandomChatSrc.Pages
 {
-    using Microsoft.Maui.Controls.Maps;
-    using Microsoft.Maui.Maps;
-
     /// <summary>
     /// The MapWindow class represents a page that displays a map.
     /// It inherits from ContentPage which represents a single screen of content.
     /// </summary>
     public partial class MapWindow : ContentPage
     {
+        private IMapService mapService;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MapWindow"/> class.
         /// </summary>
-        public MapWindow()
+        public MapWindow(IMapService mapService)
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            this.mapService = mapService;
+            SetLocation();
+        }
 
-            // Move the map to a specific region
-            this.map.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(46.773545, 23.622010), Distance.FromKilometers(0)));
+        private async void SetLocation()
+        {
+            MapLocation currentMapLocation = await this.mapService.GetCurrentLocation();
 
-            // Create a new pin at the specified location
-            var pin = new Pin()
+            if (currentMapLocation.UserId != Guid.Empty)
             {
-                Location = new Location(46.773545, 23.622010),
-                Label = $"You",
-            };
+                // Move the map to a specific region
+                map.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(currentMapLocation.XCoordinates, currentMapLocation.YCoordinates), Distance.FromKilometers(0.5)));
 
-            // Add the pin to the map
-            this.map.Pins.Add(pin);
+                // Create a new pin at the specified location
+                var pin = new Pin()
+                {
+                    Location = new Location(currentMapLocation.XCoordinates, currentMapLocation.YCoordinates),
+                    Label = "You",
+                };
+
+                // Add the pin to the map
+                map.Pins.Add(pin);
+            }
+            else
+            {
+                await DisplayAlert("Error", "Unable to get location.", "OK");
+            }
         }
     }
 }

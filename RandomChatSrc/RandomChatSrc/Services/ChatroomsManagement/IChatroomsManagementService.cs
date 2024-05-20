@@ -15,13 +15,13 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         /// Retrieves a random chatroom.
         /// </summary>
         /// <returns>A random chatroom.</returns>
-        TextChat GetChat();
+        Chat GetChat();
 
         /// <summary>
         /// Creates a new chatroom with the existing chats.
         /// </summary>CreateChat
         /// <returns>The created chatroom.</returns>
-        TextChat CreateChat();
+        Chat CreateChat();
 
         /// <summary>
         /// Deletes a chatroom with the specified ID.
@@ -34,12 +34,12 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         /// </summary>
         /// <param name="id">The ID of the chatroom.</param>
         /// <returns>The chatroom with the specified ID.</returns>
-        TextChat GetChatById(Guid id);
+        Chat GetChatById(Guid id);
 
         /// <summary>
         /// Retrieves all active chatrooms.
         /// </summary>
         /// <returns>A list of all active chatrooms.</returns>
-        List<TextChat> GetAllChats();
+        List<Chat> GetAllChats();
     }
 }

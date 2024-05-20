@@ -13,7 +13,7 @@ namespace RandomChatSrc_Tests.Repositories
         [TestInitialize]
         public void Initialize()
         {
-            requestsRepoPath = "/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RequestRepo/";
+            requestsRepoPath = "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RequestRepo\\";
             mockRequests = new Mock<List<Request>>();
         }
 
@@ -51,7 +51,7 @@ namespace RandomChatSrc_Tests.Repositories
 
             // Act
             // Delete the directory for future testing
-            DirectoryInfo di = new DirectoryInfo("/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RequestRepo/00000000-0000-0000-0000-000000000001");
+            DirectoryInfo di = new DirectoryInfo("C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RequestRepo\\00000000-0000-0000-0000-000000000001\\");
             di.Delete(true);
 
             // Assert

@@ -19,6 +19,7 @@ namespace RandomChatSrc.Models
             this.Id = Guid.NewGuid();
             this.Name = name;
             this.Interests = interests ?? new List<Interest>();
+            this.Location = new MapLocation(this.Id, 0, 0, "Null Location");
         }
 
         /// <summary>
@@ -40,6 +41,8 @@ namespace RandomChatSrc.Models
         /// Adds a new interest to the User's list of interests.
         /// </summary>
         /// <param name="interest">The interest to add.</param>
+        public MapLocation Location { get; set; }
+
         public void AddInterest(Interest interest)
         {
             this.Interests.Add(interest);

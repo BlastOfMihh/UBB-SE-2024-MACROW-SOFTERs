@@ -5,7 +5,9 @@
 namespace RandomChatSrc
 {
     using RandomChatSrc.Pages;
+    using RandomChatSrc.Repositories;
     using RandomChatSrc.Services.ChatroomsManagement;
+    using RandomChatSrc.Services.MapService;
 
     /// <summary>
     ///     Entry point of the MauiApp.

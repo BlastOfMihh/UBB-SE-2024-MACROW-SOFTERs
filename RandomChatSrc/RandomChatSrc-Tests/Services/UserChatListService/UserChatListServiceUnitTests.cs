@@ -25,9 +25,9 @@ namespace RandomChatSrc_Tests.Services.UserChatListService
         {
             //Arrange
             
-            var chat1 = new TextChat(new List<Message>(),"mockPath","");
-            var chat2 = new TextChat(new List<Message>(), "mockPath", "");
-            var allChats = new List<TextChat>{chat1, chat2}; 
+            var chat1 = new Chat(new List<Message>(),"mockPath","");
+            var chat2 = new Chat(new List<Message>(), "mockPath", "");
+            var allChats = new List<Chat>{chat1, chat2}; 
             mockChatroomsManagementService.Setup(m=>m.GetAllChats()).Returns(allChats);
             User firstUser = new User("userA");
             User secondUser = new User("userB");
@@ -54,9 +54,9 @@ namespace RandomChatSrc_Tests.Services.UserChatListService
         public void GetOpenChats_CurrentUserNotParticipant_ReturnsCorrectChats()
         {
             //Arrange
-            var chat1 = new TextChat(new List<Message>(), "mockPath", "");
-            var chat2 = new TextChat(new List<Message>(), "mockPath", "");
-            var allChats = new List<TextChat> { chat1, chat2 };
+            var chat1 = new Chat(new List<Message>(), "mockPath", "");
+            var chat2 = new Chat(new List<Message>(), "mockPath", "");
+            var allChats = new List<Chat> { chat1, chat2 };
             mockChatroomsManagementService.Setup(m => m.GetAllChats()).Returns(allChats);
             User firstUser = new User("userA");
             User secondUser = new User("userB");
@@ -79,7 +79,7 @@ namespace RandomChatSrc_Tests.Services.UserChatListService
         public void GetOpenChats_NoChatsReturned()
         {
             // Arrange
-            mockChatroomsManagementService.Setup(m => m.GetAllChats()).Returns(new List<TextChat>());
+            mockChatroomsManagementService.Setup(m => m.GetAllChats()).Returns(new List<Chat>());
 
             // Act
             var openChats = userChatListService.GetOpenChats();
