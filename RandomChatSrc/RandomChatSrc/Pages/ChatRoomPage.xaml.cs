@@ -34,7 +34,7 @@ namespace RandomChatSrc.Pages
         /// </summary>
         private void LoadConversation()
         {
-            TextChat textChat = this.messageService.GetTextChat();
+            Chat textChat = this.messageService.GetChat();
             this.MessageContainer.Children.Clear();
             var chatHeaderLayout = new StackLayout { Orientation = StackOrientation.Horizontal, BackgroundColor = Color.FromArgb("#332769"), Padding = new Thickness(8) };
             var chatIdLabel = new Label

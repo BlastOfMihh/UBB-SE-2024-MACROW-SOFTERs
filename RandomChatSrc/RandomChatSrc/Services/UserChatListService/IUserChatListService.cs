@@ -15,7 +15,6 @@ namespace RandomChatSrc.Services.UserChatListService
         /// Retrieves a list of all open chats.
         /// </summary>
         /// <returns>A list of open chats.</returns>
-        List<TextChat> GetOpenChats();
-
+        List<Chat> GetOpenChats();
     }
 }

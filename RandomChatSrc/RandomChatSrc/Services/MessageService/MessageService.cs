@@ -12,7 +12,7 @@ namespace RandomChatSrc.Services.MessageService
     /// </summary>
     public class MessageService : IMessageService
     {
-        private readonly TextChat textChat;
+        private readonly Chat textChat;
         private readonly Guid userId;
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace RandomChatSrc.Services.MessageService
         /// </summary>
         /// <param name="textChat">The text chat to which messages will be sent.</param>
         /// <param name="userId">The ID of the user sending the messages.</param>
-        public MessageService(TextChat textChat, Guid userId)
+        public MessageService(Chat textChat, Guid userId)
         {
             this.textChat = textChat;
             this.userId = userId;
@@ -39,7 +39,7 @@ namespace RandomChatSrc.Services.MessageService
         /// Gets the text chat to which messages are sent.
         /// </summary>
         /// <returns>The text chat.</returns>
-        public TextChat GetTextChat()
+        public Chat GetChat()
         {
             return this.textChat;
         }

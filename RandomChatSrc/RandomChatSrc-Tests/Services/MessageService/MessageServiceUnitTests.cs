@@ -6,13 +6,13 @@ namespace RandomChatSrc_Tests.Services.MessageService
     [TestClass]
     public class MessageServiceUnitTests
     {
-        private Mock<TextChat> mockTextChat = null!;
+        private Mock<Chat> mockChat = null!;
         private Guid testUserId;
 
         [TestInitialize]
         public void Initialize()
         {
-            mockTextChat = new Mock<TextChat>(
+            mockChat = new Mock<Chat>(
                     new List<Message>(),
                     "mockPath",
                     "")
@@ -26,7 +26,7 @@ namespace RandomChatSrc_Tests.Services.MessageService
         public void Constructor_ValidParameters_CreatesInstance()
         {
             // Arrange & Act
-            var messageService = new RandomChatSrc.Services.MessageService.MessageService(mockTextChat.Object, testUserId);
+            var messageService = new RandomChatSrc.Services.MessageService.MessageService(mockChat.Object, testUserId);
 
             // Assert
             Assert.IsNotNull(messageService);
@@ -41,7 +41,7 @@ namespace RandomChatSrc_Tests.Services.MessageService
         public void SendMessage_ValidMessage_CallsAddMessage()
         {
             // Arrange
-            var textChat = new TextChat(
+            var textChat = new Chat(
                 new List<Message>(),
                 "mockPath");
             var testUserId = Guid.NewGuid();
@@ -57,16 +57,16 @@ namespace RandomChatSrc_Tests.Services.MessageService
 
 
         [TestMethod]
-        public void GetTextChat_ReturnsTextChatInstance()
+        public void GetChat_ReturnsChatInstance()
         {
             // Arrange
-            var messageService = new RandomChatSrc.Services.MessageService.MessageService(mockTextChat.Object, testUserId);
+            var messageService = new RandomChatSrc.Services.MessageService.MessageService(mockChat.Object, testUserId);
 
             // Act
-            var result = messageService.GetTextChat();
+            var result = messageService.GetChat();
 
             // Assert
-            Assert.AreEqual(mockTextChat.Object, result);
+            Assert.AreEqual(mockChat.Object, result);
         }
     }
 }

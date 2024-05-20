@@ -9,10 +9,10 @@ using System.Xml.Linq;
 namespace RandomChatSrc_Tests.Models
 {
     [TestClass]
-    public class TextChatUnitTests
+    public class ChatUnitTests
     {
         private string mockChatFolderPath = "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepoTesting\\";
-        private TextChat textChat = null!;
+        private Chat textChat = null!;
 
         [TestInitialize]
         public void Initialize()
@@ -21,7 +21,7 @@ namespace RandomChatSrc_Tests.Models
             Directory.CreateDirectory(mockChatFolderPath);
 
             // Create a new text chat
-            textChat = new TextChat(new List<Message>(), mockChatFolderPath);
+            textChat = new Chat(new List<Message>(), mockChatFolderPath);
         }
 
         [TestCleanup]
@@ -35,7 +35,7 @@ namespace RandomChatSrc_Tests.Models
         }
 
         [TestMethod]
-        public void Constructor_InitializesTextChat()
+        public void Constructor_InitializesChat()
         {
             // Assert
             Assert.IsNotNull(textChat);

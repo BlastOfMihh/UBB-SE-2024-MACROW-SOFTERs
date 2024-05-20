@@ -74,7 +74,7 @@ namespace RandomChatSrc.Pages
             this.chatStackLayout.Children.Clear();
 
             // Parse the chats
-            foreach (TextChat chat in this.chatService.GetAllChats())
+            foreach (Chat chat in this.chatService.GetAllChats())
             {
                 // Create a custom UI element for each chat
                 var chatLayout = new StackLayout
@@ -121,7 +121,7 @@ namespace RandomChatSrc.Pages
         /// <param name="sender">The sender object.</param>
         private async void OpenDummyPage(object sender)
         {
-            if (sender is TextChat selectedChat)
+            if (sender is Chat selectedChat)
             {
                 // Open the chat page
                 MessageService messageService = new (selectedChat, this.currentUserId);
@@ -138,7 +138,7 @@ namespace RandomChatSrc.Pages
         {
             this.RefreshActiveChats();
             RandomMatchingService randomMatchingService = new (this.chatService, new UserChatListService(this.chatService));
-            TextChat textChat = randomMatchingService.RequestMatchingChatRoom(this.currentUser);
+            Chat textChat = randomMatchingService.RequestMatchingChatRoom(this.currentUser);
             MessageService messageService = new (textChat, this.currentUserId);
             await this.Navigation.PushAsync(new ChatRoomPage(this.currentUserId, messageService));
         }

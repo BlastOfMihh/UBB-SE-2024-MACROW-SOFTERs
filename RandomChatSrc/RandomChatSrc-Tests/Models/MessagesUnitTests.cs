@@ -22,7 +22,7 @@ namespace RandomChatTests.Models
             // Assert
             Assert.AreEqual(messageId, message.Id);
             Assert.AreEqual(senderId, message.SenderId);
-            Assert.AreEqual(textChatFolderPath, message.TextChatFolderPath);
+            Assert.AreEqual(textChatFolderPath, message.ChatFolderPath);
             Assert.AreEqual(messagePath, message.MessagePath);
             Assert.AreEqual(sentTime, message.SentTime);
             Assert.AreEqual(content, message.Content);

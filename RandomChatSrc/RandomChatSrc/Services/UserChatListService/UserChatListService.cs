@@ -59,9 +59,9 @@ namespace RandomChatSrc.Services.UserChatListService
         /// Retrieves a list of all open chats that the current user is a member of.
         /// </summary>
         /// <returns>A list of open chats.</returns>
-        public List<TextChat> GetOpenChats()
+        public List<Chat> GetOpenChats()
         {
-            List<TextChat> openChats = this.chatroomsManagementService.GetAllChats();
+            List<Chat> openChats = this.chatroomsManagementService.GetAllChats();
             openChats = openChats.Where(chat => chat.Participants.Any(user => user.Id == this.currentUserId)).ToList();
             return openChats;
         }

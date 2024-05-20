@@ -16,6 +16,6 @@ namespace RandomChatSrc.Services.RandomMatchingService
         /// </summary>
         /// <param name="chatConfig">The chat configuration based on which to find a matching chatroom.</param>
         /// <returns>A chatroom that matches the provided configuration.</returns>
-        TextChat RequestMatchingChatRoom(User user);
+        Chat RequestMatchingChatRoom(User user);
     }
 }

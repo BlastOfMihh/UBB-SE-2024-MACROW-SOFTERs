@@ -32,7 +32,7 @@ namespace RandomChatSrc.Services.RandomMatchingService
         /// </summary>
         /// <param name="chatConfig">The user's chat configuration.</param>
         /// <returns>The matched text chat room.</returns>
-        public TextChat RequestMatchingChatRoom(User user)
+        public Chat RequestMatchingChatRoom(User user)
         {
             var allChats = this.chatroomsManagementService.GetAllChats();
             int currentChatIndex = -1;

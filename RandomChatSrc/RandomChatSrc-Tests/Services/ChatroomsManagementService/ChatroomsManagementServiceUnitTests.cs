@@ -8,7 +8,7 @@ namespace RandomChatSrc_Tests.Services.ChatroomsManagement
     public class ChatroomsManagementServiceUnitTests
     {
         private ChatroomsManagementService chatroomsManagementService = null!;
-        private List<TextChat> activeChats = new List<TextChat>();
+        private List<Chat> activeChats = new List<Chat>();
         private string mockChatFolderPath = "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepoTesting\\";
         [TestInitialize]
         public void Initialize()

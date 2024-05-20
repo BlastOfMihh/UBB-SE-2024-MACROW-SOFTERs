@@ -11,7 +11,6 @@ namespace RandomChatSrc.Services.RequestChatService
     /// </summary>
     public class RequestChatService
     {
-        private readonly GlobalServices.GlobalServices globalServices;
         private readonly IChatRequestRepository chatRequestRepository;
 
         /// <summary>
@@ -19,10 +18,9 @@ namespace RandomChatSrc.Services.RequestChatService
         /// </summary>
         /// <param name="requestsChatRepo">The chat request repository.</param>
         /// <param name="globalServices">The global services.</param>
-        public RequestChatService(IChatRequestRepository requestsChatRepo, GlobalServices.GlobalServices globalServices)
+        public RequestChatService(IChatRequestRepository requestsChatRepo)
         {
             this.chatRequestRepository = requestsChatRepo;
-            this.globalServices = globalServices;
         }
 
         /// <summary>
@@ -61,9 +59,9 @@ namespace RandomChatSrc.Services.RequestChatService
         /// <param name="receiverId">The ID of the receiver.</param>
         public void AcceptRequest(Guid senderId, Guid receiverId)
         {
-            TextChat newTextChat = this.globalServices.ChatroomsManagementService.CreateChat();
-            newTextChat.AddParticipant(this.globalServices.UserRepository.GetUserById(senderId));
-            newTextChat.AddParticipant(this.globalServices.UserRepository.GetUserById(receiverId));
+            // Chat newChat = this.globalServices.ChatroomsManagementService.CreateChat();
+            // newChat.AddParticipant(this.globalServices.UserRepository.GetUserById(senderId));
+            // newChat.AddParticipant(this.globalServices.UserRepository.GetUserById(receiverId));
             this.chatRequestRepository.RemoveRequest(senderId, receiverId);
         }
     }
