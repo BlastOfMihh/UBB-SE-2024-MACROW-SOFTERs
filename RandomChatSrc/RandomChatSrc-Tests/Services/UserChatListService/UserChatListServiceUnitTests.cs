@@ -88,5 +88,17 @@ namespace RandomChatSrc_Tests.Services.UserChatListService
             Assert.IsNotNull(openChats);
             Assert.AreEqual(0, openChats.Count);
         }
+        
+        [TestMethod]
+        public void InvalidPathForFile_Returns0()
+        {
+            // Arrange
+            var invalidPath = "invalidPath";
+            mockChatroomsManagementService.Setup(m => m.GetAllChats()).Returns(new List<TextChat>());
+            userChatListService = new RandomChatSrc.Services.UserChatListService.UserChatListService(mockChatroomsManagementService.Object, invalidPath);
+
+            // Assert
+            Assert.AreEqual(0, userChatListService.GetOpenChats().Count);
+        }
     }
 }

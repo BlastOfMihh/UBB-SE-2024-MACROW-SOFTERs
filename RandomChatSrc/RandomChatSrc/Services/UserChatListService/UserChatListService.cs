@@ -19,9 +19,11 @@ namespace RandomChatSrc.Services.UserChatListService
         /// Initializes a new instance of the <see cref="UserChatListService"/> class.
         /// </summary>
         /// <param name="chatroomsManagementService">The service for managing chatrooms.</param>
-        public UserChatListService(IChatroomsManagementService chatroomsManagementService, string filePath = "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml")
+
+        public UserChatListService(IChatroomsManagementService chatroomsManagementService, string fileName = @"/Users/mirceamaierean/UBB-SE-2024-MACROW-SOFTERs/RandomChatSrc/RandomChatSrc/RepoMock/CurrentUser.xml")
         {
             this.chatroomsManagementService = chatroomsManagementService;
+            string filePath = fileName;
             try
             {
                 XmlDocument doc = new ();
@@ -31,8 +33,12 @@ namespace RandomChatSrc.Services.UserChatListService
 
                 if (currentNode != null)
                 {
-                    var userId = currentNode.InnerText ?? throw new Exception("User not found");
-                    this.currentUserId = Guid.Parse(userId);
+                    var userIdNode = currentNode.SelectSingleNode("Id");
+                    if (userIdNode != null)
+                    {
+                        var userId = userIdNode.InnerText ?? throw new Exception("User not found");
+                        this.currentUserId = Guid.Parse(userId);
+                    }
                 }
             }
             catch (Exception e)
