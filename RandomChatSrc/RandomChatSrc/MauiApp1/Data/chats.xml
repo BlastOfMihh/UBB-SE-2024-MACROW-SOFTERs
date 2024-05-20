@@ -1,0 +1,455 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Chats>
+  <Chat>
+    <ChatId>1</ChatId>
+    <SenderId>1</SenderId>
+    <ReceiverId>2</ReceiverId>
+    <Messages>
+      <Message>
+        <MessageId>2</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>2</SenderId>
+        <Timestamp>3/10/2024 12:03:58 PM</Timestamp>
+        <Content>Hei, friend!</Content>
+        <Status>Seen</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>3</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>3/10/2024 12:03:58 PM</Timestamp>
+        <Content>What are you doing?</Content>
+        <Status>Received</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>1</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/3/2024 11:03:58 AM</Timestamp>
+        <Content>Hello!</Content>
+        <Status>Seen</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>4</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/14/2024 8:16:21 PM</Timestamp>
+        <Content>Hey, how are you?</Content>
+        <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>5</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/14/2024 8:16:30 PM</Timestamp>
+        <Content>D:\UBB\Semestrul 4\Ingineria Sistemelor Software\MauiApp1\MauiApp1\Data\Photos\photo3.jpg</Content>
+        <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>6</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>2</SenderId>
+        <Timestamp>4/14/2024 8:17:25 PM</Timestamp>
+        <Content>I'm fine</Content>
+        <Status>New</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>7</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>3</SenderId>
+        <Timestamp>5/2/2024 11:03:07 AM</Timestamp>
+        <Content>Hello from testing part!</Content>
+        <Status>New</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>8</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>5/20/2024 5:06:47 PM</Timestamp>
+        <Content>Test</Content>
+        <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
+    </Messages>
+  </Chat>
+  <Chat>
+    <ChatId>2</ChatId>
+    <SenderId>2</SenderId>
+    <ReceiverId>1</ReceiverId>
+    <Messages>
+      <Message>
+        <MessageId>2</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>2</SenderId>
+        <Timestamp>3/10/2024 12:03:58 PM</Timestamp>
+        <Content>Hei, friend!</Content>
+        <Status>Seen</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>3</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>3/10/2024 12:03:58 PM</Timestamp>
+        <Content>What are you doing?</Content>
+        <Status>Received</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>1</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/3/2024 11:03:58 AM</Timestamp>
+        <Content>Hello!</Content>
+        <Status>Seen</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>4</MessageId>
+        <ChatId>2</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/14/2024 8:16:21 PM</Timestamp>
+        <Content>Hey, how are you?</Content>
+        <Status>New</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>5</MessageId>
+        <ChatId>2</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/14/2024 8:16:30 PM</Timestamp>
+        <Content>D:\UBB\Semestrul 4\Ingineria Sistemelor Software\MauiApp1\MauiApp1\Data\Photos\photo3.jpg</Content>
+        <Status>New</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>6</MessageId>
+        <ChatId>2</ChatId>
+        <SenderId>2</SenderId>
+        <Timestamp>4/14/2024 8:17:25 PM</Timestamp>
+        <Content>I'm fine</Content>
+        <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>7</MessageId>
+        <ChatId>2</ChatId>
+        <SenderId>3</SenderId>
+        <Timestamp>5/2/2024 11:03:07 AM</Timestamp>
+        <Content>Hello from testing part!</Content>
+        <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>8</MessageId>
+        <ChatId>2</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>5/20/2024 5:06:47 PM</Timestamp>
+        <Content>Test</Content>
+        <Status>New</Status>
+        <Type>text</Type>
+      </Message>
+    </Messages>
+  </Chat>
+  <Chat>
+    <ChatId>3</ChatId>
+    <SenderId>1</SenderId>
+    <ReceiverId>3</ReceiverId>
+    <Messages>
+      <Message>
+        <MessageId>1</MessageId>
+        <ChatId>2</ChatId>
+        <SenderId>3</SenderId>
+        <Timestamp>1/2/2024 11:04:23 AM</Timestamp>
+        <Content>You didn't call back...</Content>
+        <Status>Receieved</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>2</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>3</SenderId>
+        <Timestamp>3/2/2024 10:04:23 AM</Timestamp>
+        <Content>Ok so you just ignore me</Content>
+        <Status>New</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>3</MessageId>
+        <ChatId>3</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/14/2024 8:26:19 PM</Timestamp>
+        <Content>Hey, how are you?</Content>
+        <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>4</MessageId>
+        <ChatId>3</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/14/2024 8:26:32 PM</Timestamp>
+        <Content>D:\UBB\Semestrul 4\Ingineria Sistemelor Software\MauiApp1\MauiApp1\Data\Photos\photo3.jpg</Content>
+        <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
+    </Messages>
+  </Chat>
+  <Chat>
+    <ChatId>4</ChatId>
+    <SenderId>3</SenderId>
+    <ReceiverId>1</ReceiverId>
+    <Messages>
+      <Message>
+        <MessageId>1</MessageId>
+        <ChatId>2</ChatId>
+        <SenderId>3</SenderId>
+        <Timestamp>1/2/2024 11:04:23 AM</Timestamp>
+        <Content>You didn't call back...</Content>
+        <Status>Receieved</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>2</MessageId>
+        <ChatId>1</ChatId>
+        <SenderId>3</SenderId>
+        <Timestamp>3/2/2024 10:04:23 AM</Timestamp>
+        <Content>Ok so you just ignore me</Content>
+        <Status>New</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>3</MessageId>
+        <ChatId>4</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/14/2024 8:26:19 PM</Timestamp>
+        <Content>Hey, how are you?</Content>
+        <Status>New</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>4</MessageId>
+        <ChatId>4</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/14/2024 8:26:32 PM</Timestamp>
+        <Content>D:\UBB\Semestrul 4\Ingineria Sistemelor Software\MauiApp1\MauiApp1\Data\Photos\photo3.jpg</Content>
+        <Status>New</Status>
+        <Type>text</Type>
+      </Message>
+    </Messages>
+  </Chat>
+  <Chat>
+    <ChatId>5</ChatId>
+    <SenderId>1</SenderId>
+    <ReceiverId>4</ReceiverId>
+    <Messages>
+      <Message>
+        <MessageId>1</MessageId>
+        <ChatId>3</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>1/2/2024 12:05:01 PM</Timestamp>
+        <Content>Hello! I need those many back</Content>
+        <Status>Seen</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>2</MessageId>
+        <ChatId>3</ChatId>
+        <SenderId>4</SenderId>
+        <Timestamp>2/2/2024 10:05:09 AM</Timestamp>
+        <Content>In a minute</Content>
+        <Status>Seen</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>3</MessageId>
+        <ChatId>3</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/3/2024 2:05:01 AM</Timestamp>
+        <Content>IT'S BEEN A WHILE</Content>
+        <Status>Received</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>4</MessageId>
+        <ChatId>5</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/14/2024 8:21:10 PM</Timestamp>
+        <Content>Hey, how are you?</Content>
+        <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>5</MessageId>
+        <ChatId>5</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/14/2024 8:21:22 PM</Timestamp>
+        <Content>D:\Universitatea Babes - Bolyai\Year 2\Software Engineering\UBB-SE-2024-Random-Entities-Messaging\MauiApp1\Data\Photos\photo3.jpg</Content>
+        <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>6</MessageId>
+        <ChatId>5</ChatId>
+        <SenderId>4</SenderId>
+        <Timestamp>4/14/2024 8:22:05 PM</Timestamp>
+        <Content>I'm fine, what about you?</Content>
+        <Status>New</Status>
+        <Type>text</Type>
+      </Message>
+    </Messages>
+  </Chat>
+  <Chat>
+    <ChatId>6</ChatId>
+    <SenderId>4</SenderId>
+    <ReceiverId>1</ReceiverId>
+    <Messages>
+      <Message>
+        <MessageId>1</MessageId>
+        <ChatId>3</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>1/2/2024 12:05:01 PM</Timestamp>
+        <Content>Hello! I need those many back</Content>
+        <Status>Seen</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>2</MessageId>
+        <ChatId>3</ChatId>
+        <SenderId>4</SenderId>
+        <Timestamp>2/2/2024 10:05:09 AM</Timestamp>
+        <Content>In a minute</Content>
+        <Status>Seen</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>3</MessageId>
+        <ChatId>3</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/3/2024 2:05:01 AM</Timestamp>
+        <Content>IT'S BEEN A WHILE</Content>
+        <Status>Received</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>4</MessageId>
+        <ChatId>6</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/14/2024 8:21:10 PM</Timestamp>
+        <Content>Hey, how are you?</Content>
+        <Status>New</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>5</MessageId>
+        <ChatId>6</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/14/2024 8:21:22 PM</Timestamp>
+        <Content>D:\UBB\Semestrul 4\Ingineria Sistemelor Software\MauiApp1\MauiApp1\Data\Photos\photo3.jpg</Content>
+        <Status>New</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>6</MessageId>
+        <ChatId>6</ChatId>
+        <SenderId>4</SenderId>
+        <Timestamp>4/14/2024 8:22:05 PM</Timestamp>
+        <Content>I'm fine, what about you?</Content>
+        <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
+    </Messages>
+  </Chat>
+  <Chat>
+    <ChatId>7</ChatId>
+    <SenderId>1</SenderId>
+    <ReceiverId>5</ReceiverId>
+    <Messages>
+      <Message>
+        <MessageId>1</MessageId>
+        <ChatId>4</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>3/2/2024 4:03:00 PM</Timestamp>
+        <Content>I have bad news for you</Content>
+        <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>2</MessageId>
+        <ChatId>4</ChatId>
+        <SenderId>5</SenderId>
+        <Timestamp>3/2/2024 4:05:22 PM</Timestamp>
+        <Content>What?? What's wrong?</Content>
+        <Status>Seen</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>3</MessageId>
+        <ChatId>4</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>3/2/2024 4:10:22 PM</Timestamp>
+        <Content>I'm going to visit you on Sundaaay</Content>
+        <Status>Seen</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>4</MessageId>
+        <ChatId>7</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/14/2024 8:14:30 PM</Timestamp>
+        <Content>Hey, how are you?</Content>
+        <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
+    </Messages>
+  </Chat>
+  <Chat>
+    <ChatId>8</ChatId>
+    <SenderId>5</SenderId>
+    <ReceiverId>1</ReceiverId>
+    <Messages>
+      <Message>
+        <MessageId>1</MessageId>
+        <ChatId>4</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>3/2/2024 4:03:00 PM</Timestamp>
+        <Content>I have bad news for you</Content>
+        <Status>Sent</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>2</MessageId>
+        <ChatId>4</ChatId>
+        <SenderId>5</SenderId>
+        <Timestamp>3/2/2024 4:05:22 PM</Timestamp>
+        <Content>What?? What's wrong?</Content>
+        <Status>Seen</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>3</MessageId>
+        <ChatId>4</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>3/2/2024 4:10:22 PM</Timestamp>
+        <Content>I'm going to visit you on Sundaaay</Content>
+        <Status>Seen</Status>
+        <Type>text</Type>
+      </Message>
+      <Message>
+        <MessageId>4</MessageId>
+        <ChatId>8</ChatId>
+        <SenderId>1</SenderId>
+        <Timestamp>4/14/2024 8:14:30 PM</Timestamp>
+        <Content>Hey, how are you?</Content>
+        <Status>New</Status>
+        <Type>text</Type>
+      </Message>
+    </Messages>
+  </Chat>
+</Chats>

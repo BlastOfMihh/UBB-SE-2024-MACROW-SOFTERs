@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.ChatPage"
+             xmlns:local="clr-namespace:RandomChatSrc.MauiApp1"
+             Title="Chat">
+
+    <!--<VerticalStackLayout>
+        <HorizontalStackLayout HeightRequest="100">
+            <Label Text="Back" FontSize="18" Padding="10" />
+            <Label Text="Nume" FontSize="18" Padding="10" />
+            <Label Text="Telefon" FontSize="18" Padding="10" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout HeightRequest="100"></HorizontalStackLayout>
+    </VerticalStackLayout>-->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="IncomingTemplate">
+                <Frame BackgroundColor="Gray" Padding="10" HorizontalOptions="Start">
+                    <Label Text="{Binding Text}" TextColor="White" />
+                </Frame>
+            </DataTemplate>
+
+            <DataTemplate x:Key="OutgoingTemplate">
+                <Frame BackgroundColor="Blue" Padding="10" HorizontalOptions="End">
+                    <Label Text="{Binding Text}" TextColor="White" />
+                </Frame>
+            </DataTemplate>
+
+            <local:MessageTemplateSelector x:Key="MessageSelector" 
+                IncomingTemplate="{StaticResource IncomingTemplate}" 
+                OutgoingTemplate="{StaticResource OutgoingTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <Grid Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <!-- Fixed height for the first row -->
+            <RowDefinition Height="*" />
+            <!-- Takes up remaining available height -->
+            <RowDefinition Height="100" />
+            <!-- Fixed height for the last row -->
+        </Grid.RowDefinitions>
+
+        <!-- Content in the first row -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <!-- Takes up 1/3 of the available width -->
+                <ColumnDefinition Width="*" />
+                <!-- Takes up 1/3 of the available width -->
+                <ColumnDefinition Width="100" />
+                <!-- Takes up 1/3 of the available width -->
+            </Grid.ColumnDefinitions>
+
+            <!-- Content in the first row and first column -->
+            <ImageButton Clicked="OnBackClicked" Source="back.png" Grid.Row="0" Grid.Column="0" WidthRequest="50"
+       HeightRequest="50"
+       HorizontalOptions="Center"
+       VerticalOptions="Center" />
+
+            <!--<Label Grid.Row="0" Grid.Column="0" Text="Back" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />-->
+
+            <!-- Content in the first row and second column -->
+            <HorizontalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"> 
+                <Border Grid.Column="0" WidthRequest="60" HeightRequest="60"
+                        Stroke="Transparent" StrokeShape="RoundRectangle 30"
+                        Margin="0,0,15,0">
+                    <Image Source="{Binding ContactProfilePhotoPath}" Aspect="AspectFill" />
+                </Border>
+                <Label Text="{Binding ContactName}" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+
+            <!-- Content in the first row and third column -->
+            <ImageButton Source="call.png" Grid.Row="0" Grid.Column="2" WidthRequest="50"
+       HeightRequest="50"
+       HorizontalOptions="Center"
+       VerticalOptions="Center" />
+            <!--<Label Grid.Row="0" Grid.Column="2" Text="Call" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />-->
+        </Grid>
+
+        <!-- Thin line separator -->
+        <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="#D3D3D3" HorizontalOptions="FillAndExpand" VerticalOptions="Start" />
+
+        <!-- Content in the second row -->
+        <ScrollView Grid.Row="1">
+            <CollectionView ItemsSource="{Binding Messages}" ItemTemplate="{StaticResource MessageSelector}" Margin="10">
+            </CollectionView>
+        </ScrollView>
+        
+
+        <!-- Thin line separator -->
+        <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="#D3D3D3" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
+
+        <!-- Content in the third row -->
+        <!--<Label Grid.Row="2" Text="Chat control" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />-->
+
+
+        <!-- Content in the first row -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="50" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Content in the first row and first column -->
+            <ImageButton Clicked="OnFileClicked" Source="file.png" Grid.Row="0" Grid.Column="0" WidthRequest="30"
+       HeightRequest="30"
+       HorizontalOptions="Center"
+       VerticalOptions="Center" />
+            <!--<Label Grid.Row="0" Grid.Column="0" Text="F" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />-->
+
+            <!-- Content in the first row and second column -->
+            <ImageButton Clicked="OnImageClicked" Source="image.png" Grid.Row="0" Grid.Column="1" WidthRequest="30"
+       HeightRequest="30"
+       HorizontalOptions="Center"
+       VerticalOptions="Center" />
+            <ImageButton Source="microphone.png" Grid.Row="0" Grid.Column="2" WidthRequest="30"
+       HeightRequest="30"
+       HorizontalOptions="Center"
+       VerticalOptions="Center" />
+            <!--<Label Grid.Row="0" Grid.Column="1" Text="I" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />-->
+            <!--<Label Grid.Row="0" Grid.Column="2" Text="V" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />-->
+            <!--<Label Grid.Row="0" Grid.Column="3" Text="Enter message..." FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />-->
+            <Entry Grid.Row="0" Grid.Column="3" x:Name="MessageInput" Placeholder="Enter message..." FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+
+            <!--<Label Grid.Row="0" Grid.Column="4" Text="S" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />-->
+            <ImageButton Clicked="OnSendClicked" Source="send.webp" Grid.Row="0" Grid.Column="4" WidthRequest="30"
+       HeightRequest="30"
+       HorizontalOptions="Center"
+       VerticalOptions="Center" />
+
+        </Grid>
+
+
+    </Grid>
+
+
+
+
+
+
+
+</ContentPage>

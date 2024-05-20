@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.ChatAppMainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="20">
+
+            <!-- Header with "Messages" Label -->
+            <Label Text="Messages" FontSize="30" HorizontalOptions="Center" />
+
+            <!-- All Messages and Search Box -->
+            <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="50">
+                <Label Text="All Messages" FontSize="18" HorizontalOptions="StartAndExpand" Padding="10" />
+                <SearchBar Placeholder="Search..." HorizontalOptions="EndAndExpand" WidthRequest="200" 
+                       TextChanged="OnSearchBarTextChanged" />
+            </HorizontalStackLayout>
+
+            <!-- Dyanmic list of users -->
+            <CollectionView x:Name="ContactList" ItemsSource="{Binding Contacts}"
+                        SelectionMode="Single" SelectionChanged="OnSelectionChanged" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <BoxView Color="LightGray" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0" WidthRequest="60" HeightRequest="60"
+                                        Stroke="Transparent" StrokeShape="RoundRectangle 30"
+                                        Margin="0,0,15,0">
+                                    <Image Source="{Binding ContactProfilePhotoPath}" Aspect="AspectFill" />
+                                </Border>
+                                
+                                <VerticalStackLayout Grid.Column="1" Spacing="3">
+                                    <Label Text="{Binding ContactName}" FontAttributes="Bold" FontSize="22" />
+                                    <Label Text="{Binding LastMessage}" FontSize="16">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding LastMessageStatus}" Value="New">
+                                                <Setter Property="FontAttributes" Value="Bold" />
+                                            </DataTrigger>
+                                        </Label.Triggers>       
+                                    </Label>
+                                </VerticalStackLayout>
+                            
+                                <VerticalStackLayout Grid.Column="2" Spacing="5">
+                                    <Label Text="{Binding LastMessageTime}" HorizontalTextAlignment="End">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding LastMessageStatus}" Value="New">
+                                                <Setter Property="FontAttributes" Value="Bold" />
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
+                                    <Label Text="{Binding LastMessageStatus}" HorizontalTextAlignment="End">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding LastMessageStatus}" Value="New">
+                                                <Setter Property="FontAttributes" Value="Bold" />
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
+    

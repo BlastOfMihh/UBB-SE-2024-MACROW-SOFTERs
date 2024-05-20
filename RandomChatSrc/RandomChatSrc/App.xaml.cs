@@ -20,8 +20,7 @@ namespace RandomChatSrc
         public App()
         {
             this.InitializeComponent();
-            ChatroomsManagementService cms = new ();
-            this.MainPage = new NavigationPage(new OpenChatsWindow(cms));
+            this.MainPage = new NavigationPage(new AppStart());
         }
     }
 }

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Users>
+	<User>
+		<UserID>1</UserID>
+		<Name>Iulius Uriesu</Name>
+		<ProfilePhotoPath>iulius.png</ProfilePhotoPath>
+	</User>
+	<User>
+		<UserID>2</UserID>
+		<Name>Razvan Uzum</Name>
+		<ProfilePhotoPath>razvan.png</ProfilePhotoPath>
+	</User>
+	<User>
+		<UserID>3</UserID>
+		<Name>David Tripon</Name>
+		<ProfilePhotoPath>david.png</ProfilePhotoPath>
+	</User>
+	<User>
+		<UserID>4</UserID>
+		<Name>Teodora Vlad</Name>
+		<ProfilePhotoPath>teo.png</ProfilePhotoPath>
+	</User>
+	<User>
+		<UserID>5</UserID>
+		<Name>Dalia Utiu</Name>
+		<ProfilePhotoPath>dalia.png</ProfilePhotoPath>
+	</User>
+	<User>
+		<UserID>6</UserID>
+		<Name>Denisa Vince</Name>
+		<ProfilePhotoPath>deni.png</ProfilePhotoPath>
+	</User>
+</Users>

@@ -16,7 +16,7 @@ namespace RandomChatSrc.Services.ChatroomsManagement
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatroomsManagementService"/> class.
         /// </summary>
-        public ChatroomsManagementService(string filePath = "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\")
+        public ChatroomsManagementService(string filePath = "C:\\GitHub_Repos\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\ChatRepo\\")
         {
             this.ActiveChats = new List<Chat>();
             this.textChatsDirectoryPath = filePath;

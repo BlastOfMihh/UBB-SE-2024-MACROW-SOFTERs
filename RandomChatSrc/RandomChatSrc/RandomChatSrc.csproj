@@ -89,6 +89,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\AppStart.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ChatApp\ChatAppMainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ChatApp\ChatPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\MapWindow.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -121,6 +130,15 @@
 	<ItemGroup>
 	  <EmbeddedResource Remove="ChatRepoTesting\**" />
 	  <EmbeddedResource Remove="test\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="MauiApp1\Pages\ChatAppMainPage.xaml.cs">
+	    <DependentUpon>ChatAppMainPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\ChatApp\ChatAppMainPage.xaml.cs">
+	    <DependentUpon>ChatAppMainPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 	
 </Project>
