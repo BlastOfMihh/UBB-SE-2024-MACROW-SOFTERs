@@ -87,7 +87,6 @@ namespace RandomChatSrc.Models
             return this.MaximumParticipants - this.Participants.Count;
         }
 
-
         public void AddMessage(string senderId, string messageContent)
         {
             var messageId = Guid.NewGuid();

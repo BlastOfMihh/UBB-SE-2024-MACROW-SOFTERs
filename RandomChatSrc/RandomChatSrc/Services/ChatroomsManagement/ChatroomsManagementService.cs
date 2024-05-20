@@ -11,7 +11,6 @@ namespace RandomChatSrc.Services.ChatroomsManagement
     /// </summary>
     public class ChatroomsManagementService : IChatroomsManagementService
     {
-        // schimba asta de fiecare data cand dai pull asta e nivelul
         private string textChatsDirectoryPath;
 
         /// <summary>

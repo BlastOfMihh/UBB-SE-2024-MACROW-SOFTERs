@@ -19,10 +19,9 @@ namespace RandomChatSrc.Services.UserChatListService
         /// Initializes a new instance of the <see cref="UserChatListService"/> class.
         /// </summary>
         /// <param name="chatroomsManagementService">The service for managing chatrooms.</param>
-        public UserChatListService(IChatroomsManagementService chatroomsManagementService)
+        public UserChatListService(IChatroomsManagementService chatroomsManagementService, string filePath = "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml")
         {
             this.chatroomsManagementService = chatroomsManagementService;
-            string filePath = "C:\\Users\\Admin\\Desktop\\ubb\\iss\\newapp\\UBB-SE-2024-MACROW-SOFTERs\\RandomChatSrc\\RandomChatSrc\\RepoMock\\CurrentUser.xml";
             try
             {
                 XmlDocument doc = new ();

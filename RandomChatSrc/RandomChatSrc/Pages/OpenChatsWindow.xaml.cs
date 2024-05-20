@@ -20,19 +20,15 @@ namespace RandomChatSrc.Pages
     public partial class OpenChatsWindow : ContentPage
     {
         private readonly ChatroomsManagementService chatService;
-        private readonly MapService mapService;
-        private readonly Guid currentUserId;
-
         private readonly User currentUser;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenChatsWindow"/> class.
         /// </summary>
         /// <param name="chatService">The chat service instance.</param>
-        public OpenChatsWindow(ChatroomsManagementService chatService, MapService mapService)
+        public OpenChatsWindow(ChatroomsManagementService chatService)
         {
             this.chatService = chatService;
-            this.mapService = mapService;
             this.WidthRequest = 800;
             this.HeightRequest = 600;
             this.BackgroundColor = Color.FromArgb("#FFFFFF");
@@ -46,7 +42,6 @@ namespace RandomChatSrc.Pages
                 if (currentNode != null)
                 {
                     var userId = currentNode.InnerText ?? throw new Exception("User not found");
-                    this.currentUserId = new Guid(userId);
                 }
             }
             catch (Exception e)
@@ -57,10 +52,7 @@ namespace RandomChatSrc.Pages
             this.InitializeComponent();
             this.RefreshActiveChats();
 
-            User currentUser = new ("current User")
-            {
-                Id = this.currentUserId,
-            };
+            User currentUser = new ("Current User");
             this.currentUser = currentUser;
             this.currentUser.AddInterest(new ("music"));
         }
@@ -124,8 +116,8 @@ namespace RandomChatSrc.Pages
             if (sender is Chat selectedChat)
             {
                 // Open the chat page
-                MessageService messageService = new (selectedChat, this.currentUserId);
-                await this.Navigation.PushAsync(new ChatRoomPage(this.currentUserId, messageService));
+                MessageService messageService = new (selectedChat, this.currentUser.Id);
+                await this.Navigation.PushAsync(new ChatRoomPage(this.currentUser.Id, messageService));
             }
         }
 
@@ -139,8 +131,8 @@ namespace RandomChatSrc.Pages
             this.RefreshActiveChats();
             RandomMatchingService randomMatchingService = new (this.chatService, new UserChatListService(this.chatService));
             Chat textChat = randomMatchingService.RequestMatchingChatRoom(this.currentUser);
-            MessageService messageService = new (textChat, this.currentUserId);
-            await this.Navigation.PushAsync(new ChatRoomPage(this.currentUserId, messageService));
+            MessageService messageService = new (textChat, this.currentUser.Id);
+            await this.Navigation.PushAsync(new ChatRoomPage(this.currentUser.Id, messageService));
         }
 
         /// <summary>
@@ -177,7 +169,7 @@ namespace RandomChatSrc.Pages
         /// <param name="e">The event arguments.</param>
         private async void MapButton_Clicked(object sender, EventArgs e)
         {
-            await this.Navigation.PushAsync(new MapWindow(this.mapService));
+            await this.Navigation.PushAsync(new MapWindow(new MapService()));
         }
     }
 }

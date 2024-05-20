@@ -22,10 +22,10 @@ namespace RandomChatSrc.Pages
         {
             InitializeComponent();
             this.mapService = mapService;
-            SetLocationAsync();
+            SetLocation();
         }
 
-        private async void SetLocationAsync()
+        private async void SetLocation()
         {
             MapLocation currentMapLocation = await this.mapService.GetCurrentLocation();
 

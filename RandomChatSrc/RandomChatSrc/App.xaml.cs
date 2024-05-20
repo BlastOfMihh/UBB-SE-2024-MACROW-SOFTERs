@@ -21,8 +21,7 @@ namespace RandomChatSrc
         {
             this.InitializeComponent();
             ChatroomsManagementService cms = new ();
-            MapService mps = new MapService();
-            this.MainPage = new NavigationPage(new OpenChatsWindow(cms, mps));
+            this.MainPage = new NavigationPage(new OpenChatsWindow(cms));
         }
     }
 }
