@@ -25,6 +25,14 @@ namespace RandomChatSrc.Models
             this.Description = description;
         }
 
+        public MapLocation()
+        {
+            this.UserId = Guid.Empty;
+            this.XCoordinates = 0;
+            this.YCoordinates = 0;
+            this.Description = string.Empty;
+        }
+
         /// <summary>
         /// Gets or sets the unique identifier of the user.
         /// </summary>

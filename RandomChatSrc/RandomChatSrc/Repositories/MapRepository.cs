@@ -50,13 +50,12 @@ namespace RandomChatSrc.Repositories
                     if (userIdElement != null && xCoordinatesElement != null && yCoordinatesElement != null &&
                         descriptionElement != null)
                     {
-
-                        Guid userId = new(userIdElement.Value);
+                        Guid userId = new (userIdElement.Value);
                         float xCoordinates = float.Parse(xCoordinatesElement.Value);
                         float yCoordinates = float.Parse(yCoordinatesElement.Value);
                         string description = descriptionElement.Value;
 
-                        MapLocation newLocation = new(userId, xCoordinates, yCoordinates, description);
+                        MapLocation newLocation = new (userId, xCoordinates, yCoordinates, description);
                         this.Locations.Add(newLocation);
                     }
                 }

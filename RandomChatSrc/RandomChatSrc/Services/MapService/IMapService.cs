@@ -29,5 +29,6 @@ namespace RandomChatSrc.Services.MapService
         /// <param name="userId">The ID of the user.</param>
         /// <param name="location">The new location of the user.</param>
         void UpdateUserLocation(Guid userId, MapLocation location);
+        Task<MapLocation> GetCurrentLocation();
     }
 }

@@ -8,6 +8,7 @@ namespace RandomChatSrc.Pages
     using RandomChatSrc.Models;
     using RandomChatSrc.Repository;
     using RandomChatSrc.Services.ChatroomsManagement;
+    using RandomChatSrc.Services.MapService;
     using RandomChatSrc.Services.MessageService;
     using RandomChatSrc.Services.RandomMatchingService;
     using RandomChatSrc.Services.RequestChatService;
@@ -19,6 +20,7 @@ namespace RandomChatSrc.Pages
     public partial class OpenChatsWindow : ContentPage
     {
         private readonly ChatroomsManagementService chatService;
+        private readonly MapService mapService;
         private readonly Guid currentUserId;
 
         private readonly User currentUser;
@@ -27,9 +29,10 @@ namespace RandomChatSrc.Pages
         /// Initializes a new instance of the <see cref="OpenChatsWindow"/> class.
         /// </summary>
         /// <param name="chatService">The chat service instance.</param>
-        public OpenChatsWindow(ChatroomsManagementService chatService)
+        public OpenChatsWindow(ChatroomsManagementService chatService, MapService mapService)
         {
             this.chatService = chatService;
+            this.mapService = mapService;
             this.WidthRequest = 800;
             this.HeightRequest = 600;
             this.BackgroundColor = Color.FromArgb("#FFFFFF");
@@ -174,7 +177,7 @@ namespace RandomChatSrc.Pages
         /// <param name="e">The event arguments.</param>
         private async void MapButton_Clicked(object sender, EventArgs e)
         {
-            await this.Navigation.PushAsync(new MapWindow());
+            await this.Navigation.PushAsync(new MapWindow(this.mapService));
         }
     }
 }

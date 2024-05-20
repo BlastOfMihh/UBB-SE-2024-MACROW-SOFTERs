@@ -13,17 +13,15 @@ namespace RandomChatSrc.Services.MapService
     public class MapService : IMapService
     {
         private IMapRepository mapRepo;
-        private GlobalServices.GlobalServices globalServices;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MapService"/> class.
         /// </summary>
         /// <param name="mapRepo">The repository for map-related operations.</param>
         /// <param name="globalServices">The global services for handling requests.</param>
-        public MapService(IMapRepository mapRepo, GlobalServices.GlobalServices globalServices)
+        public MapService(IMapRepository mapRepo)
         {
             this.mapRepo = mapRepo;
-            this.globalServices = globalServices;
         }
 
         /// <summary>
@@ -51,6 +49,38 @@ namespace RandomChatSrc.Services.MapService
             }
 
             return users;
+        }
+        public async Task<MapLocation> GetCurrentLocation()
+        {
+            try
+            {
+                var location = await Geolocation.GetLastKnownLocationAsync();
+
+                if (location == null)
+                {
+                    location = await Geolocation.GetLocationAsync(new GeolocationRequest
+                    {
+                        DesiredAccuracy = GeolocationAccuracy.Medium,
+                        Timeout = TimeSpan.FromSeconds(30)
+                    });
+                }
+
+                if (location != null)
+                {
+                    var mapLocation = new MapLocation(Guid.NewGuid(), (float)location.Latitude, (float)location.Longitude, "Current Location");
+                    return mapLocation;
+                }
+                else
+                {
+                    // Handle location not found
+                    return new MapLocation();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                return new MapLocation();
+            }
         }
 
         /// <summary>
